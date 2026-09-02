@@ -269,5 +269,70 @@ Every pull request building Docker images for Amazon ECR triggers:
 - Exported inference latency, input token count, and statistical drift metrics directly into **Amazon CloudWatch**.
 - Configured automated alarms that invoke SNS alerts if Kolmogorov-Smirnov test statistics exceed baseline drift thresholds for >3 consecutive hours.
 `
+  },
+  {
+    slug: 'compound-ai-workflows-langgraph-bedrock',
+    filename: 'compound-ai-workflows-langgraph-bedrock.md',
+    title: 'Building Stateful Compound AI Workflows with LangGraph, AWS Bedrock & pgvector',
+    date: '2026-08-28',
+    readTime: '6 min read',
+    tags: ['genai', 'langgraph', 'bedrock', 'pgvector', 'vllm', 'nist-ai-rmf'],
+    summary: 'Designing stateful agentic workflows with deterministic fallback routing, tool calling, self-correction loops, and Guardrails AI sanitization.',
+    content: `# Building Stateful Compound AI Workflows with LangGraph, AWS Bedrock & pgvector
+
+> *"Single-turn prompt engineering has hit a ceiling. Production systems demand Compound AI Architectures—stateful graphs of modular models, vector indices, and deterministic tool-calling guardrails."*
+
+In high-stakes clinical and enterprise workflows, relying on a solitary LLM call leads to non-deterministic failure modes. To achieve aerospace-grade reliability, we architected **Compound AI Workflows** leveraging **LangGraph**, **AWS Bedrock**, **vLLM**, and **pgvector**.
+
+---
+
+## 1. State Graph Architecture & Self-Correction Loops
+
+By structuring inference as a cyclic directed state graph in LangGraph:
+- **Node 1 (Intent Classifier & PII Sanitizer)**: Scrub PHI/PII via **Microsoft Presidio** and validate input constraints with **Guardrails AI**.
+- **Node 2 (Hybrid Vector Retrieval)**: Query **pgvector** with dense HNSW embeddings and sparse BM25 indices to fetch verified clinical context.
+- **Node 3 (LLM Generation)**: Execute structured tool calls on AWS Bedrock (Claude 3.5 Sonnet / Llama 3.3).
+- **Node 4 (Hallucination Evaluator)**: If the output fails structural JSON schema validation or exceeds confidence bounds, route back to Node 3 with targeted feedback.
+
+\`\`\`python
+from langgraph.graph import StateGraph, END
+from typing import TypedDict, List
+import pgvector
+
+class AgentState(TypedDict):
+    query: str
+    context: List[str]
+    generated_report: str
+    retry_count: int
+    is_valid: bool
+
+workflow = StateGraph(AgentState)
+workflow.add_node("sanitize_and_retrieve", retrieve_clinical_context)
+workflow.add_node("generate_with_bedrock", generate_clinical_synthesis)
+workflow.add_node("verify_guardrails", evaluate_output_guardrails)
+
+workflow.set_entry_point("sanitize_and_retrieve")
+workflow.add_edge("sanitize_and_retrieve", "generate_with_bedrock")
+workflow.add_edge("generate_with_bedrock", "verify_guardrails")
+
+workflow.add_conditional_edges(
+    "verify_guardrails",
+    lambda state: "end" if state["is_valid"] or state["retry_count"] >= 3 else "retry",
+    {
+        "end": END,
+        "retry": "generate_with_bedrock"
+    }
+)
+\`\`\`
+
+---
+
+## 2. Low-Latency vLLM Runtimes & Prompt Caching
+For repetitive feature classification queries:
+- Deployed quantized open-weight models (**vLLM** with PagedAttention and FP8 quantization).
+- Reduced end-to-end P95 latency from **1,400ms down to 185ms** while saving over 70% in API inference costs.
+- Enforced strict compliance with **NIST AI RMF** risk management principles throughout the deployment lifecycle.
+`
   }
 ];
+

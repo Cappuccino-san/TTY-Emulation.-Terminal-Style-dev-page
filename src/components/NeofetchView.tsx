@@ -17,17 +17,18 @@ const ASCII_LOGO = `
 
 export const NeofetchView: React.FC<NeofetchViewProps> = ({ themeConfig, onCommandClick }) => {
   const infoItems = [
-    { label: 'Engineer', value: 'Nicholas Napoli (AI/ML Workflow Engineer)' },
-    { label: 'Location', value: 'Winthrop, MA (Boston Area)' },
-    { label: 'Specialization', value: 'Machine Learning, GenAI Pipelines & Distributed Big Data' },
-    { label: 'Certifications', value: 'AWS Certified AI Practitioner (AIF-C01) [2026]' },
-    { label: 'Education', value: 'M.S. Security Studies (GPA 3.90) // B.S. (Cum Laude)' },
-    { label: 'Core Frameworks', value: 'PyTorch 2.x, OpenCV, MediaPipe, AWS Bedrock, ComfyUI' },
-    { label: 'Cloud & Data', value: 'AWS (SageMaker, S3, Glue, ECR), Databricks, PySpark' },
-    { label: 'Full-Stack', value: 'React 19, TypeScript, FastAPI, PostgreSQL, Docker' },
-    { label: 'Security Standards', value: 'NIST CSF, AWS KMS, IAM Least-Privilege, OWASP' },
-    { label: 'Email', value: 'njnapoli99@gmail.com | (857) 205-3266' },
+    { label: 'Engineer', value: 'Nicholas Napoli (AI/ML Workflow & Systems Engineer)' },
+    { label: 'Location', value: 'Winthrop, MA (Greater Boston Area)' },
+    { label: 'Specialization', value: 'Compound AI, Inference Runtimes, Big Data & Vision' },
+    { label: 'Certifications', value: 'AWS Certified AI Practitioner (AIF-C01) [Issued Mar 2026]' },
+    { label: 'Education', value: 'M.S. Security Studies (GPA 3.90) // B.S. (Cum Laude, 3.50)' },
+    { label: 'AI/ML & GenAI', value: 'PyTorch, AWS Bedrock, LangGraph, vLLM, TensorRT-LLM, SAM 2, pgvector' },
+    { label: 'Data & MLOps', value: 'Databricks, PySpark, Delta Lake, Apache Airflow, MLflow, AWS Glue' },
+    { label: 'Cloud & Vision', value: 'AWS (Bedrock, SageMaker, S3, KMS, ECR, EKS), OpenCV, MediaPipe, Open3D' },
+    { label: 'Security & Ops', value: 'NIST AI RMF, NIST CSF, ISO/IEC 42001, OWASP Top 10 for LLMs, Presidio' },
+    { label: 'Contact', value: 'njnapoli99@gmail.com | (857) 205-3266' },
     { label: 'LinkedIn', value: 'linkedin.com/in/nicholas-napoli476' },
+    { label: 'GitHub', value: 'github.com/cappuccino-san' },
     { label: 'Active Theme', value: `${themeConfig.name}` },
   ];
 
