@@ -36,6 +36,8 @@ All career milestones, technical skills, production AI/ML systems, and deep-dive
     { cmd: 'scanlines [on|off]', desc: 'Toggle vintage CRT scanline raster and phosphor curvature overlay.', example: 'scanlines on' },
     { cmd: 'tree [dir]', desc: 'Render visual ASCII hierarchy of virtual file system.', example: 'tree' },
     { cmd: 'weather [city]', desc: 'Fetch ANSI terminal weather forecast report.', example: 'weather Boston' },
+    { cmd: 'fortune / cowsay', desc: 'Display a random computing adage in an ASCII speech bubble.', example: 'fortune' },
+    { cmd: 'degauss', desc: 'Trigger magnetic coil degaussing screen wobble and buzz.', example: 'degauss' },
     { cmd: 'matrix', desc: 'Engage digital rain screensaver mode (press any key to exit).', example: 'matrix' },
     { cmd: 'history', desc: 'Display chronological command history list.', example: 'history' },
     { cmd: 'clear / cls', desc: 'Clear the terminal scrollback buffer.', example: 'clear' },
@@ -48,12 +50,19 @@ All career milestones, technical skills, production AI/ML systems, and deep-dive
     { key: 'Ctrl + C', action: 'Cancel current command line input or abort interactive prompt.' },
     { key: 'Click File', action: 'Clicking any file link in ls or grep output automatically runs cat on it.' },
   ],
-  seeAlso: ['resume(1)', 'skills(1)', 'projects(1)', 'posts(1)', 'whoami(1)', 'mail(1)', 'neofetch(1)'],
+  seeAlso: ['resume(1)', 'skills(1)', 'projects(1)', 'posts(1)', 'whoami(1)', 'mail(1)', 'neofetch(1)', 'fortune(1)'],
 };
 
 export const MAN_PAGES: Record<string, ManPage> = {
   help: MAIN_HELP_MAN,
   man: MAIN_HELP_MAN,
+  fortune: {
+    command: 'FORTUNE',
+    section: 1,
+    synopsis: 'fortune | cowsay',
+    description: 'Outputs a random computing quote, aphorism, or systems design adage formatted inside an ASCII speech bubble.',
+    examples: ['fortune', 'cowsay'],
+  },
   resume: {
     command: 'RESUME',
     section: 1,

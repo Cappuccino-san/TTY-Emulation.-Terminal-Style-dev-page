@@ -265,6 +265,24 @@ export const TerminalPrompt: React.FC<TerminalPromptProps> = ({
           )}
         </div>
 
+        {/* Quick Clear Shortcut Button */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onClear();
+            if (soundEnabled) playBackspaceSound();
+          }}
+          className="px-1.5 py-0.5 border rounded-xs text-[10px] font-mono opacity-50 hover:opacity-100 hover:text-white transition-all cursor-pointer hidden sm:flex items-center gap-1 select-none shrink-0"
+          style={{
+            borderColor: themeConfig.border,
+            color: themeConfig.dimText,
+          }}
+          title="Clear terminal screen (Ctrl+L or type 'clear')"
+        >
+          <span>[clear]</span>
+        </button>
+
         {/* CRT Accurate 1.06s Pulsing Indicator */}
         <div
           className="w-2.5 h-4 crt-cursor shrink-0 ml-1 rounded-xs"
