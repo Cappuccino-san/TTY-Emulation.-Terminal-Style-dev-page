@@ -7,26 +7,27 @@ interface NeofetchViewProps {
 }
 
 const ASCII_LOGO = `
-    ██████╗ ███████╗██╗   ██╗██████╗  ██████╗ ██╗  ██╗
-    ██╔══██╗██╔════╝██║   ██║██╔══██╗██╔═══██╗╚██╗██╔╝
-    ██║  ██║█████╗  ██║   ██║██████╔╝██║   ██║ ╚███╔╝ 
-    ██║  ██║██╔══╝  ╚██╗ ██╔╝██╔══██╗██║   ██║ ██╔██╗ 
-    ██████╔╝███████╗ ╚████╔╝ ██████╔╝╚██████╔╝██╔╝ ██╗
-    ╚═════╝ ╚══════╝  ╚═══╝  ╚═════╝  ╚═════╝ ╚═╝  ╚═╝
+    ███╗   ██╗██╗ ██████╗██╗  ██╗
+    ████╗  ██║██║██╔════╝██║ ██╔╝
+    ██╔██╗ ██║██║██║     █████═╝ 
+    ██║╚██╗██║██║██║     ██╔═██╗ 
+    ██║ ╚████║██║╚██████╗██║ ╚██╗
+    ╚═╝  ╚═══╝╚═╝ ╚═════╝╚═╝  ╚═╝
 `;
 
 export const NeofetchView: React.FC<NeofetchViewProps> = ({ themeConfig, onCommandClick }) => {
   const infoItems = [
-    { label: 'OS', value: 'AGY-OS 2.0 (x86_64-antigravity-linux-gnu)' },
-    { label: 'Host', value: 'Nick Napoli Workstation [Bare Metal 32-Core Ryzen 9]' },
-    { label: 'Kernel', value: '6.12.8-hardened-ebpf-tty' },
-    { label: 'Uptime', value: '418 days, 14 hours, 32 mins' },
-    { label: 'Shell', value: 'agy-sh 2.4.0 (x86_64-antigravity)' },
-    { label: 'Resolution', value: `${window.innerWidth}x${window.innerHeight} (CRT 1.06s raster)` },
-    { label: 'Terminal', value: 'vt220-color / WebGL2 Direct Draw' },
-    { label: 'CPU', value: 'AMD Ryzen 9 7950X (32) @ 5.700GHz' },
-    { label: 'GPU', value: 'NVIDIA GeForce RTX 4090 (24GB VRAM)' },
-    { label: 'Memory', value: '1.8GiB / 64.0GiB (Zero-Leak Heap)' },
+    { label: 'Engineer', value: 'Nicholas Napoli (AI/ML Workflow Engineer)' },
+    { label: 'Location', value: 'Winthrop, MA (Boston Area)' },
+    { label: 'Specialization', value: 'Machine Learning, GenAI Pipelines & Distributed Big Data' },
+    { label: 'Certifications', value: 'AWS Certified AI Practitioner (AIF-C01) [2026]' },
+    { label: 'Education', value: 'M.S. Security Studies (GPA 3.90) // B.S. (Cum Laude)' },
+    { label: 'Core Frameworks', value: 'PyTorch 2.x, OpenCV, MediaPipe, AWS Bedrock, ComfyUI' },
+    { label: 'Cloud & Data', value: 'AWS (SageMaker, S3, Glue, ECR), Databricks, PySpark' },
+    { label: 'Full-Stack', value: 'React 19, TypeScript, FastAPI, PostgreSQL, Docker' },
+    { label: 'Security Standards', value: 'NIST CSF, AWS KMS, IAM Least-Privilege, OWASP' },
+    { label: 'Email', value: 'njnapoli99@gmail.com | (857) 205-3266' },
+    { label: 'LinkedIn', value: 'linkedin.com/in/nicholas-napoli476' },
     { label: 'Active Theme', value: `${themeConfig.name}` },
   ];
 
@@ -44,23 +45,26 @@ export const NeofetchView: React.FC<NeofetchViewProps> = ({ themeConfig, onComma
           style={{ color: themeConfig.brightText, textShadow: themeConfig.glow }}
         >
           {ASCII_LOGO}
+          <div className="text-[11px] opacity-80 mt-1 text-center font-mono">
+            [NAPOLI-ML-OS]
+          </div>
         </div>
 
         {/* System Details */}
         <div className="flex-1 space-y-1">
           <div className="font-bold pb-1 border-b border-dashed mb-2" style={{ borderColor: themeConfig.border }}>
-            <span style={{ color: themeConfig.brightText }}>visitor</span>
+            <span style={{ color: themeConfig.brightText }}>nicholas</span>
             <span style={{ color: themeConfig.dimText }}>@</span>
-            <span style={{ color: themeConfig.promptHost }}>devbox</span>
-            <span className="text-xs ml-2 opacity-60">-------------------------</span>
+            <span style={{ color: themeConfig.promptHost }}>boston-ml-box</span>
+            <span className="text-xs ml-2 opacity-60">--------------------------------</span>
           </div>
 
           {infoItems.map((item, idx) => (
             <div key={idx} className="flex text-xs md:text-sm">
-              <span className="w-28 md:w-32 font-semibold" style={{ color: themeConfig.brightText }}>
+              <span className="w-32 md:w-36 font-semibold shrink-0" style={{ color: themeConfig.brightText }}>
                 {item.label}:
               </span>
-              <span style={{ color: themeConfig.text }}>{item.value}</span>
+              <span className="break-all" style={{ color: themeConfig.text }}>{item.value}</span>
             </div>
           ))}
 
@@ -84,20 +88,34 @@ export const NeofetchView: React.FC<NeofetchViewProps> = ({ themeConfig, onComma
             ))}
           </div>
 
-          <div className="pt-2 text-xs flex gap-2">
+          <div className="pt-2 text-xs flex flex-wrap gap-2">
             <button
-              onClick={() => onCommandClick?.('ls -l posts')}
-              className="px-2 py-0.5 border text-xs cursor-pointer transition-colors"
-              style={{ borderColor: themeConfig.border, color: themeConfig.accent }}
-            >
-              ➔ Read Articles (ls posts)
-            </button>
-            <button
-              onClick={() => onCommandClick?.('whoami')}
-              className="px-2 py-0.5 border text-xs cursor-pointer transition-colors"
+              onClick={() => onCommandClick?.('resume')}
+              className="px-2 py-0.5 border text-xs cursor-pointer hover:bg-white/5 transition-colors font-semibold"
               style={{ borderColor: themeConfig.border, color: themeConfig.brightText }}
             >
-              ➔ Bio (whoami)
+              ➔ View Resume (resume)
+            </button>
+            <button
+              onClick={() => onCommandClick?.('ls -l projects')}
+              className="px-2 py-0.5 border text-xs cursor-pointer hover:bg-white/5 transition-colors"
+              style={{ borderColor: themeConfig.border, color: themeConfig.accent }}
+            >
+              ➔ Projects (ls projects)
+            </button>
+            <button
+              onClick={() => onCommandClick?.('skills')}
+              className="px-2 py-0.5 border text-xs cursor-pointer hover:bg-white/5 transition-colors"
+              style={{ borderColor: themeConfig.border, color: themeConfig.text }}
+            >
+              ➔ Skills Matrix (skills)
+            </button>
+            <button
+              onClick={() => onCommandClick?.('mail')}
+              className="px-2 py-0.5 border text-xs cursor-pointer hover:bg-white/5 transition-colors"
+              style={{ borderColor: themeConfig.border, color: themeConfig.accentAlt }}
+            >
+              ➔ Send Message (mail)
             </button>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import type {
   HistoryEntry,
   ThemeId,
@@ -7,6 +7,7 @@ import type {
 } from '../types/terminal';
 import { executeTerminalCommand } from '../commands/commandRegistry';
 import { THEMES } from '../styles/themes';
+import { PROJECTS } from '../vfs/projectsData';
 
 const STORAGE_KEYS = {
   THEME: 'terminal_blog_theme',
@@ -16,13 +17,64 @@ const STORAGE_KEYS = {
 };
 
 const WELCOME_BANNER = `
- █████╗ ███╗   ██╗████████╗██╗ ██████╗ ██████╗  █████╗ ██╗   ██╗██╗████████╗██╗   ██╗
-██╔══██╗████╗  ██║╚══██╔══╝██║██╔════╝ ██╔══██╗██╔══██╗██║   ██║██║╚══██╔══╝╚██╗ ██╔╝
-███████║██╔██╗ ██║   ██║   ██║██║  ███╗██████╔╝███████║██║   ██║██║   ██║    ╚████╔╝ 
-██╔══██║██║╚██╗██║   ██║   ██║██║   ██║██╔══██╗██╔══██║╚██╗ ██╔╝██║   ██║     ╚██╔╝  
-██║  ██║██║ ╚████║   ██║   ██║╚██████╔╝██║  ██║██║  ██║ ╚████╔╝ ██║   ██║      ██║   
-╚═╝  ╚═╝╚═╝  ╚═══╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝  ╚═══╝  ╚═╝   ╚═╝      ╚═╝   
+ ███╗   ██╗██╗ ██████╗██╗  ██╗ ██████╗ ██╗      █████╗ ███████╗
+ ████╗  ██║██║██╔════╝██║ ██╔╝██╔═══██╗██║     ██╔══██╗██╔════╝
+ ██╔██╗ ██║██║██║     █████═╝ ██║   ██║██║     ███████║███████╗
+ ██║╚██╗██║██║██║     ██╔═██╗ ██║   ██║██║     ██╔══██║╚════██║
+ ██║ ╚████║██║╚██████╗██║ ╚██╗╚██████╔╝███████╗██║  ██║███████║
+ ╚═╝  ╚═══╝╚═╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝
 `;
+
+const INITIAL_ENTRIES: HistoryEntry[] = [
+  {
+    id: 'welcome-banner',
+    timestamp: new Date().toISOString(),
+    path: '/',
+    type: 'text',
+    content: WELCOME_BANNER,
+  },
+  {
+    id: 'welcome-motd',
+    timestamp: new Date().toISOString(),
+    path: '/',
+    type: 'text',
+    content: `Nicholas Napoli // AI/ML Workflow Engineer & Systems Architect (Winthrop, MA)
+AWS Certified AI Practitioner (AIF-C01) | M.S. Security Studies (GPA 3.90) | B.S. Cum Laude
+
+⚡ Quick Commands:
+  • 'resume'   - View complete Curriculum Vitae
+  • 'skills'   - View technical skills & framework matrix
+  • 'projects' - Explore AI/ML pipelines, PySpark ETL & vision systems
+  • 'posts'    - Read technical engineering write-ups
+  • 'mail'     - Send a direct message or job inquiry
+  • 'whoami'   - Summary bio, coordinates & background
+  • 'help'     - Interactive command manual
+`,
+  },
+  {
+    id: 'welcome-projects',
+    timestamp: new Date().toISOString(),
+    command: 'ls -l projects',
+    path: '/',
+    type: 'table',
+    content: {
+      path: '/projects',
+      isLong: true,
+      items: PROJECTS.map((proj) => ({
+        name: proj.filename,
+        type: 'file',
+        path: `/projects/${proj.filename}`,
+        size: proj.description.length,
+        updatedAt: '2026-08-01',
+        permissions: '-rwxr-xr-x',
+        owner: 'nicholas',
+        title: proj.name,
+        summary: proj.summary,
+        tags: proj.tags,
+      })),
+    },
+  },
+];
 
 export function useTerminal() {
   const [cwd, setCwd] = useState<string>('/');
@@ -47,13 +99,21 @@ export function useTerminal() {
   });
 
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
-  const [historyEntries, setHistoryEntries] = useState<HistoryEntry[]>([]);
+  const [historyEntries, setHistoryEntries] = useState<HistoryEntry[]>(INITIAL_ENTRIES);
   const [mailDraft, setMailDraft] = useState<MailDraft | null>(null);
   const [activeManPage, setActiveManPage] = useState<string | null>(null);
   const [matrixActive, setMatrixActive] = useState<boolean>(false);
   const [isPoweredOff, setIsPoweredOff] = useState<boolean>(false);
   const [isDegaussing, setIsDegaussing] = useState<boolean>(false);
-  const [flashActive, setFlashActive] = useState<boolean>(false);
+  const [flashActive, setFlashActive] = useState<boolean>(true);
+
+  // Initial power-on flash on boot
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setFlashActive(false);
+    }, 600);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Power on / off handlers
   const powerOff = useCallback(() => {
@@ -78,83 +138,6 @@ export function useTerminal() {
     setIsPoweredOff(false);
     triggerFlash();
   }, [triggerFlash]);
-
-  // Initial power-on flash on boot
-  useEffect(() => {
-    triggerFlash();
-  }, [triggerFlash]);
-
-
-  // Set initial welcome state
-  useEffect(() => {
-    const initialItems: HistoryEntry[] = [
-      {
-        id: 'welcome-banner',
-        timestamp: new Date().toISOString(),
-        path: '/',
-        type: 'text',
-        content: WELCOME_BANNER,
-      },
-      {
-        id: 'welcome-motd',
-        timestamp: new Date().toISOString(),
-        path: '/',
-        type: 'text',
-        content: `DevBox TTY v2.0 (x86_64-antigravity-linux-gnu)\nType 'help' for manual, 'ls' to list articles, 'whoami' for author bio, or 'neofetch' for system specs.\n`,
-      },
-      {
-        id: 'welcome-ls',
-        timestamp: new Date().toISOString(),
-        command: 'ls -l posts',
-        path: '/',
-        type: 'table',
-        content: {
-          path: '/posts',
-          isLong: true,
-          items: [
-            {
-              name: 'building-a-toy-jit-in-rust.md',
-              type: 'file',
-              path: '/posts/building-a-toy-jit-in-rust.md',
-              size: 4210,
-              updatedAt: '2026-08-14',
-              permissions: '-rw-r--r--',
-              owner: 'nick',
-              title: 'Writing a JIT Compiler from Scratch in 400 Lines of Rust',
-              summary: 'Allocating executable memory with mmap, emitting raw x86_64 machine code, and executing dynamic functions.',
-              tags: ['rust', 'compilers', 'systems'],
-            },
-            {
-              name: 'why-i-left-the-cloud.md',
-              type: 'file',
-              path: '/posts/why-i-left-the-cloud.md',
-              size: 5820,
-              updatedAt: '2026-07-28',
-              permissions: '-rw-r--r--',
-              owner: 'nick',
-              title: 'Why We Replaced Our 47 Microservices with a $40/mo Bare Metal Box and SQLite',
-              summary: 'How collapsing our distributed infrastructure into a single Linux server with SQLite cut latency to 1.8ms.',
-              tags: ['architecture', 'sqlite', 'devops'],
-            },
-            {
-              name: 'the-lost-art-of-terminal-uis.md',
-              type: 'file',
-              path: '/posts/the-lost-art-of-terminal-uis.md',
-              size: 3410,
-              updatedAt: '2026-06-19',
-              permissions: '-rw-r--r--',
-              owner: 'nick',
-              title: 'The Lost Art of Terminal UIs: ANSI Escapes, PTYs, and 1.06s Refresh Cycles',
-              summary: 'Exploring why the 80x24 character grid remains the pinnacle of developer ergonomic productivity.',
-              tags: ['retro', 'tui', 'unix'],
-            },
-          ],
-        },
-      },
-    ];
-
-    setHistoryEntries(initialItems);
-  }, []);
 
   const setTheme = useCallback((t: ThemeId) => {
     setThemeState(t);
@@ -189,6 +172,8 @@ export function useTerminal() {
   const clearHistory = useCallback(() => {
     setHistoryEntries([]);
   }, []);
+
+  const executeCommandRef = useRef<(rawInput: string) => void>(() => {});
 
   const executeCommand = useCallback(
     (rawInput: string) => {
@@ -225,7 +210,7 @@ export function useTerminal() {
         setScanlinesEnabled,
         setCrtCurvatureEnabled,
         clearHistory,
-        executeCommand,
+        executeCommand: (cmd: string) => executeCommandRef.current(cmd),
         setMailMode: setMailDraft,
         setManPage: setActiveManPage,
         setMatrixMode: setMatrixActive,
@@ -269,6 +254,10 @@ export function useTerminal() {
       triggerDegauss,
     ]
   );
+
+  useEffect(() => {
+    executeCommandRef.current = executeCommand;
+  }, [executeCommand]);
 
   return {
     cwd,

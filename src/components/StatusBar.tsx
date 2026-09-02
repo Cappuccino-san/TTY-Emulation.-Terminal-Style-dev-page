@@ -66,8 +66,8 @@ export const StatusBar: React.FC<StatusBarProps> = ({
       <div className="flex items-center gap-2 sm:gap-3">
         <div className="flex items-center gap-1.5 font-bold" style={{ color: themeConfig.brightText }}>
           <span className="text-sm leading-none" style={{ color: themeConfig.brightText }}>▍</span>
-          <span>AGY-TTY</span>
-          <span className="opacity-50 text-[11px] font-normal">— tty1 ·</span>
+          <span>NAPOLI-TTY</span>
+          <span className="opacity-60 text-[11px] font-normal hidden sm:inline">— AI/ML ·</span>
         </div>
 
         <div className="flex items-center gap-1">
@@ -78,32 +78,46 @@ export const StatusBar: React.FC<StatusBarProps> = ({
       </div>
 
       {/* Center: Quick navigation links */}
-      <div className="hidden md:flex items-center gap-3 text-xs">
+      <div className="hidden md:flex items-center gap-2.5 text-xs">
         <button
-          onClick={() => onCommandClick('ls posts')}
+          onClick={() => onCommandClick('resume')}
+          className="hover:underline cursor-pointer opacity-85 hover:opacity-100 font-semibold transition-opacity"
+          style={{ color: themeConfig.brightText }}
+        >
+          [resume]
+        </button>
+        <button
+          onClick={() => onCommandClick('skills')}
           className="hover:underline cursor-pointer opacity-75 hover:opacity-100 transition-opacity"
           style={{ color: themeConfig.text }}
         >
-          [posts]
+          [skills]
         </button>
         <button
-          onClick={() => onCommandClick('ls projects')}
+          onClick={() => onCommandClick('projects')}
           className="hover:underline cursor-pointer opacity-75 hover:opacity-100 transition-opacity"
           style={{ color: themeConfig.text }}
         >
           [projects]
         </button>
         <button
+          onClick={() => onCommandClick('posts')}
+          className="hover:underline cursor-pointer opacity-75 hover:opacity-100 transition-opacity"
+          style={{ color: themeConfig.text }}
+        >
+          [articles]
+        </button>
+        <button
           onClick={() => onCommandClick('whoami')}
           className="hover:underline cursor-pointer opacity-75 hover:opacity-100 transition-opacity"
           style={{ color: themeConfig.text }}
         >
-          [about]
+          [whoami]
         </button>
         <button
           onClick={() => onCommandClick('mail')}
-          className="hover:underline cursor-pointer opacity-75 hover:opacity-100 transition-opacity"
-          style={{ color: themeConfig.brightText }}
+          className="hover:underline cursor-pointer opacity-90 hover:opacity-100 font-semibold transition-opacity"
+          style={{ color: themeConfig.accent }}
         >
           [contact]
         </button>

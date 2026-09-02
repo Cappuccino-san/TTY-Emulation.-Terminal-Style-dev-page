@@ -41,14 +41,12 @@ export function buildAsciiTree(node: VFSNode, prefix: string = ''): string[] {
 }
 
 const FORTUNES = [
-  "There are only two hard things in Computer Science: cache invalidation and naming things. -- Phil Karlton",
-  "Any sufficiently advanced technology is indistinguishable from magic. -- Arthur C. Clarke",
-  "Walking on water and developing software from a specification are easy if both are frozen. -- Edward V. Berard",
-  "Simplicity is prerequisite for reliability. -- Edsger W. Dijkstra",
-  "Measuring programming progress by lines of code is like measuring aircraft building progress by weight. -- Bill Gates",
-  "Premature optimization is the root of all evil. -- Donald Knuth",
-  "The function of good software is to make the complex appear to be simple. -- Grady Booch",
-  "Talk is cheap. Show me the code. -- Linus Torvalds"
+  "In God we trust; all others must bring data. -- W. Edwards Deming",
+  "Deterministic pipelines turn machine learning research into dependable production software.",
+  "Premature optimization is the root of all evil. Profiling with PyTorch & eBPF is the cure.",
+  "Simplicity and least-privilege security are prerequisites for reliable systems. -- NIST CSF",
+  "Talk is cheap. Show me the code. -- Linus Torvalds",
+  "Distributed systems are hard; deterministic single-node pipelines and PySpark clusters make them manageable."
 ];
 
 export function executeTerminalCommand(
@@ -80,7 +78,118 @@ export function executeTerminalCommand(
     return { type: 'man', content: MAIN_HELP_MAN };
   }
 
-  // 2. LS
+  // 2. RESUME / CV
+  if (cmd === 'resume' || cmd === 'cv') {
+    const format = cmdArgs[0]?.toLowerCase();
+    if (format === 'txt' || format === 'text' || format === 'raw') {
+      const txtNode = getNodeAtPath('/about/resume.txt');
+      return {
+        type: 'text',
+        content: txtNode?.content || '',
+      };
+    }
+    const resumeNode = getNodeAtPath('/about/resume.md');
+    return {
+      type: 'markdown',
+      content: {
+        title: 'Nicholas Napoli — Curriculum Vitae',
+        filename: 'resume.md',
+        date: '2026-09-01',
+        content: resumeNode?.content || '',
+        path: '/about/resume.md',
+      },
+    };
+  }
+
+  // 3. SKILLS
+  if (cmd === 'skills' || cmd === 'techstack' || cmd === 'stack') {
+    const skillsNode = getNodeAtPath('/about/skills.json');
+    return {
+      type: 'markdown',
+      content: {
+        title: 'Nicholas Napoli — Technical Skills Matrix',
+        filename: 'skills.json',
+        date: '2026-09-01',
+        content: `\`\`\`json\n${skillsNode?.content || ''}\n\`\`\``,
+        path: '/about/skills.json',
+      },
+    };
+  }
+
+  // 4. EXPERIENCE
+  if (cmd === 'experience' || cmd === 'work' || cmd === 'jobs') {
+    const expNode = getNodeAtPath('/about/experience.md');
+    return {
+      type: 'markdown',
+      content: {
+        title: 'Nicholas Napoli — Professional Experience',
+        filename: 'experience.md',
+        date: '2026-09-01',
+        content: expNode?.content || '',
+        path: '/about/experience.md',
+      },
+    };
+  }
+
+  // 5. EDUCATION / CERTS
+  if (cmd === 'education' || cmd === 'certs' || cmd === 'certifications' || cmd === 'degrees') {
+    const eduNode = getNodeAtPath('/about/education.md');
+    return {
+      type: 'markdown',
+      content: {
+        title: 'Nicholas Napoli — Education & Certifications',
+        filename: 'education.md',
+        date: '2026-09-01',
+        content: eduNode?.content || '',
+        path: '/about/education.md',
+      },
+    };
+  }
+
+  // 6. CONTACT
+  if (cmd === 'contact') {
+    const contactNode = getNodeAtPath('/about/contact.md');
+    return {
+      type: 'markdown',
+      content: {
+        title: 'Nicholas Napoli — Contact Information',
+        filename: 'contact.md',
+        date: '2026-09-01',
+        content: contactNode?.content || '',
+        path: '/about/contact.md',
+      },
+    };
+  }
+
+  // 7. PROJECTS (Direct command)
+  if (cmd === 'projects') {
+    const projNode = getNodeAtPath('/projects');
+    const entries = Object.values(projNode?.children || {});
+    return {
+      type: 'table',
+      content: {
+        path: '/projects',
+        isLong: true,
+        items: entries,
+      },
+    };
+  }
+
+  // 8. POSTS / ARTICLES (Direct command)
+  if (cmd === 'posts' || cmd === 'articles' || cmd === 'blog') {
+    const postsNode = getNodeAtPath('/posts');
+    const entries = Object.values(postsNode?.children || {});
+    return {
+      type: 'table',
+      content: {
+        path: '/posts',
+        isLong: true,
+        items: entries,
+      },
+    };
+  }
+
+  // 9. LS
   if (cmd === 'ls' || cmd === 'll' || cmd === 'la' || cmd === 'dir') {
     const isLong = cmd === 'll' || cmdArgs.includes('-l') || cmdArgs.includes('-la') || cmdArgs.includes('-al');
     const showAll = cmd === 'la' || cmdArgs.includes('-a') || cmdArgs.includes('-la') || cmdArgs.includes('-al');
@@ -123,10 +232,10 @@ export function executeTerminalCommand(
     };
   }
 
-  // 3. CAT
+  // 10. CAT
   if (cmd === 'cat' || cmd === 'view' || cmd === 'open' || cmd === 'read') {
     if (cmdArgs.length === 0) {
-      return { type: 'error', content: 'cat: missing file operand. Example: cat posts/why-i-left-the-cloud.md' };
+      return { type: 'error', content: 'cat: missing file operand. Example: cat about/resume.md  or  cat projects/a360-aging-dataset-pipeline.md' };
     }
 
     const targetFile = cmdArgs[0];
@@ -147,6 +256,20 @@ export function executeTerminalCommand(
             tags: slugMatch.tags,
             content: slugMatch.content,
             path: `/posts/${slugMatch.filename}`,
+          },
+        };
+      }
+      const projMatch = PROJECTS.find((pr) => pr.slug === targetFile || pr.filename === targetFile);
+      if (projMatch) {
+        return {
+          type: 'markdown',
+          content: {
+            title: projMatch.name,
+            filename: projMatch.filename,
+            date: '2026-08-01',
+            tags: projMatch.tags,
+            content: projMatch.description,
+            path: `/projects/${projMatch.filename}`,
           },
         };
       }
@@ -171,14 +294,14 @@ export function executeTerminalCommand(
     };
   }
 
-  // 4. CD
+  // 11. CD
   if (cmd === 'cd') {
     const target = cmdArgs[0];
     if (!target || target === '~') {
       return { type: 'text', content: '', newCwd: '/' };
     }
 
-    // Check if user specified a tag with # or cd #rust
+    // Check if user specified a tag with # or cd #pytorch
     if (target.startsWith('#') || (!target.includes('/') && getAllTags().includes(target.toLowerCase()))) {
       const tag = target.replace(/^#/, '');
       const { posts, projects } = findPostsAndProjectsByTag(tag);
@@ -228,18 +351,18 @@ export function executeTerminalCommand(
     };
   }
 
-  // 5. PWD
+  // 12. PWD
   if (cmd === 'pwd') {
     return { type: 'text', content: context.cwd };
   }
 
-  // 6. WHOAMI / ABOUT
+  // 13. WHOAMI / ABOUT
   if (cmd === 'whoami' || cmd === 'about' || cmd === 'bio' || cmd === 'author') {
     const aboutNode = getNodeAtPath('/about/whoami.md');
     return {
       type: 'markdown',
       content: {
-        title: 'Nick Napoli — Whoami',
+        title: 'Nicholas Napoli — Profile & Bio',
         filename: 'whoami.md',
         date: '2026-09-01',
         content: aboutNode?.content || '',
@@ -248,9 +371,9 @@ export function executeTerminalCommand(
     };
   }
 
-  // 7. MAIL
-  if (cmd === 'mail' || cmd === 'contact' || cmd === 'email') {
-    const toAddr = cmdArgs[0] || 'nick@example.com';
+  // 14. MAIL / CONTACT
+  if (cmd === 'mail' || cmd === 'email' || cmd === 'message') {
+    const toAddr = cmdArgs[0] || 'njnapoli99@gmail.com';
     context.setMailMode({
       to: toAddr,
       from: '',
@@ -267,10 +390,10 @@ export function executeTerminalCommand(
     };
   }
 
-  // 8. GREP / SEARCH
+  // 15. GREP / SEARCH
   if (cmd === 'grep' || cmd === 'search' || cmd === 'find') {
     if (cmdArgs.length === 0) {
-      return { type: 'error', content: 'grep: search pattern required. Example: grep sqlite' };
+      return { type: 'error', content: 'grep: search pattern required. Example: grep pytorch  or  grep bedrock' };
     }
 
     const pattern = cmdArgs[0].toLowerCase();
@@ -336,7 +459,7 @@ export function executeTerminalCommand(
     };
   }
 
-  // 9. THEME
+  // 16. THEME
   if (cmd === 'theme' || cmd === 'color' || cmd === 'colorscheme') {
     const targetTheme = cmdArgs[0]?.toLowerCase() as ThemeId | undefined;
     const availableThemes = Object.keys(THEMES).join(', ');
@@ -362,7 +485,7 @@ export function executeTerminalCommand(
     };
   }
 
-  // 10. AUDIO / SOUND
+  // 17. AUDIO / SOUND
   if (cmd === 'audio' || cmd === 'sound') {
     const arg = cmdArgs[0]?.toLowerCase();
     if (arg === 'on' || arg === '1' || arg === 'enable') {
@@ -382,7 +505,7 @@ export function executeTerminalCommand(
     };
   }
 
-  // 11. SCANLINES / CRT
+  // 18. SCANLINES / CRT
   if (cmd === 'scanlines' || cmd === 'crt') {
     const arg = cmdArgs[0]?.toLowerCase();
     if (arg === 'on' || arg === '1' || arg === 'enable') {
@@ -403,7 +526,7 @@ export function executeTerminalCommand(
     };
   }
 
-  // 12. TREE
+  // 19. TREE
   if (cmd === 'tree') {
     const pathArg = cmdArgs[0] || context.cwd;
     const resolved = resolvePath(context.cwd, pathArg);
@@ -421,7 +544,7 @@ export function executeTerminalCommand(
     };
   }
 
-  // 13. NEOFETCH / FETCH / SYSINFO
+  // 20. NEOFETCH / FETCH / SYSINFO
   if (cmd === 'neofetch' || cmd === 'fetch' || cmd === 'sysinfo') {
     return {
       type: 'neofetch',
@@ -429,7 +552,7 @@ export function executeTerminalCommand(
     };
   }
 
-  // 14. MATRIX
+  // 21. MATRIX
   if (cmd === 'matrix' || cmd === 'screensaver' || cmd === 'rain') {
     context.setMatrixMode(true);
     return {
@@ -438,30 +561,30 @@ export function executeTerminalCommand(
     };
   }
 
-  // 15. WEATHER
+  // 22. WEATHER
   if (cmd === 'weather' || cmd === 'wttr') {
-    const city = cmdArgs.join(' ') || 'Brooklyn, NY';
+    const city = cmdArgs.join(' ') || 'Boston, MA';
     return {
       type: 'weather',
       content: {
         city,
-        temp: '68°F (20°C)',
-        condition: 'Clear Night / Phosphor Skies',
-        humidity: '42%',
-        wind: '6 mph NW',
-        pressure: '1016 hPa',
+        temp: '64°F (18°C)',
+        condition: 'Clear Skies / Coastal Atlantic Breeze',
+        humidity: '48%',
+        wind: '8 mph ENE',
+        pressure: '1018 hPa',
         ascii: `
-     \\   /     Clear Phosphor Skies
-      .-.      Temp: 68°F (20°C)
-   ― (   ) ―   Humidity: 42%
-      \`-'      Wind: 6 mph NW
-     /   \\     Visibility: Infinite
+     \\   /     Boston, MA (Winthrop Bay)
+      .-.      Temp: 64°F (18°C)
+   ― (   ) ―   Humidity: 48%
+      \`-'      Wind: 8 mph ENE
+     /   \\     Visibility: Clear
         `,
       },
     };
   }
 
-  // 16. FORTUNE / COWSAY
+  // 23. FORTUNE / COWSAY
   if (cmd === 'fortune' || cmd === 'cowsay') {
     const randomQuote = FORTUNES[Math.floor(Math.random() * FORTUNES.length)];
     const cow = `
@@ -479,7 +602,7 @@ export function executeTerminalCommand(
     };
   }
 
-  // 17. TAGS
+  // 24. TAGS
   if (cmd === 'tags' || cmd === 'topics' || cmd === 'categories') {
     const allTags = getAllTags();
     const tagLines = allTags.map((tag) => {
@@ -490,11 +613,11 @@ export function executeTerminalCommand(
 
     return {
       type: 'text',
-      content: `ALL TOPICS & TAGS:\n${tagLines.join('\n')}\n\nTip: Type 'cd #<tag>' or 'grep <tag>' to browse items.`,
+      content: `ALL SKILLS, TOPICS & TAGS:\n${tagLines.join('\n')}\n\nTip: Type 'cd #<tag>' or 'grep <tag>' to browse items.`,
     };
   }
 
-  // 18. HISTORY
+  // 25. HISTORY
   if (cmd === 'history') {
     const historyList = context.history
       .map((h, i) => `  ${String(i + 1).padStart(4, ' ')}  ${h}`)
@@ -505,27 +628,27 @@ export function executeTerminalCommand(
     };
   }
 
-  // 19. CLEAR / CLS
+  // 26. CLEAR / CLS
   if (cmd === 'clear' || cmd === 'cls') {
     context.clearHistory();
     return { type: 'text', content: '' };
   }
 
-  // 20. DATE / UPTIME
+  // 27. DATE / UPTIME
   if (cmd === 'date' || cmd === 'uptime') {
     const now = new Date();
     return {
       type: 'text',
-      content: `${now.toUTCString()} (up 418 days, 14 hours, 2 users, load average: 0.04, 0.02, 0.01)`,
+      content: `${now.toUTCString()} (up 284 days, 18 hours, load average: 0.08, 0.04, 0.01)`,
     };
   }
 
-  // 21. ECHO
+  // 28. ECHO
   if (cmd === 'echo') {
     return { type: 'text', content: cmdArgs.join(' ') };
   }
 
-  // 22. SUDO
+  // 29. SUDO
   if (cmd === 'sudo') {
     return {
       type: 'error',
@@ -533,7 +656,7 @@ export function executeTerminalCommand(
     };
   }
 
-  // 23. DEGAUSS
+  // 30. DEGAUSS
   if (cmd === 'degauss') {
     context.triggerDegauss();
     return {
@@ -542,7 +665,7 @@ export function executeTerminalCommand(
     };
   }
 
-  // 24. EXIT / QUIT / POWEROFF / LOGOUT
+  // 31. EXIT / QUIT / POWEROFF / LOGOUT
   if (cmd === 'exit' || cmd === 'quit' || cmd === 'poweroff' || cmd === 'logout') {
     context.powerOff();
     return {
@@ -553,6 +676,7 @@ export function executeTerminalCommand(
 
   // Unknown command fallback with smart suggestions
   const allKnownCmds = [
+    'resume', 'cv', 'skills', 'experience', 'education', 'contact', 'projects', 'posts',
     'ls', 'cat', 'cd', 'whoami', 'mail', 'help', 'man', 'grep',
     'theme', 'audio', 'scanlines', 'crt', 'tree', 'neofetch',
     'matrix', 'weather', 'tags', 'fortune', 'history', 'clear', 'pwd',

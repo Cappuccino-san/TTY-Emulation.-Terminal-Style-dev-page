@@ -12,7 +12,7 @@ interface MailComposerProps {
 }
 
 export const MailComposer: React.FC<MailComposerProps> = ({
-  toAddress = 'nick@example.com',
+  toAddress = 'njnapoli99@gmail.com',
   themeConfig,
   onCancel,
   onDone,
@@ -26,7 +26,6 @@ export const MailComposer: React.FC<MailComposerProps> = ({
 
   const handleSend = () => {
     if (!message.trim() || !senderEmail.trim()) {
-      alert('Please provide your email address and message.');
       return;
     }
 
@@ -34,14 +33,14 @@ export const MailComposer: React.FC<MailComposerProps> = ({
     setTransmissionLogs([]);
 
     const steps = [
-      'Resolving MX record for devbox.internal...',
-      'Connecting to smtp://devbox.internal:587 (TLS 1.3)... OK',
-      `EHLO visitor-terminal... 250-devbox.internal Hello [127.0.0.1]`,
+      'Resolving MX record for njnapoli99@gmail.com...',
+      'Connecting to outbound SMTP gateway (TLS 1.3)... OK',
+      `EHLO recruiter-terminal... 250-gateway.internal Hello`,
       `MAIL FROM:<${senderEmail}>... 250 2.1.0 Sender OK`,
       `RCPT TO:<${toAddress}>... 250 2.1.5 Recipient OK`,
       'DATA... 354 Start mail input; end with <CRLF>.<CRLF>',
-      `Transmitting ${message.length} bytes of encrypted payload...`,
-      '250 2.0.0 OK: message queued 74B2-9901-AFF1',
+      `Transmitting ${message.length} bytes of encrypted payload to Nicholas Napoli...`,
+      '250 2.0.0 OK: message queued successfully',
     ];
 
     steps.forEach((step, idx) => {
@@ -69,7 +68,7 @@ export const MailComposer: React.FC<MailComposerProps> = ({
   };
 
   const mailtoUrl = `mailto:${toAddress}?subject=${encodeURIComponent(
-    subject || 'Message from Terminal Blog'
+    subject || 'Engineering Opportunity / Inquiry for Nicholas Napoli'
   )}&body=${encodeURIComponent(
     `From: ${senderName} <${senderEmail}>\n\n${message}`
   )}`;

@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ThemeConfig } from '../types/terminal';
-import { Sparkles, Terminal, FileText, Folder, User, Mail, HelpCircle } from 'lucide-react';
+import { Sparkles, Terminal, FileText, Folder, User, Mail, HelpCircle, Award, Briefcase, Cpu } from 'lucide-react';
 
 interface QuickToolbarProps {
   themeConfig: ThemeConfig;
@@ -12,12 +12,15 @@ export const QuickToolbar: React.FC<QuickToolbarProps> = ({
   onCommandClick,
 }) => {
   const quickActions = [
-    { label: 'ls -l posts', icon: <FileText size={11} />, desc: 'Articles' },
-    { label: 'ls -l projects', icon: <Folder size={11} />, desc: 'Projects' },
+    { label: 'resume', icon: <Award size={11} />, desc: 'Resume' },
+    { label: 'skills', icon: <Cpu size={11} />, desc: 'Skills Matrix' },
+    { label: 'projects', icon: <Folder size={11} />, desc: 'AI/ML Projects' },
+    { label: 'posts', icon: <FileText size={11} />, desc: 'Articles' },
+    { label: 'experience', icon: <Briefcase size={11} />, desc: 'Experience' },
     { label: 'whoami', icon: <User size={11} />, desc: 'Bio' },
-    { label: 'mail', icon: <Mail size={11} />, desc: 'Contact' },
-    { label: 'help', icon: <HelpCircle size={11} />, desc: 'Man Page' },
+    { label: 'mail', icon: <Mail size={11} />, desc: 'Send Message' },
     { label: 'neofetch', icon: <Terminal size={11} />, desc: 'SysInfo' },
+    { label: 'help', icon: <HelpCircle size={11} />, desc: 'Help / Man' },
     { label: 'matrix', icon: <Sparkles size={11} />, desc: 'Screensaver' },
   ];
 
@@ -29,14 +32,14 @@ export const QuickToolbar: React.FC<QuickToolbarProps> = ({
         backgroundColor: 'rgba(0, 0, 0, 0.65)',
       }}
     >
-      <span className="opacity-50 text-[10px] uppercase font-semibold shrink-0" style={{ color: themeConfig.dimText }}>
-        Quick:
+      <span className="opacity-60 text-[10px] uppercase font-semibold shrink-0" style={{ color: themeConfig.brightText }}>
+        Quick Shortcuts:
       </span>
       {quickActions.map((action, idx) => (
         <button
           key={idx}
           onClick={() => onCommandClick(action.label)}
-          className="flex items-center gap-1 px-2 py-0.5 border rounded-xs whitespace-nowrap cursor-pointer hover:bg-white/5 transition-all text-xs shrink-0"
+          className="flex items-center gap-1 px-2 py-0.5 border rounded-xs whitespace-nowrap cursor-pointer hover:bg-white/10 transition-all text-xs shrink-0"
           style={{
             borderColor: themeConfig.border,
             color: themeConfig.text,
