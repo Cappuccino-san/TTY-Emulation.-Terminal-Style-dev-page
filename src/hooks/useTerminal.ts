@@ -17,12 +17,12 @@ const STORAGE_KEYS = {
 };
 
 const WELCOME_BANNER = `
- ███╗   ██╗██╗ ██████╗██╗  ██╗ ██████╗ ██╗      █████╗ ███████╗
- ████╗  ██║██║██╔════╝██║ ██╔╝██╔═══██╗██║     ██╔══██╗██╔════╝
- ██╔██╗ ██║██║██║     █████═╝ ██║   ██║██║     ███████║███████╗
- ██║╚██╗██║██║██║     ██╔═██╗ ██║   ██║██║     ██╔══██║╚════██║
- ██║ ╚████║██║╚██████╗██║ ╚██╗╚██████╔╝███████╗██║  ██║███████║
- ╚═╝  ╚═══╝╚═╝ ╚═════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝╚══════╝
+ ███╗   ██╗ █████╗ ██████╗   ██████╗ ██╗     ██╗
+ ████╗  ██║██╔══██╗██╔══██╗ ██╔═══██╗██║     ██║
+ ██╔██╗ ██║███████║██████╔╝ ██║   ██║██║     ██║
+ ██║╚██╗██║██╔══██║██╔═══╝  ██║   ██║██║     ██║
+ ██║ ╚████║██║  ██║██║      ╚██████╔╝███████╗██║
+ ╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝       ╚═════╝ ╚══════╝╚═╝
 `;
 
 const INITIAL_ENTRIES: HistoryEntry[] = [
@@ -38,7 +38,7 @@ const INITIAL_ENTRIES: HistoryEntry[] = [
     timestamp: new Date().toISOString(),
     path: '/',
     type: 'text',
-    content: `Nicholas Napoli // AI/ML Workflow Engineer & Systems Architect (Winthrop, MA)
+    content: `Nicholas Napoli // AI/ML Workflow & Systems Engineer (Winthrop, MA)
 AWS Certified AI Practitioner (AIF-C01) | M.S. Security Studies (GPA 3.90) | B.S. Cum Laude
 
 ⚡ Quick Commands:
