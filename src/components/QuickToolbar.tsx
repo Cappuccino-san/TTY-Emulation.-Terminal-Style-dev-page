@@ -21,9 +21,9 @@ export const QuickToolbar: React.FC<QuickToolbarProps> = ({
     { label: 'whoami', icon: <User size={11} />, desc: 'Bio' },
     { label: 'mail', icon: <Mail size={11} />, desc: 'Send Message' },
     { label: 'neofetch', icon: <Terminal size={11} />, desc: 'SysInfo' },
-    { label: 'help', icon: <HelpCircle size={11} />, desc: 'Help / Man' },
     { label: 'matrix', icon: <Sparkles size={11} />, desc: 'Screensaver' },
     { label: 'dino', icon: <Gamepad2 size={11} />, desc: 'Dino Runner Game' },
+    { label: 'help', icon: <HelpCircle size={11} />, desc: 'Help / Man' },
   ];
 
   return (
