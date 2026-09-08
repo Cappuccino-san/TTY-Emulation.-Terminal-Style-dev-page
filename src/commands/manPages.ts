@@ -15,7 +15,7 @@ export const MAIN_HELP_MAN: ManPage = {
   section: 1,
   synopsis: 'napoli-sh [--theme THEME] [--audio] [--scanlines] [COMMAND] [ARGS...]',
   description: `Nicholas Napoli TTY is an interactive developer portfolio and terminal shell environment.
-Built by Nicholas Napoli (AI/ML Workflow & Systems Engineer, Winthrop/Boston MA).
+Built by Nicholas Napoli (AI/ML Workflow & Systems Engineer, Winthrop, MA).
 All career milestones, technical skills, production AI/ML systems, and deep-dive engineering articles are exposed as an interactive virtual POSIX hierarchy.`,
   commandsList: [
     { cmd: 'resume / cv', desc: 'Display complete Curriculum Vitae (Work Experience, Education, Skills, Certifications).', example: 'resume' },
