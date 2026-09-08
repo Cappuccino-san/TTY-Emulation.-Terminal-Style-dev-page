@@ -13,7 +13,6 @@ export const QuickToolbar: React.FC<QuickToolbarProps> = ({
 }) => {
   const quickActions = [
     { label: 'clear', icon: <Trash2 size={11} />, desc: 'Clear Screen' },
-    { label: 'dino', icon: <Gamepad2 size={11} />, desc: 'Dino Runner Game' },
     { label: 'resume', icon: <Award size={11} />, desc: 'Resume' },
     { label: 'skills', icon: <Cpu size={11} />, desc: 'Skills Matrix' },
     { label: 'projects', icon: <Folder size={11} />, desc: 'AI/ML Projects' },
@@ -24,6 +23,7 @@ export const QuickToolbar: React.FC<QuickToolbarProps> = ({
     { label: 'neofetch', icon: <Terminal size={11} />, desc: 'SysInfo' },
     { label: 'help', icon: <HelpCircle size={11} />, desc: 'Help / Man' },
     { label: 'matrix', icon: <Sparkles size={11} />, desc: 'Screensaver' },
+    { label: 'dino', icon: <Gamepad2 size={11} />, desc: 'Dino Runner Game' },
   ];
 
   return (
