@@ -12,6 +12,7 @@ export const ABOUT_CONTENT = `# Nicholas Napoli
 **Email**: [njnapoli99@gmail.com](mailto:njnapoli99@gmail.com)  
 **LinkedIn**: [linkedin.com/in/nicholas-napoli476](https://linkedin.com/in/nicholas-napoli476)  
 **GitHub**: [github.com/cappuccino-san](https://github.com/cappuccino-san)  
+**Website**: [https://napnet.click/](https://napnet.click/)  
 
 ---
 
@@ -23,7 +24,7 @@ AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Dep
 ## Technical Skills
 - **Languages & Core**: Fluent in English and Italian, Python, SQL, TypeScript, JavaScript, HTML, CSS, Node.js, Bash, Linux, Java, C++, C#, Rust, MATLAB/Simulink, Perl, Data Structures & Algorithms, Statistics
 - **AI/ML & GenAI**: PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM, TensorRT-LLM, PEFT (LoRA, QLoRA), pgvector, Qdrant, MLflow, Weights & Biases, OpenCV, Segment Anything 2 (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI, Synthetic Data Generation, Open3D, PyTorch3D
-- **Big Data, MLOps & Cloud**: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, ECR, EKS, CloudWatch, Cognito), Databricks, Apache Spark (PySpark), Delta Lake, Apache Airflow, Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System Design, Large-Scale Systems
+- **Big Data, MLOps & Cloud**: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, ECR, EKS, CloudWatch, Cognito), Jupyter Notebook, Databricks, Apache Spark (PySpark), Delta Lake, Apache Airflow, Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System Design, Large-Scale Systems
 - **Software Engineering, Security & Ops**: Agile Software Development, FastAPI, React, PostgreSQL, REST APIs, NIST AI RMF, NIST CSF, ISO/IEC 42001, OWASP Top 10 for LLMs, AI Red Teaming, Guardrails AI, Presidio (PHI/PII Sanitization), MBSE, JIRA, Confluence, SOP Development, Operational Reporting & Reconciliation
 
 ---
@@ -31,7 +32,7 @@ AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Dep
 ## Education & Certifications
 - **M.S., Security Studies** | University of Massachusetts Lowell (GPA: 3.90) | Jan 2024 – Sep 2025
 - **B.S., Business Administration** | High Point University (Cum Laude, Honors Scholar, GPA: 3.50) | Aug 2017 – May 2021
-- **AWS Certified AI Practitioner (AIF-C01)** | Amazon Web Services | Issued 2026
+- **AWS Certified AI Practitioner (AIF-C01)** | Amazon Web Services | Issued Mar 2026
 
 ---
 
@@ -45,7 +46,7 @@ AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Dep
 
 export const RESUME_TEXT = `================================================================================
                                 NICHOLAS NAPOLI
-  Winthrop, MA | (857) 205-3266 | njnapoli99@gmail.com | linkedin.com/in/nicholas-napoli476 | github.com/cappuccino-san
+  Winthrop, MA | (857) 205-3266 | njnapoli99@gmail.com | linkedin.com/in/nicholas-napoli476 | github.com/cappuccino-san | https://napnet.click/
 ================================================================================
 
 PROFESSIONAL SUMMARY
@@ -70,9 +71,9 @@ TECHNICAL SKILLS
   OpenCV, Segment Anything 2 (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI,
   Synthetic Data Generation, Open3D, PyTorch3D
 • Big Data, MLOps & Cloud: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, ECR,
-  EKS, CloudWatch, Cognito), Databricks, Apache Spark (PySpark), Delta Lake,
-  Apache Airflow, Docker, Terraform / AWS CDK, CI/CD (GitHub Actions),
-  System Design, Large-Scale Systems
+  EKS, CloudWatch, Cognito), Jupyter Notebook, Databricks, Apache Spark
+  (PySpark), Delta Lake, Apache Airflow, Docker, Terraform / AWS CDK,
+  CI/CD (GitHub Actions), System Design, Large-Scale Systems
 • Software Engineering, Security & Ops: Agile Software Development, FastAPI,
   React, PostgreSQL, REST APIs, NIST AI RMF, NIST CSF, ISO/IEC 42001,
   OWASP Top 10 for LLMs, AI Red Teaming, Guardrails AI, Presidio (PHI/PII
@@ -141,12 +142,12 @@ EDUCATION & CERTIFICATIONS
 --------------------------------------------------------------------------------
 • M.S., Security Studies | University of Massachusetts Lowell (GPA: 3.90) | Jan 2024 – Sep 2025
 • B.S., Business Administration | High Point University (Cum Laude, Honors Scholar, GPA: 3.50) | Aug 2017 – May 2021
-• AWS Certified AI Practitioner (AIF-C01) | Amazon Web Services | Issued 2026
+• AWS Certified AI Practitioner (AIF-C01) | Amazon Web Services | Issued Mar 2026
 ================================================================================`;
 
 export const RESUME_MD = `# Nicholas Napoli
 
-**Winthrop, MA** | **(857) 205-3266** | **[njnapoli99@gmail.com](mailto:njnapoli99@gmail.com)** | [linkedin.com/in/nicholas-napoli476](https://linkedin.com/in/nicholas-napoli476) | [github.com/cappuccino-san](https://github.com/cappuccino-san)
+**Winthrop, MA** | **(857) 205-3266** | **[njnapoli99@gmail.com](mailto:njnapoli99@gmail.com)** | [linkedin.com/in/nicholas-napoli476](https://linkedin.com/in/nicholas-napoli476) | [github.com/cappuccino-san](https://github.com/cappuccino-san) | [https://napnet.click/](https://napnet.click/)
 
 ---
 
@@ -158,7 +159,7 @@ AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Dep
 ## TECHNICAL SKILLS
 - **Languages & Core**: Fluent in English and Italian, Python, SQL, TypeScript, JavaScript, HTML, CSS, Node.js, Bash, Linux, Java, C++, C#, Rust, MATLAB/Simulink, Perl, Data Structures & Algorithms, Statistics
 - **AI/ML & GenAI**: PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM, TensorRT-LLM, PEFT (LoRA, QLoRA), pgvector, Qdrant, MLflow, Weights & Biases, OpenCV, Segment Anything 2 (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI, Synthetic Data Generation, Open3D, PyTorch3D
-- **Big Data, MLOps & Cloud**: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, ECR, EKS, CloudWatch, Cognito), Databricks, Apache Spark (PySpark), Delta Lake, Apache Airflow, Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System Design, Large-Scale Systems
+- **Big Data, MLOps & Cloud**: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, ECR, EKS, CloudWatch, Cognito), Jupyter Notebook, Databricks, Apache Spark (PySpark), Delta Lake, Apache Airflow, Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System Design, Large-Scale Systems
 - **Software Engineering, Security & Ops**: Agile Software Development, FastAPI, React, PostgreSQL, REST APIs, NIST AI RMF, NIST CSF, ISO/IEC 42001, OWASP Top 10 for LLMs, AI Red Teaming, Guardrails AI, Presidio (PHI/PII Sanitization), MBSE, JIRA, Confluence, SOP Development, Operational Reporting & Reconciliation
 
 ---
@@ -191,7 +192,7 @@ AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Dep
 ## EDUCATION & CERTIFICATIONS
 - **M.S., Security Studies** | University of Massachusetts Lowell (GPA: 3.90) | Jan 2024 – Sep 2025
 - **B.S., Business Administration** | High Point University (Cum Laude, Honors Scholar, GPA: 3.50) | Aug 2017 – May 2021
-- **AWS Certified AI Practitioner (AIF-C01)** | Amazon Web Services | Issued 2026
+- **AWS Certified AI Practitioner (AIF-C01)** | Amazon Web Services | Issued Mar 2026
 `;
 
 export const SKILLS_JSON = `{
@@ -202,10 +203,11 @@ export const SKILLS_JSON = `{
     "email": "njnapoli99@gmail.com",
     "phone": "(857) 205-3266",
     "linkedin": "https://linkedin.com/in/nicholas-napoli476",
-    "github": "https://github.com/cappuccino-san"
+    "github": "https://github.com/cappuccino-san",
+    "website": "https://napnet.click/"
   },
   "certifications": [
-    "AWS Certified AI Practitioner (AIF-C01) | Amazon Web Services | Issued 2026"
+    "AWS Certified AI Practitioner (AIF-C01) | Amazon Web Services | Issued Mar 2026"
   ],
   "technical_skills": {
     "languages_and_core": [
@@ -222,8 +224,8 @@ export const SKILLS_JSON = `{
     ],
     "big_data_mlops_and_cloud": [
       "AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, ECR, EKS, CloudWatch, Cognito)",
-      "Databricks", "Apache Spark (PySpark)", "Delta Lake", "Apache Airflow",
-      "Docker", "Terraform / AWS CDK", "CI/CD (GitHub Actions)",
+      "Jupyter Notebook", "Databricks", "Apache Spark (PySpark)", "Delta Lake",
+      "Apache Airflow", "Docker", "Terraform / AWS CDK", "CI/CD (GitHub Actions)",
       "System Design", "Large-Scale Systems"
     ],
     "software_engineering_security_and_ops": [
@@ -268,7 +270,7 @@ export const EDUCATION_MD = `# Education & Certifications — Nicholas Napoli
 
 - **M.S., Security Studies** | University of Massachusetts Lowell (GPA: 3.90) | Jan 2024 – Sep 2025
 - **B.S., Business Administration** | High Point University (Cum Laude, Honors Scholar, GPA: 3.50) | Aug 2017 – May 2021
-- **AWS Certified AI Practitioner (AIF-C01)** | Amazon Web Services | Issued 2026
+- **AWS Certified AI Practitioner (AIF-C01)** | Amazon Web Services | Issued Mar 2026
 `;
 
 export const CONTACT_MD = `# Contact Coordinates — Nicholas Napoli
@@ -280,6 +282,7 @@ export const CONTACT_MD = `# Contact Coordinates — Nicholas Napoli
 - **Email**: [njnapoli99@gmail.com](mailto:njnapoli99@gmail.com)
 - **LinkedIn**: [linkedin.com/in/nicholas-napoli476](https://linkedin.com/in/nicholas-napoli476)
 - **GitHub**: [github.com/cappuccino-san](https://github.com/cappuccino-san)
+- **Website**: [https://napnet.click/](https://napnet.click/)
 
 *Tip: Type \`mail\` in this terminal to draft a direct message!*
 `;
