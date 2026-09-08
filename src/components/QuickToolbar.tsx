@@ -1,6 +1,22 @@
 import React from 'react';
 import type { ThemeConfig } from '../types/terminal';
-import { Sparkles, Terminal, FileText, Folder, User, Mail, HelpCircle, Award, Briefcase, Cpu, Trash2, Gamepad2 } from 'lucide-react';
+import {
+  Sparkles,
+  Terminal,
+  FileText,
+  Folder,
+  User,
+  Mail,
+  HelpCircle,
+  Award,
+  Briefcase,
+  Cpu,
+  Trash2,
+  Gamepad2,
+  GraduationCap,
+  Quote,
+  CloudSun,
+} from 'lucide-react';
 
 interface QuickToolbarProps {
   themeConfig: ThemeConfig;
@@ -18,8 +34,11 @@ export const QuickToolbar: React.FC<QuickToolbarProps> = ({
     { label: 'projects', icon: <Folder size={11} />, desc: 'AI/ML Projects' },
     { label: 'posts', icon: <FileText size={11} />, desc: 'Articles' },
     { label: 'experience', icon: <Briefcase size={11} />, desc: 'Experience' },
+    { label: 'education', icon: <GraduationCap size={11} />, desc: 'Education & Certs' },
     { label: 'whoami', icon: <User size={11} />, desc: 'Bio' },
     { label: 'mail', icon: <Mail size={11} />, desc: 'Send Message' },
+    { label: 'fortune', icon: <Quote size={11} />, desc: 'Fortune / Cowsay' },
+    { label: 'weather', icon: <CloudSun size={11} />, desc: 'Weather' },
     { label: 'neofetch', icon: <Terminal size={11} />, desc: 'SysInfo' },
     { label: 'matrix', icon: <Sparkles size={11} />, desc: 'Screensaver' },
     { label: 'dino', icon: <Gamepad2 size={11} />, desc: 'Dino Runner Game' },
