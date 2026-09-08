@@ -299,6 +299,14 @@ interface Obstacle {
   height: number;
   type: 'small' | 'tall' | 'double' | 'bird';
   altitude?: 'low' | 'high';
+  cleared?: boolean;
+}
+
+interface GroundPebble {
+  x: number;
+  yOffset: number;
+  w: number;
+  h: number;
 }
 
 interface Cloud {
@@ -307,12 +315,29 @@ interface Cloud {
   speed: number;
 }
 
+function createInitialPebbles(): GroundPebble[] {
+  const pebbles: GroundPebble[] = [];
+  const count = 30;
+  for (let i = 0; i < count; i++) {
+    pebbles.push({
+      x: (i * 800) / count + (i % 2 === 0 ? 6 : -4),
+      yOffset: 3 + ((i * 7) % 8),
+      w: i % 4 === 0 ? 4 : i % 2 === 0 ? 3 : 2,
+      h: i % 5 === 0 ? 2 : 1,
+    });
+  }
+  return pebbles;
+}
+
 export type SpeedMode = 'chill' | 'normal' | 'fast';
 
-const SPEED_CONFIG: Record<SpeedMode, { baseSpeed: number; maxSpeed: number; label: string }> = {
-  chill: { baseSpeed: 2.8, maxSpeed: 6.2, label: 'Chill' },
-  normal: { baseSpeed: 3.8, maxSpeed: 8.5, label: 'Normal' },
-  fast: { baseSpeed: 5.2, maxSpeed: 12.0, label: 'Fast' },
+const SPEED_CONFIG: Record<
+  SpeedMode,
+  { baseSpeed: number; maxSpeed: number; label: string; perJumpInc: number }
+> = {
+  chill: { baseSpeed: 2.6, maxSpeed: 6.5, label: 'Chill', perJumpInc: 0.08 },
+  normal: { baseSpeed: 3.2, maxSpeed: 8.5, label: 'Normal', perJumpInc: 0.12 },
+  fast: { baseSpeed: 4.8, maxSpeed: 11.5, label: 'Fast', perJumpInc: 0.16 },
 };
 
 const STORAGE_KEY = 'terminal_dino_highscore';
@@ -347,6 +372,8 @@ export const DinoGame: React.FC<DinoGameProps> = ({
     groundY: 175,
     speed: SPEED_CONFIG.normal.baseSpeed,
     speedMode: 'normal' as SpeedMode,
+    clearedCount: 0,
+    jumpCount: 0,
     score: 0,
     highScore: 0,
     isGameOver: false,
@@ -359,7 +386,7 @@ export const DinoGame: React.FC<DinoGameProps> = ({
       { x: 460, y: 25, speed: 0.6 },
       { x: 720, y: 45, speed: 0.9 },
     ] as Cloud[],
-    groundOffset: 0,
+    pebbles: createInitialPebbles(),
     scoreMilestoneFlash: 0,
     themeConfig,
     soundEnabled,
@@ -393,12 +420,15 @@ export const DinoGame: React.FC<DinoGameProps> = ({
     s.isJumping = false;
     s.isDucking = false;
     s.speed = SPEED_CONFIG[speedMode].baseSpeed;
+    s.clearedCount = 0;
+    s.jumpCount = 0;
     s.score = 0;
     s.isGameOver = false;
     s.isPaused = false;
     s.hasStarted = true;
     s.frameCounter = 0;
     s.obstacles = [];
+    s.pebbles = createInitialPebbles();
     s.scoreMilestoneFlash = 0;
     setIsGameOver(false);
     setIsPaused(false);
@@ -423,7 +453,8 @@ export const DinoGame: React.FC<DinoGameProps> = ({
     if (!s.isJumping) {
       s.isJumping = true;
       s.isDucking = false;
-      s.dinoVY = -10.0;
+      s.jumpCount++;
+      s.dinoVY = -10.2;
       if (s.soundEnabled) {
         playDinoJumpSound();
       }
@@ -452,7 +483,7 @@ export const DinoGame: React.FC<DinoGameProps> = ({
     const VIRTUAL_WIDTH = 800;
     const VIRTUAL_HEIGHT = 220;
     const PIXEL_SIZE = 2;
-    const GRAVITY = 0.5;
+    const GRAVITY = 0.52;
 
     canvas.width = VIRTUAL_WIDTH;
     canvas.height = VIRTUAL_HEIGHT;
@@ -486,13 +517,21 @@ export const DinoGame: React.FC<DinoGameProps> = ({
       if (s.hasStarted && !s.isGameOver && !s.isPaused) {
         s.frameCounter += delta;
 
-        // Controlled speed curve scaled by speed mode (Chill / Normal / Fast)
+        // Controlled speed curve: starts slow and scales incrementally per cleared obstacle + subtle time progression
         const cfg = SPEED_CONFIG[s.speedMode || 'normal'];
-        s.speed = Math.min(cfg.maxSpeed, cfg.baseSpeed + s.score * 0.0015);
+        s.speed = Math.min(
+          cfg.maxSpeed,
+          cfg.baseSpeed + s.clearedCount * cfg.perJumpInc + s.score * 0.0004
+        );
         const frameSpeed = s.speed * delta;
 
-        // Ground scroll
-        s.groundOffset = (s.groundOffset + frameSpeed) % 24;
+        // Ground pebbles scroll smoothly with no modulo snapping
+        s.pebbles.forEach((p) => {
+          p.x -= frameSpeed;
+          if (p.x < -15) {
+            p.x += VIRTUAL_WIDTH + 20;
+          }
+        });
 
         // Clouds scroll
         s.clouds.forEach((c) => {
@@ -589,10 +628,18 @@ export const DinoGame: React.FC<DinoGameProps> = ({
           s.obstacles.push(newObs);
         }
 
-        // Move & Cull Obstacles
+        // Move & Cull Obstacles & Track Cleared Jumps
+        const dinoX = 60;
         for (let i = s.obstacles.length - 1; i >= 0; i--) {
           const obs = s.obstacles[i];
           obs.x -= frameSpeed;
+
+          // Increment cleared count when obstacle passes behind dino
+          if (!obs.cleared && obs.x + obs.width < dinoX) {
+            obs.cleared = true;
+            s.clearedCount++;
+          }
+
           if (obs.x + obs.width < -30) {
             s.obstacles.splice(i, 1);
           }
@@ -601,7 +648,6 @@ export const DinoGame: React.FC<DinoGameProps> = ({
         // Collision Detection
         const dinoW = s.isDucking ? 38 * PIXEL_SIZE : 23 * PIXEL_SIZE;
         const dinoH = s.isDucking ? 15 * PIXEL_SIZE : 23 * PIXEL_SIZE;
-        const dinoX = 60;
         const dinoY = s.groundY - dinoH + s.dinoY;
 
         const dinoBox = { x: dinoX, y: dinoY, w: dinoW, h: dinoH };
@@ -673,19 +719,11 @@ export const DinoGame: React.FC<DinoGameProps> = ({
       ctx.lineTo(VIRTUAL_WIDTH, gy);
       ctx.stroke();
 
-      // Scrolling Ground Bumps & Cracks
+      // Scrolling Ground Bumps & Cracks (Continuous smooth scrolling pebbles)
       ctx.fillStyle = currentTheme.dimText;
-      for (let x = -s.groundOffset; x < VIRTUAL_WIDTH + 24; x += 24) {
-        if ((x + s.groundOffset) % 48 === 0) {
-          ctx.fillRect(x + 4, gy + 5, 4, 2);
-          ctx.fillRect(x + 14, gy + 9, 3, 2);
-        } else if ((x + s.groundOffset) % 72 === 0) {
-          ctx.fillRect(x + 2, gy + 8, 2, 2);
-          ctx.fillRect(x + 18, gy + 4, 5, 2);
-        } else {
-          ctx.fillRect(x + 10, gy + 6, 2, 2);
-        }
-      }
+      s.pebbles.forEach((p) => {
+        ctx.fillRect(p.x, gy + p.yOffset, p.w, p.h);
+      });
 
       // Obstacles
       s.obstacles.forEach((obs) => {
