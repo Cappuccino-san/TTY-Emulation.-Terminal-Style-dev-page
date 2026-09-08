@@ -7,7 +7,7 @@ import {
   playDinoScoreSound,
   playDinoHitSound,
 } from '../audio/soundEffects';
-import { Volume2, VolumeX, X, RotateCcw, ArrowUp, ArrowDown } from 'lucide-react';
+import { Volume2, VolumeX, X, RotateCcw, ArrowUp, ArrowDown, Gauge } from 'lucide-react';
 
 interface DinoGameProps {
   theme: ThemeId;
@@ -307,6 +307,14 @@ interface Cloud {
   speed: number;
 }
 
+export type SpeedMode = 'chill' | 'normal' | 'fast';
+
+const SPEED_CONFIG: Record<SpeedMode, { baseSpeed: number; maxSpeed: number; label: string }> = {
+  chill: { baseSpeed: 2.8, maxSpeed: 6.2, label: 'Chill' },
+  normal: { baseSpeed: 3.8, maxSpeed: 8.5, label: 'Normal' },
+  fast: { baseSpeed: 5.2, maxSpeed: 12.0, label: 'Fast' },
+};
+
 const STORAGE_KEY = 'terminal_dino_highscore';
 
 export const DinoGame: React.FC<DinoGameProps> = ({
@@ -325,6 +333,7 @@ export const DinoGame: React.FC<DinoGameProps> = ({
     const saved = localStorage.getItem(STORAGE_KEY);
     return saved ? parseInt(saved, 10) : 0;
   });
+  const [speedMode, setSpeedMode] = useState<SpeedMode>('normal');
   const [isGameOver, setIsGameOver] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [hasStarted, setHasStarted] = useState(false);
@@ -336,7 +345,8 @@ export const DinoGame: React.FC<DinoGameProps> = ({
     isJumping: false,
     isDucking: false,
     groundY: 175,
-    speed: 6.5,
+    speed: SPEED_CONFIG.normal.baseSpeed,
+    speedMode: 'normal' as SpeedMode,
     score: 0,
     highScore: 0,
     isGameOver: false,
@@ -368,6 +378,13 @@ export const DinoGame: React.FC<DinoGameProps> = ({
     gameStateRef.current.highScore = highScore;
   }, [highScore]);
 
+  useEffect(() => {
+    gameStateRef.current.speedMode = speedMode;
+    if (!gameStateRef.current.hasStarted || gameStateRef.current.isGameOver) {
+      gameStateRef.current.speed = SPEED_CONFIG[speedMode].baseSpeed;
+    }
+  }, [speedMode]);
+
   // Restart game
   const restartGame = useCallback(() => {
     const s = gameStateRef.current;
@@ -375,7 +392,7 @@ export const DinoGame: React.FC<DinoGameProps> = ({
     s.dinoVY = 0;
     s.isJumping = false;
     s.isDucking = false;
-    s.speed = 6.5;
+    s.speed = SPEED_CONFIG[speedMode].baseSpeed;
     s.score = 0;
     s.isGameOver = false;
     s.isPaused = false;
@@ -387,7 +404,7 @@ export const DinoGame: React.FC<DinoGameProps> = ({
     setIsPaused(false);
     setHasStarted(true);
     setScore(0);
-  }, []);
+  }, [speedMode]);
 
   // Jump action
   const triggerJump = useCallback(() => {
@@ -406,7 +423,7 @@ export const DinoGame: React.FC<DinoGameProps> = ({
     if (!s.isJumping) {
       s.isJumping = true;
       s.isDucking = false;
-      s.dinoVY = -12.5;
+      s.dinoVY = -10.0;
       if (s.soundEnabled) {
         playDinoJumpSound();
       }
@@ -430,11 +447,12 @@ export const DinoGame: React.FC<DinoGameProps> = ({
     if (!ctx) return;
 
     let animationId: number;
+    let lastTime = performance.now();
 
     const VIRTUAL_WIDTH = 800;
     const VIRTUAL_HEIGHT = 220;
     const PIXEL_SIZE = 2;
-    const GRAVITY = 0.65;
+    const GRAVITY = 0.5;
 
     canvas.width = VIRTUAL_WIDTH;
     canvas.height = VIRTUAL_HEIGHT;
@@ -453,23 +471,32 @@ export const DinoGame: React.FC<DinoGameProps> = ({
       );
     };
 
-    const loop = () => {
+    const loop = (currentTime: number) => {
+      const elapsed = currentTime ? currentTime - lastTime : 16.6;
+      lastTime = currentTime || performance.now();
+
+      // Bound delta: prevents huge skips on tab-switch while stabilizing 120Hz/144Hz monitors
+      const dt = Math.max(8, Math.min(36, elapsed));
+      const delta = dt / (1000 / 60);
+
       const s = gameStateRef.current;
       const currentTheme = s.themeConfig;
 
       // 1. Update Game State
       if (s.hasStarted && !s.isGameOver && !s.isPaused) {
-        s.frameCounter++;
+        s.frameCounter += delta;
 
-        // Speed curve: starts at 6.5, smoothly caps at 14.5
-        s.speed = Math.min(14.5, 6.5 + s.score * 0.0035);
+        // Controlled speed curve scaled by speed mode (Chill / Normal / Fast)
+        const cfg = SPEED_CONFIG[s.speedMode || 'normal'];
+        s.speed = Math.min(cfg.maxSpeed, cfg.baseSpeed + s.score * 0.0015);
+        const frameSpeed = s.speed * delta;
 
         // Ground scroll
-        s.groundOffset = (s.groundOffset + s.speed) % 24;
+        s.groundOffset = (s.groundOffset + frameSpeed) % 24;
 
         // Clouds scroll
         s.clouds.forEach((c) => {
-          c.x -= c.speed;
+          c.x -= c.speed * delta;
           if (c.x < -60) {
             c.x = VIRTUAL_WIDTH + Math.random() * 80;
             c.y = 20 + Math.random() * 45;
@@ -478,8 +505,8 @@ export const DinoGame: React.FC<DinoGameProps> = ({
 
         // Physics: Dino jumping & gravity
         if (s.isJumping) {
-          s.dinoY += s.dinoVY;
-          s.dinoVY += GRAVITY;
+          s.dinoY += s.dinoVY * delta;
+          s.dinoVY += GRAVITY * delta;
 
           if (s.dinoY >= 0) {
             s.dinoY = 0;
@@ -489,16 +516,16 @@ export const DinoGame: React.FC<DinoGameProps> = ({
         }
 
         // Score progression
-        s.score += 0.15;
+        s.score += 0.08 * delta;
         const currentIntScore = Math.floor(s.score);
-        if (currentIntScore > 0 && currentIntScore % 100 === 0 && s.scoreMilestoneFlash === 0) {
-          s.scoreMilestoneFlash = 45;
+        if (currentIntScore > 0 && currentIntScore % 100 === 0 && s.scoreMilestoneFlash <= 0) {
+          s.scoreMilestoneFlash = 40;
           if (s.soundEnabled) {
             playDinoScoreSound();
           }
         }
         if (s.scoreMilestoneFlash > 0) {
-          s.scoreMilestoneFlash--;
+          s.scoreMilestoneFlash -= delta;
         }
 
         // High Score
@@ -510,10 +537,10 @@ export const DinoGame: React.FC<DinoGameProps> = ({
 
         // Spawn Obstacles
         const lastObs = s.obstacles[s.obstacles.length - 1];
-        const minGap = Math.max(160, 290 - s.speed * 8);
+        const minGap = Math.max(220, 380 - s.speed * 12);
         const canSpawn = !lastObs || VIRTUAL_WIDTH - (lastObs.x + lastObs.width) > minGap;
 
-        if (canSpawn && Math.random() < 0.04) {
+        if (canSpawn && Math.random() < 0.03 * delta) {
           const rand = Math.random();
           let newObs: Obstacle;
 
@@ -565,7 +592,7 @@ export const DinoGame: React.FC<DinoGameProps> = ({
         // Move & Cull Obstacles
         for (let i = s.obstacles.length - 1; i >= 0; i--) {
           const obs = s.obstacles[i];
-          obs.x -= s.speed;
+          obs.x -= frameSpeed;
           if (obs.x + obs.width < -30) {
             s.obstacles.splice(i, 1);
           }
@@ -924,6 +951,24 @@ export const DinoGame: React.FC<DinoGameProps> = ({
 
         {/* Action Controls & Sound */}
         <div className="flex items-center gap-2">
+          <button
+            onClick={() => {
+              const modes: SpeedMode[] = ['normal', 'chill', 'fast'];
+              const nextIdx = (modes.indexOf(speedMode) + 1) % modes.length;
+              setSpeedMode(modes[nextIdx]);
+            }}
+            className="flex items-center gap-1 px-2 py-0.5 border text-xs cursor-pointer hover:bg-white/10 transition-colors"
+            style={{
+              borderColor: speedMode === 'chill' ? themeConfig.accent : themeConfig.border,
+              color: speedMode === 'chill' ? themeConfig.brightText : themeConfig.text,
+              backgroundColor: speedMode === 'chill' ? `${themeConfig.accent}15` : undefined,
+            }}
+            title="Toggle pace: Chill (0.8x) / Normal (1.0x) / Fast (1.4x)"
+          >
+            <Gauge size={12} />
+            <span className="text-[10px]">Speed: {SPEED_CONFIG[speedMode].label}</span>
+          </button>
+
           <button
             onClick={onToggleSound}
             className="flex items-center gap-1 px-2 py-0.5 border text-xs cursor-pointer hover:bg-white/10 transition-colors"
