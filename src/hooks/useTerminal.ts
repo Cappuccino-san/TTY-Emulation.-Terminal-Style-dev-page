@@ -47,6 +47,7 @@ AWS Certified AI Practitioner (AIF-C01) | M.S. Security Studies (GPA 3.90) | B.S
   • 'projects' - Explore AI/ML pipelines, PySpark ETL & vision systems
   • 'posts'    - Read technical engineering write-ups
   • 'mail'     - Send a direct message or job inquiry
+  • 'dino'     - Play retro CRT Dinosaur Runner mini-game
   • 'whoami'   - Summary bio, coordinates & background
   • 'help'     - Interactive command manual
 `,
@@ -103,6 +104,7 @@ export function useTerminal() {
   const [mailDraft, setMailDraft] = useState<MailDraft | null>(null);
   const [activeManPage, setActiveManPage] = useState<string | null>(null);
   const [matrixActive, setMatrixActive] = useState<boolean>(false);
+  const [dinoActive, setDinoActive] = useState<boolean>(false);
   const [isPoweredOff, setIsPoweredOff] = useState<boolean>(false);
   const [isDegaussing, setIsDegaussing] = useState<boolean>(false);
   const [flashActive, setFlashActive] = useState<boolean>(true);
@@ -214,6 +216,7 @@ export function useTerminal() {
         setMailMode: setMailDraft,
         setManPage: setActiveManPage,
         setMatrixMode: setMatrixActive,
+        setDinoMode: setDinoActive,
         powerOff,
         triggerDegauss,
       };
@@ -271,6 +274,7 @@ export function useTerminal() {
     mailDraft,
     activeManPage,
     matrixActive,
+    dinoActive,
     isPoweredOff,
     isDegaussing,
     flashActive,
@@ -283,6 +287,7 @@ export function useTerminal() {
     setMailDraft,
     setActiveManPage,
     setMatrixActive,
+    setDinoActive,
     powerOff,
     powerOn,
     triggerDegauss,

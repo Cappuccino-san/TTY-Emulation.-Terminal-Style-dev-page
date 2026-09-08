@@ -39,6 +39,7 @@ All career milestones, technical skills, production AI/ML systems, and deep-dive
     { cmd: 'fortune / cowsay', desc: 'Display a random computing adage in an ASCII speech bubble.', example: 'fortune' },
     { cmd: 'degauss', desc: 'Trigger magnetic coil degaussing screen wobble and buzz.', example: 'degauss' },
     { cmd: 'matrix', desc: 'Engage digital rain screensaver mode (press any key to exit).', example: 'matrix' },
+    { cmd: 'dino / game', desc: 'Launch the retro CRT phosphor Dinosaur Runner arcade mini-game (Google Dino homage).', example: 'dino' },
     { cmd: 'history', desc: 'Display chronological command history list.', example: 'history' },
     { cmd: 'clear / cls', desc: 'Clear the terminal scrollback buffer.', example: 'clear' },
   ],
@@ -130,5 +131,20 @@ export const MAN_PAGES: Record<string, ManPage> = {
     synopsis: 'grep PATTERN [PATH]',
     description: 'Search for regular expressions or plain strings across all projects, technical essays, resume sections, and documentation.',
     examples: ['grep pytorch', 'grep bedrock', 'grep sagemaker', 'grep databricks'],
+  },
+  dino: {
+    command: 'DINO',
+    section: 6,
+    synopsis: 'dino | game | runner | trex',
+    description: 'Launch the retro CRT phosphor Dinosaur Runner arcade mini-game. Features procedural 8-bit sound synthesis, variable jump height, ducking mechanics under flying pterodactyls, persistent local high scores, and real-time phosphor color adaptation across all terminal themes.',
+    keybindings: [
+      { key: 'Space / Up Arrow', action: 'Jump over cacti or restart on game over.' },
+      { key: 'Down Arrow', action: 'Duck underneath high-flying pterodactyls.' },
+      { key: 'P', action: 'Pause or resume the game.' },
+      { key: 'T', action: 'Cycle through all 7 retro phosphor themes live.' },
+      { key: 'M', action: 'Toggle retro 8-bit sound effects on / off.' },
+      { key: 'Escape / Q', action: 'Exit game session and return to the terminal prompt.' },
+    ],
+    examples: ['dino', 'game', 'runner'],
   },
 };

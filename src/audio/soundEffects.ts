@@ -309,3 +309,92 @@ export function playToggleSound(enabled: boolean) {
   }
 }
 
+// 8-bit Retro Arcade Dino Sound Effects
+export function playDinoJumpSound() {
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = 'square';
+    osc.frequency.setValueAtTime(260, now);
+    osc.frequency.exponentialRampToValueAtTime(680, now + 0.08);
+
+    gain.gain.setValueAtTime(0.04, now);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.09);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + 0.1);
+  } catch {
+    // Ignore
+  }
+}
+
+export function playDinoScoreSound() {
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    const now = ctx.currentTime;
+
+    // Chime 1
+    const osc1 = ctx.createOscillator();
+    const gain1 = ctx.createGain();
+    osc1.type = 'triangle';
+    osc1.frequency.setValueAtTime(880, now);
+    gain1.gain.setValueAtTime(0.05, now);
+    gain1.gain.exponentialRampToValueAtTime(0.0001, now + 0.07);
+    osc1.connect(gain1);
+    gain1.connect(ctx.destination);
+    osc1.start(now);
+    osc1.stop(now + 0.08);
+
+    // Chime 2
+    const osc2 = ctx.createOscillator();
+    const gain2 = ctx.createGain();
+    osc2.type = 'triangle';
+    osc2.frequency.setValueAtTime(1175, now + 0.08);
+    gain2.gain.setValueAtTime(0.06, now + 0.08);
+    gain2.gain.exponentialRampToValueAtTime(0.0001, now + 0.2);
+    osc2.connect(gain2);
+    gain2.connect(ctx.destination);
+    osc2.start(now + 0.08);
+    osc2.stop(now + 0.22);
+  } catch {
+    // Ignore
+  }
+}
+
+export function playDinoHitSound() {
+  try {
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(160, now);
+    osc.frequency.exponentialRampToValueAtTime(35, now + 0.22);
+
+    gain.gain.setValueAtTime(0.06, now);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.24);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(now);
+    osc.stop(now + 0.25);
+  } catch {
+    // Ignore
+  }
+}
+
+

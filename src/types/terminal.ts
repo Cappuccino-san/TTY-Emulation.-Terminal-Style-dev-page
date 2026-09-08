@@ -52,6 +52,7 @@ export type OutputType =
   | 'mail-composer'
   | 'matrix'
   | 'weather'
+  | 'dino'
   | 'system';
 
 export interface HistoryEntry {
@@ -89,6 +90,7 @@ export interface CommandContext {
   setMailMode: (draft: MailDraft | null) => void;
   setManPage: (page: string | null) => void;
   setMatrixMode: (active: boolean) => void;
+  setDinoMode: (active: boolean) => void;
   powerOff: () => void;
   triggerDegauss: () => void;
 }

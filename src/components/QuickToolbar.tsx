@@ -1,6 +1,6 @@
 import React from 'react';
 import type { ThemeConfig } from '../types/terminal';
-import { Sparkles, Terminal, FileText, Folder, User, Mail, HelpCircle, Award, Briefcase, Cpu, Trash2 } from 'lucide-react';
+import { Sparkles, Terminal, FileText, Folder, User, Mail, HelpCircle, Award, Briefcase, Cpu, Trash2, Gamepad2 } from 'lucide-react';
 
 interface QuickToolbarProps {
   themeConfig: ThemeConfig;
@@ -13,6 +13,7 @@ export const QuickToolbar: React.FC<QuickToolbarProps> = ({
 }) => {
   const quickActions = [
     { label: 'clear', icon: <Trash2 size={11} />, desc: 'Clear Screen' },
+    { label: 'dino', icon: <Gamepad2 size={11} />, desc: 'Dino Runner Game' },
     { label: 'resume', icon: <Award size={11} />, desc: 'Resume' },
     { label: 'skills', icon: <Cpu size={11} />, desc: 'Skills Matrix' },
     { label: 'projects', icon: <Folder size={11} />, desc: 'AI/ML Projects' },

@@ -5,6 +5,7 @@ import { OutputEntry } from './OutputEntry';
 import { TerminalPrompt } from './TerminalPrompt';
 import { CrtOverlay } from './CrtOverlay';
 import { MatrixRain } from './MatrixRain';
+import { DinoGame } from './DinoGame';
 import { QuickToolbar } from './QuickToolbar';
 import {
   playPowerOffSound,
@@ -23,6 +24,7 @@ export const Terminal: React.FC = () => {
     commandHistory,
     historyEntries,
     matrixActive,
+    dinoActive,
     isPoweredOff,
     isDegaussing,
     flashActive,
@@ -32,6 +34,7 @@ export const Terminal: React.FC = () => {
     clearHistory,
     executeCommand,
     setMatrixActive,
+    setDinoActive,
     powerOn,
   } = useTerminal();
 
@@ -151,15 +154,34 @@ export const Terminal: React.FC = () => {
               <div ref={bottomRef} />
             </div>
 
+            {/* Retro CRT Dinosaur Runner Arcade Module */}
+            {dinoActive && (
+              <DinoGame
+                theme={theme}
+                themeConfig={themeConfig}
+                soundEnabled={soundEnabled}
+                onExit={(finalScore, highScore) => {
+                  setDinoActive(false);
+                  executeCommand(
+                    `echo "[TTY-DINO] Game session exited. Final Score: ${finalScore} | High Score: ${highScore}. Run 'dino' to play again."`
+                  );
+                }}
+                onSetTheme={setTheme}
+                onToggleSound={() => setSoundEnabled((prev) => !prev)}
+              />
+            )}
+
             {/* Persistent Bottom Prompt */}
-            <TerminalPrompt
-              cwd={cwd}
-              themeConfig={themeConfig}
-              soundEnabled={soundEnabled}
-              history={commandHistory}
-              onSubmit={executeCommand}
-              onClear={clearHistory}
-            />
+            {!dinoActive && (
+              <TerminalPrompt
+                cwd={cwd}
+                themeConfig={themeConfig}
+                soundEnabled={soundEnabled}
+                history={commandHistory}
+                onSubmit={executeCommand}
+                onClear={clearHistory}
+              />
+            )}
           </div>
 
           {/* Quick Access Toolbar for Touch / Mobile */}

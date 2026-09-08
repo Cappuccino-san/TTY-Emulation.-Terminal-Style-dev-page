@@ -561,6 +561,15 @@ export function executeTerminalCommand(
     };
   }
 
+  // 21b. DINO RUNNER MINI-GAME
+  if (cmd === 'dino' || cmd === 'game' || cmd === 'runner' || cmd === 'trex') {
+    context.setDinoMode(true);
+    return {
+      type: 'system',
+      content: '🦖 Launching TTY-Dino Phosphor Runner arcade module...\nControls: [SPACE]/[↑] Jump • [↓] Duck • [P] Pause • [T] Cycle Theme • [ESC] Exit',
+    };
+  }
+
   // 22. WEATHER
   if (cmd === 'weather' || cmd === 'wttr') {
     const city = cmdArgs.join(' ') || 'Boston, MA';

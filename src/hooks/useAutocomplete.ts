@@ -4,7 +4,8 @@ import { THEMES } from '../styles/themes';
 const COMMANDS = [
   'ls', 'cat', 'cd', 'whoami', 'mail', 'help', 'man', 'grep',
   'theme', 'audio', 'scanlines', 'crt', 'tree', 'neofetch',
-  'matrix', 'weather', 'tags', 'fortune', 'history', 'clear', 'cls', 'pwd'
+  'matrix', 'weather', 'tags', 'fortune', 'history', 'clear', 'cls', 'pwd',
+  'dino', 'game', 'runner'
 ];
 
 export interface AutocompleteResult {

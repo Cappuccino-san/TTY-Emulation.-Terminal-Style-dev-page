@@ -316,6 +316,7 @@ export const MOTD_TEXT = `
    * Type 'skills' for the comprehensive technical skills matrix.
    * Type 'whoami' to view author bio, background, and contact details.
    * Type 'mail' to launch the interactive message composer.
+   * Type 'dino' to play the retro CRT Dinosaur Runner arcade mini-game.
    * Type 'help' for the full commands reference manual.
   ======================================================================
 `;
@@ -478,7 +479,8 @@ export function createInitialVFS(): VFSNode {
     'resume', 'cv', 'skills', 'experience', 'education', 'contact',
     'clear', 'cls', 'history', 'theme', 'audio', 'scanlines', 'crt',
     'grep', 'tree', 'weather', 'matrix', 'neofetch', 'fetch',
-    'fortune', 'cowsay', 'date', 'echo', 'sudo', 'exit'
+    'fortune', 'cowsay', 'date', 'echo', 'sudo', 'exit',
+    'dino', 'game'
   ];
 
   const binChildren: Record<string, VFSNode> = {};
