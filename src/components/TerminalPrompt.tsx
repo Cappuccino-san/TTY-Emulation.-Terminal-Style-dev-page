@@ -265,6 +265,24 @@ export const TerminalPrompt: React.FC<TerminalPromptProps> = ({
           )}
         </div>
 
+        {/* Quick Dino Arcade Button */}
+        <button
+          type="button"
+          onClick={(e) => {
+            e.stopPropagation();
+            onSubmit('dino');
+          }}
+          className="px-1.5 py-0.5 border rounded-xs text-[10px] font-mono opacity-65 hover:opacity-100 transition-all cursor-pointer hidden sm:flex items-center gap-1 select-none shrink-0"
+          style={{
+            borderColor: themeConfig.accent,
+            color: themeConfig.brightText,
+            backgroundColor: `${themeConfig.accent}18`,
+          }}
+          title="Play retro CRT Dinosaur Runner mini-game (type 'dino')"
+        >
+          <span>[🎮 dino]</span>
+        </button>
+
         {/* Quick Clear Shortcut Button */}
         <button
           type="button"

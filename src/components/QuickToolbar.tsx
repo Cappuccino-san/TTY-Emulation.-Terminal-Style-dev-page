@@ -43,13 +43,14 @@ export const QuickToolbar: React.FC<QuickToolbarProps> = ({
           onClick={() => onCommandClick(action.label)}
           className="flex items-center gap-1 px-2 py-0.5 border rounded-xs whitespace-nowrap cursor-pointer hover:bg-white/10 transition-all text-xs shrink-0"
           style={{
-            borderColor: themeConfig.border,
-            color: themeConfig.text,
+            borderColor: action.label === 'dino' ? themeConfig.accent : themeConfig.border,
+            color: action.label === 'dino' ? themeConfig.brightText : themeConfig.text,
+            backgroundColor: action.label === 'dino' ? `${themeConfig.accent}18` : undefined,
           }}
-          title={`Execute: ${action.label}`}
+          title={`Execute: ${action.label} (${action.desc})`}
         >
           {action.icon}
-          <span>{action.label}</span>
+          <span className={action.label === 'dino' ? 'font-bold tracking-wide' : ''}>{action.label}</span>
         </button>
       ))}
     </div>
