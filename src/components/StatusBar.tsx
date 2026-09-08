@@ -108,14 +108,6 @@ export const StatusBar: React.FC<StatusBarProps> = ({
           [articles]
         </button>
         <button
-          onClick={() => onCommandClick('dino')}
-          className="hover:underline cursor-pointer opacity-90 hover:opacity-100 font-semibold transition-opacity"
-          style={{ color: themeConfig.brightText }}
-          title="Play retro CRT Dinosaur Runner mini-game"
-        >
-          [🎮 dino]
-        </button>
-        <button
           onClick={() => onCommandClick('whoami')}
           className="hover:underline cursor-pointer opacity-75 hover:opacity-100 transition-opacity"
           style={{ color: themeConfig.text }}
