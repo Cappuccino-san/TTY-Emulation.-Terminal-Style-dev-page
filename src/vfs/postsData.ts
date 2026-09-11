@@ -222,7 +222,7 @@ By raycasting 2D landmark coordinates against the aligned 3D LiDAR point cloud, 
     title: 'Hardening Production GenAI & SageMaker Workflows for NIST CSF Compliance',
     date: '2026-05-10',
     readTime: '5 min read',
-    tags: ['aws', 'security', 'mlops', 'sagemaker', 'nist-csf'],
+    tags: ['aws', 'security', 'mlops', 'sagemaker', 'nist-csf', 'iso-iec-42001'],
     summary: 'Implementing least-privilege IAM, KMS encryption keys, CloudWatch drift telemetry, and automated CI/CD security scanning.',
     content: `# Hardening Production GenAI & SageMaker Workflows for NIST CSF Compliance
 
@@ -289,7 +289,7 @@ In high-stakes clinical and enterprise workflows, relying on a solitary LLM call
 ## 1. State Graph Architecture & Self-Correction Loops
 
 By structuring inference as a cyclic directed state graph in LangGraph:
-- **Node 1 (Intent Classifier & PII Sanitizer)**: Scrub PHI/PII via **Microsoft Presidio** and validate input constraints with **Guardrails AI**.
+- **Node 1 (Intent Classifier & PII Sanitizer)**: Scrub PHI/PII via **Presidio** and validate input constraints with **Guardrails AI**.
 - **Node 2 (Hybrid Vector Retrieval)**: Query **pgvector** with dense HNSW embeddings and sparse BM25 indices to fetch verified clinical context.
 - **Node 3 (LLM Generation)**: Execute structured tool calls on AWS Bedrock (Claude 3.5 Sonnet / Llama 3.3).
 - **Node 4 (Hallucination Evaluator)**: If the output fails structural JSON schema validation or exceeds confidence bounds, route back to Node 3 with targeted feedback.

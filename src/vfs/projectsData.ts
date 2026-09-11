@@ -18,7 +18,7 @@ export const PROJECTS: Project[] = [
     name: 'A360 Synthetic Aging & Compound GenAI Pipeline',
     status: 'ACTIVE',
     stars: 340,
-    tags: ['pytorch', 'bedrock', 'langgraph', 'vllm', 'pgvector', 'comfyui', 'peft', 'lora'],
+    tags: ['pytorch', 'bedrock', 'langgraph', 'vllm', 'tensorrt-llm', 'pgvector', 'comfyui', 'peft', 'lora'],
     repo: 'https://github.com/cappuccino-san/a360-aging-pipeline',
     demo: 'https://linkedin.com/in/nicholas-napoli476',
     summary: 'End-to-end GenAI workflows using AWS Bedrock, LangGraph, vLLM, pgvector, ComfyUI, IPAdapter FaceID, and LoRA/QLoRA across age cohorts (20–70).',
@@ -83,20 +83,20 @@ export const PROJECTS: Project[] = [
     name: 'AWS Cloud Security, NIST AI RMF & AI Red Teaming',
     status: 'SHIPPED',
     stars: 190,
-    tags: ['aws', 'kms', 'iam', 's3', 'nist-ai-rmf', 'nist-csf', 'owasp-llm', 'guardrails', 'presidio', 'fastapi', 'react'],
+    tags: ['aws', 'kms', 'iam', 's3', 'nist-ai-rmf', 'nist-csf', 'iso-iec-42001', 'owasp-llm', 'guardrails', 'presidio', 'fastapi', 'react'],
     repo: 'https://github.com/cappuccino-san/mlops-drift-sentinel',
     summary: 'Cloud infrastructure hardening aligned to NIST AI RMF and NIST CSF, with OWASP Top 10 for LLMs red teaming, Guardrails AI, and Presidio sanitization.',
     description: `# AWS Cloud Security, NIST AI RMF & AI Red Teaming
 
 **Role**: AI/ML Workflow Engineer | Aesthetic360  
-**Stack**: AWS (IAM, KMS, S3), NIST AI RMF, NIST CSF, OWASP Top 10 for LLMs, Guardrails AI, Microsoft Presidio, FastAPI, React
+**Stack**: AWS (IAM, KMS, S3), NIST AI RMF, NIST CSF, OWASP Top 10 for LLMs, Guardrails AI, Presidio, FastAPI, React
 
 ---
 
 ## Systems & Technical Implementation
 - **AWS Infrastructure Hardening**: Hardened AWS cloud infrastructure with IAM least-privilege policies, KMS envelope encryption, and S3 controls aligned to NIST AI RMF, NIST CSF, and aerospace-grade engineering standards.
-- **AI Red Teaming & Privacy Sanitization**: Conducted AI red teaming and security auditing adhering to OWASP Top 10 for LLMs; implemented Guardrails AI and Microsoft Presidio for automated PHI/PII sanitization across full-stack FastAPI and React applications.
-- **Vulnerability Assessments**: Supported executive engineering initiatives and model-based systems engineering alignments, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
+- **AI Red Teaming & Privacy Sanitization**: Conducted AI red teaming and security auditing adhering to OWASP Top 10 for LLMs; implemented Guardrails AI and Presidio for automated PHI/PII sanitization across full-stack FastAPI and React applications.
+- **Vulnerability Assessments**: Supported executive engineering initiatives and MBSE alignments, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
 `
   },
   {
@@ -110,7 +110,7 @@ export const PROJECTS: Project[] = [
     summary: 'Enterprise operational data engineering workflows to audit high-volume transit feeds, resolve data discrepancies, and verify port financial settlements.',
     description: `# Enterprise Operational Data Engineering & Audit Workflow
 
-**Role**: Operations & Data Coordinator | BOC International  
+**Role**: Sales Relationship Coordinator | BOC International  
 **Stack**: Operational Data Engineering, Transit Feeds, KPI Reporting, Statistical Reconciliation, SOP Development
 
 ---
@@ -140,7 +140,7 @@ export const PROJECTS: Project[] = [
 
 ## Systems & Technical Implementation
 - **Software Test Engineering & Defect Isolation**: Executed software test engineering, automated defect isolation, and requirements management (JIRA, Confluence) on computer vision & optics software using OpenCV, MATLAB, and Linux, accelerating engineering patch cycles.
-- **CI/CD & OWASP Vulnerability Assessments**: Supported executive engineering initiatives and model-based systems engineering alignments, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
+- **CI/CD & OWASP Vulnerability Assessments**: Supported executive engineering initiatives and MBSE alignments, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
 - **Enterprise Client Workflow Troubleshooting**: Interfaced directly with enterprise clients via phone to validate credit card processing workflows, troubleshoot integration blockers, and train end users on core software functionality.
 `
   }

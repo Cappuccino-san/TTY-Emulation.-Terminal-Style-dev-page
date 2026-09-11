@@ -22,16 +22,16 @@ AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Dep
 ---
 
 ## Technical Skills
-- **Languages & Core**: Fluent in English and Italian, Python, SQL, TypeScript, JavaScript, HTML, CSS, Node.js, Bash, Linux, Java, C++, C#, Rust, MATLAB/Simulink, Perl, Data Structures & Algorithms, Statistics
-- **AI/ML & GenAI**: PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM, TensorRT-LLM, PEFT (LoRA, QLoRA), pgvector, Qdrant, MLflow, Weights & Biases, OpenCV, Segment Anything 2 (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI, Synthetic Data Generation, Open3D, PyTorch3D
+- **Languages**: Python, SQL, TypeScript, JavaScript, HTML, CSS, Node.js, Bash, Linux, Java, C++, C#, Rust, MATLAB/Simulink, Perl, Data Structures & Algorithms, Statistics
+- **AI/ML/Vision**: PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM, TensorRT-LLM, PEFT (LoRA, QLoRA), pgvector, Qdrant, MLflow, Weights & Biases, OpenCV, Segment Anything 2 (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI, Synthetic Data Generation, Open3D, PyTorch3D, Meta Llama, Qwen, DeepSeek, Mistral, Claude, OpenAI, Amazon Nova/Titan, Google Gemini
 - **Big Data, MLOps & Cloud**: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, ECR, EKS, CloudWatch, Cognito), Jupyter Notebook, Databricks, Apache Spark (PySpark), Delta Lake, Apache Airflow, Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System Design, Large-Scale Systems
 - **Software Engineering, Security & Ops**: Agile Software Development, FastAPI, React, PostgreSQL, REST APIs, NIST AI RMF, NIST CSF, ISO/IEC 42001, OWASP Top 10 for LLMs, AI Red Teaming, Guardrails AI, Presidio (PHI/PII Sanitization), MBSE, JIRA, Confluence, SOP Development, Operational Reporting & Reconciliation
 
 ---
 
 ## Education & Certifications
-- **M.S., Security Studies** | University of Massachusetts Lowell (GPA: 3.90) | Jan 2024 – Sep 2025
-- **B.S., Business Administration** | High Point University (Cum Laude, Honors Scholar, GPA: 3.50) | Aug 2017 – May 2021
+- **M.S., Security Studies Conc. Cybersecurity** | UMass Lowell (GPA: 3.90) | Jan 2024 - Sep 2025
+- **B.S., International Business Conc. Italy** | High Point University (Cum Laude, GPA: 3.50) | Aug 2017 - May 2021
 - **AWS Certified AI Practitioner (AIF-C01)** | Amazon Web Services | Issued Mar 2026
 
 ---
@@ -63,13 +63,13 @@ AI RMF, NIST CSF, and strict engineering standards.
 --------------------------------------------------------------------------------
 TECHNICAL SKILLS
 --------------------------------------------------------------------------------
-• Languages & Core: Fluent in English and Italian, Python, SQL, TypeScript,
+• Languages: Python, SQL, TypeScript,
   JavaScript, HTML, CSS, Node.js, Bash, Linux, Java, C++, C#, Rust,
   MATLAB/Simulink, Perl, Data Structures & Algorithms, Statistics
-• AI/ML & GenAI: PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM,
+• AI/ML/Vision: PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM,
   TensorRT-LLM, PEFT (LoRA, QLoRA), pgvector, Qdrant, MLflow, Weights & Biases,
   OpenCV, Segment Anything 2 (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI,
-  Synthetic Data Generation, Open3D, PyTorch3D
+  Synthetic Data Generation, Open3D, PyTorch3D, Meta Llama, Qwen, DeepSeek, Mistral, Claude, OpenAI, Amazon Nova/Titan, Google Gemini
 • Big Data, MLOps & Cloud: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, ECR,
   EKS, CloudWatch, Cognito), Jupyter Notebook, Databricks, Apache Spark
   (PySpark), Delta Lake, Apache Airflow, Docker, Terraform / AWS CDK,
@@ -108,10 +108,10 @@ Aesthetic360 – AI/ML Workflow Engineer | Boston, MA | Nov 2025 – Present
   envelope encryption, and S3 controls aligned to NIST AI RMF, NIST CSF, and
   aerospace-grade engineering standards.
 • Conducted AI red teaming and security auditing adhering to OWASP Top 10 for
-  LLMs; implemented Guardrails AI and Microsoft Presidio for automated PHI/PII
+  LLMs; implemented Guardrails AI and Presidio for automated PHI/PII
   sanitization across full-stack FastAPI and React applications.
 
-BOC International – Operations & Data Coordinator | Boston, MA | Sep 2021 – Dec 2023
+BOC International – Sales Relationship Coordinator | Boston, MA | Sep 2021 – Dec 2023
 • Directed enterprise operational data engineering workflows to audit high-volume
   transit feeds, resolve data discrepancies, and verify port financial
   settlements with strict statistical precision.
@@ -140,8 +140,8 @@ Rx Photo – Project Liaison / QA & Integration | Boston, MA | Aug 2018 – Aug 
 --------------------------------------------------------------------------------
 EDUCATION & CERTIFICATIONS
 --------------------------------------------------------------------------------
-• M.S., Security Studies | University of Massachusetts Lowell (GPA: 3.90) | Jan 2024 – Sep 2025
-• B.S., Business Administration | High Point University (Cum Laude, Honors Scholar, GPA: 3.50) | Aug 2017 – May 2021
+• M.S., Security Studies Conc. Cybersecurity | UMass Lowell (GPA: 3.90) | Jan 2024 - Sep 2025
+• B.S., International Business Conc. Italy | High Point University (Cum Laude, GPA: 3.50) | Aug 2017 - May 2021
 • AWS Certified AI Practitioner (AIF-C01) | Amazon Web Services | Issued Mar 2026
 ================================================================================`;
 
@@ -157,8 +157,8 @@ AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Dep
 ---
 
 ## TECHNICAL SKILLS
-- **Languages & Core**: Fluent in English and Italian, Python, SQL, TypeScript, JavaScript, HTML, CSS, Node.js, Bash, Linux, Java, C++, C#, Rust, MATLAB/Simulink, Perl, Data Structures & Algorithms, Statistics
-- **AI/ML & GenAI**: PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM, TensorRT-LLM, PEFT (LoRA, QLoRA), pgvector, Qdrant, MLflow, Weights & Biases, OpenCV, Segment Anything 2 (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI, Synthetic Data Generation, Open3D, PyTorch3D
+- **Languages**: Python, SQL, TypeScript, JavaScript, HTML, CSS, Node.js, Bash, Linux, Java, C++, C#, Rust, MATLAB/Simulink, Perl, Data Structures & Algorithms, Statistics
+- **AI/ML/Vision**: PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM, TensorRT-LLM, PEFT (LoRA, QLoRA), pgvector, Qdrant, MLflow, Weights & Biases, OpenCV, Segment Anything 2 (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI, Synthetic Data Generation, Open3D, PyTorch3D, Meta Llama, Qwen, DeepSeek, Mistral, Claude, OpenAI, Amazon Nova/Titan, Google Gemini
 - **Big Data, MLOps & Cloud**: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, ECR, EKS, CloudWatch, Cognito), Jupyter Notebook, Databricks, Apache Spark (PySpark), Delta Lake, Apache Airflow, Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System Design, Large-Scale Systems
 - **Software Engineering, Security & Ops**: Agile Software Development, FastAPI, React, PostgreSQL, REST APIs, NIST AI RMF, NIST CSF, ISO/IEC 42001, OWASP Top 10 for LLMs, AI Red Teaming, Guardrails AI, Presidio (PHI/PII Sanitization), MBSE, JIRA, Confluence, SOP Development, Operational Reporting & Reconciliation
 
@@ -174,9 +174,9 @@ AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Dep
 - Standardized model lifecycle tracking via MLflow; automated DAG task scheduling and retraining pipelines using Apache Airflow and GitHub Actions CI/CD for continuous, zero-downtime deployment.
 - Built deterministic vision validation and optics-aligned feature extraction pipelines using PyTorch, OpenCV, SAM 2, and MediaPipe for landmark boundary tracking and 3D LiDAR point cloud registration (Open3D).
 - Hardened AWS cloud infrastructure with IAM least-privilege policies, KMS envelope encryption, and S3 controls aligned to NIST AI RMF, NIST CSF, and aerospace-grade engineering standards.
-- Conducted AI red teaming and security auditing adhering to OWASP Top 10 for LLMs; implemented Guardrails AI and Microsoft Presidio for automated PHI/PII sanitization across full-stack FastAPI and React applications.
+- Conducted AI red teaming and security auditing adhering to OWASP Top 10 for LLMs; implemented Guardrails AI and Presidio for automated PHI/PII sanitization across full-stack FastAPI and React applications.
 
-### BOC International – Operations & Data Coordinator | Boston, MA | Sep 2021 – Dec 2023
+### BOC International – Sales Relationship Coordinator | Boston, MA | Sep 2021 – Dec 2023
 - Directed enterprise operational data engineering workflows to audit high-volume transit feeds, resolve data discrepancies, and verify port financial settlements with strict statistical precision.
 - Owned daily, weekly, and monthly transit KPI reporting across enterprise client portfolios, ensuring SLA adherence and automated data delivery for logistics operations.
 - Conducted lane feasibility and trade route research across foreign and domestic logistics partners, synthesizing market intelligence to guide strategic routing and business expansion.
@@ -184,14 +184,14 @@ AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Dep
 
 ### Rx Photo – Project Liaison / QA & Integration | Boston, MA | Aug 2018 – Aug 2019
 - Executed software test engineering, automated defect isolation, and requirements management (JIRA, Confluence) on computer vision & optics software using OpenCV, MATLAB, and Linux, accelerating engineering patch cycles.
-- Supported executive engineering initiatives and model-based systems engineering alignments, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
+- Supported executive engineering initiatives and MBSE alignments, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
 - Interfaced directly with enterprise clients via phone to validate credit card processing workflows, troubleshoot integration blockers, and train end users on core software functionality.
 
 ---
 
 ## EDUCATION & CERTIFICATIONS
-- **M.S., Security Studies** | University of Massachusetts Lowell (GPA: 3.90) | Jan 2024 – Sep 2025
-- **B.S., Business Administration** | High Point University (Cum Laude, Honors Scholar, GPA: 3.50) | Aug 2017 – May 2021
+- **M.S., Security Studies Conc. Cybersecurity** | UMass Lowell (GPA: 3.90) | Jan 2024 - Sep 2025
+- **B.S., International Business Conc. Italy** | High Point University (Cum Laude, GPA: 3.50) | Aug 2017 - May 2021
 - **AWS Certified AI Practitioner (AIF-C01)** | Amazon Web Services | Issued Mar 2026
 `;
 
@@ -211,7 +211,6 @@ export const SKILLS_JSON = `{
   ],
   "technical_skills": {
     "languages_and_core": [
-      "Fluent in English and Italian",
       "Python", "SQL", "TypeScript", "JavaScript", "HTML", "CSS",
       "Node.js", "Bash", "Linux", "Java", "C++", "C#", "Rust",
       "MATLAB/Simulink", "Perl", "Data Structures & Algorithms", "Statistics"
@@ -220,7 +219,8 @@ export const SKILLS_JSON = `{
       "PyTorch", "AWS Bedrock", "LangGraph", "LlamaIndex", "vLLM", "TensorRT-LLM",
       "PEFT (LoRA, QLoRA)", "pgvector", "Qdrant", "MLflow", "Weights & Biases",
       "OpenCV", "Segment Anything 2 (SAM 2)", "MediaPipe", "InsightFace",
-      "IPAdapter", "ComfyUI", "Synthetic Data Generation", "Open3D", "PyTorch3D"
+      "IPAdapter", "ComfyUI", "Synthetic Data Generation", "Open3D", "PyTorch3D",
+      "Meta Llama", "Qwen", "DeepSeek", "Mistral", "Claude", "OpenAI", "Amazon Nova/Titan", "Google Gemini"
     ],
     "big_data_mlops_and_cloud": [
       "AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, ECR, EKS, CloudWatch, Cognito)",
@@ -232,7 +232,7 @@ export const SKILLS_JSON = `{
       "Agile Software Development", "FastAPI", "React", "PostgreSQL",
       "REST APIs", "NIST AI RMF", "NIST CSF", "ISO/IEC 42001",
       "OWASP Top 10 for LLMs", "AI Red Teaming", "Guardrails AI",
-      "Microsoft Presidio (PHI/PII Sanitization)", "Model-Based Systems Engineering (MBSE)",
+      "Presidio (PHI/PII Sanitization)", "MBSE",
       "JIRA", "Confluence", "SOP Development", "Operational Reporting & Reconciliation"
     ]
   }
@@ -248,11 +248,11 @@ export const EXPERIENCE_MD = `# Professional Experience — Nicholas Napoli
 - Standardized model lifecycle tracking via MLflow; automated DAG task scheduling and retraining pipelines using Apache Airflow and GitHub Actions CI/CD for continuous, zero-downtime deployment.
 - Built deterministic vision validation and optics-aligned feature extraction pipelines using PyTorch, OpenCV, SAM 2, and MediaPipe for landmark boundary tracking and 3D LiDAR point cloud registration (Open3D).
 - Hardened AWS cloud infrastructure with IAM least-privilege policies, KMS envelope encryption, and S3 controls aligned to NIST AI RMF, NIST CSF, and aerospace-grade engineering standards.
-- Conducted AI red teaming and security auditing adhering to OWASP Top 10 for LLMs; implemented Guardrails AI and Microsoft Presidio for automated PHI/PII sanitization across full-stack FastAPI and React applications.
+- Conducted AI red teaming and security auditing adhering to OWASP Top 10 for LLMs; implemented Guardrails AI and Presidio for automated PHI/PII sanitization across full-stack FastAPI and React applications.
 
 ---
 
-## BOC International – Operations & Data Coordinator | Boston, MA | Sep 2021 – Dec 2023
+## BOC International – Sales Relationship Coordinator | Boston, MA | Sep 2021 – Dec 2023
 - Directed enterprise operational data engineering workflows to audit high-volume transit feeds, resolve data discrepancies, and verify port financial settlements with strict statistical precision.
 - Owned daily, weekly, and monthly transit KPI reporting across enterprise client portfolios, ensuring SLA adherence and automated data delivery for logistics operations.
 - Conducted lane feasibility and trade route research across foreign and domestic logistics partners, synthesizing market intelligence to guide strategic routing and business expansion.
@@ -262,14 +262,14 @@ export const EXPERIENCE_MD = `# Professional Experience — Nicholas Napoli
 
 ## Rx Photo – Project Liaison / QA & Integration | Boston, MA | Aug 2018 – Aug 2019
 - Executed software test engineering, automated defect isolation, and requirements management (JIRA, Confluence) on computer vision & optics software using OpenCV, MATLAB, and Linux, accelerating engineering patch cycles.
-- Supported executive engineering initiatives and model-based systems engineering alignments, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
+- Supported executive engineering initiatives and MBSE alignments, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
 - Interfaced directly with enterprise clients via phone to validate credit card processing workflows, troubleshoot integration blockers, and train end users on core software functionality.
 `;
 
 export const EDUCATION_MD = `# Education & Certifications — Nicholas Napoli
 
-- **M.S., Security Studies** | University of Massachusetts Lowell (GPA: 3.90) | Jan 2024 – Sep 2025
-- **B.S., Business Administration** | High Point University (Cum Laude, Honors Scholar, GPA: 3.50) | Aug 2017 – May 2021
+- **M.S., Security Studies Conc. Cybersecurity** | UMass Lowell (GPA: 3.90) | Jan 2024 - Sep 2025
+- **B.S., International Business Conc. Italy** | High Point University (Cum Laude, GPA: 3.50) | Aug 2017 - May 2021
 - **AWS Certified AI Practitioner (AIF-C01)** | Amazon Web Services | Issued Mar 2026
 `;
 
