@@ -95,8 +95,8 @@ export const PROJECTS: Project[] = [
 
 ## Systems & Technical Implementation
 - **AWS Infrastructure Hardening**: Hardened AWS cloud infrastructure with IAM least-privilege policies, KMS envelope encryption, and S3 controls aligned to NIST AI RMF, NIST CSF, and aerospace-grade engineering standards.
-- **AI Red Teaming & Privacy Sanitization**: Conducted AI red teaming and security auditing adhering to OWASP Top 10 for LLMs; implemented Guardrails AI and Presidio for automated PHI/PII sanitization across full-stack FastAPI and React applications.
-- **Vulnerability Assessments**: Supported executive engineering initiatives and MBSE alignments, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
+- **AI Red Teaming & Privacy Sanitization**: Conducted AI red teaming and security auditing adhering to OWASP Top 10 for LLMs; implemented Guardrails AI and Microsoft Presidio for automated PHI/PII sanitization across full-stack FastAPI and React applications.
+- **Vulnerability Assessments**: Supported executive engineering initiatives and model-based systems engineering alignments, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
 `
   },
   {
@@ -140,7 +140,7 @@ export const PROJECTS: Project[] = [
 
 ## Systems & Technical Implementation
 - **Software Test Engineering & Defect Isolation**: Executed software test engineering, automated defect isolation, and requirements management (JIRA, Confluence) on computer vision & optics software using OpenCV, MATLAB, and Linux, accelerating engineering patch cycles.
-- **CI/CD & OWASP Vulnerability Assessments**: Supported executive engineering initiatives and MBSE alignments, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
+- **CI/CD & OWASP Vulnerability Assessments**: Supported executive engineering initiatives and model-based systems engineering alignments, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
 - **Enterprise Client Workflow Troubleshooting**: Interfaced directly with enterprise clients via phone to validate credit card processing workflows, troubleshoot integration blockers, and train end users on core software functionality.
 `
   }
