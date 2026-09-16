@@ -96,10 +96,10 @@ function App() {
   };
 
   return (
-    <div className="relative w-full h-[650px] font-sans bg-gray-950 text-white flex overflow-hidden rounded-md border border-gray-800">
+    <div className="relative w-full min-h-[600px] h-[75vh] font-sans bg-gray-950 text-white flex overflow-hidden rounded-md border border-gray-800">
       
       {/* Left Sidebar Panel (Glassmorphism) */}
-      <div className="w-80 h-full bg-gray-950/80 backdrop-blur-xl border-r border-gray-800/60 flex flex-col z-[1000] shadow-2xl relative">
+      <div className="w-80 h-full max-h-full overflow-y-auto bg-gray-950/80 backdrop-blur-xl border-r border-gray-800/60 flex flex-col z-[1000] shadow-2xl relative shrink-0">
         <div className="p-4 border-b border-gray-800/60 bg-gray-900/40">
           <div className="flex items-center gap-3 mb-4">
             <Plane className="w-8 h-8 text-blue-500" />
