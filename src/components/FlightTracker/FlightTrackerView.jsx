@@ -49,9 +49,10 @@ function App() {
       try {
         const host = window.location.hostname;
         const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        // Use port 8000 for local dev, but standard port (via Nginx proxy) for production
         const wsUrl = host === 'localhost' || host === '127.0.0.1' 
           ? 'ws://127.0.0.1:8000/ws' 
-          : `${protocol}//${host}:8000/ws`;
+          : `${protocol}//${host}/ws`;
         
         const ws = new WebSocket(wsUrl);
         wsRef.current = ws;
