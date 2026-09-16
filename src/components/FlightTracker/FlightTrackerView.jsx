@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
-import FlightMap from './components/FlightMap';
-import FlightFlasher from './components/FlightFlasher';
+import FlightMap from './FlightMap';
+import FlightFlasher from './FlightFlasher';
 import { Plane, TowerControl } from 'lucide-react';
 
 const MA_AIRPORTS = [

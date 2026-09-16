@@ -5,6 +5,7 @@ import { MarkdownViewer } from './MarkdownViewer';
 import { ManPager } from './ManPager';
 import { NeofetchView } from './NeofetchView';
 import { MailComposer } from './MailComposer';
+// @ts-ignore - ported JSX component without type declarations
 import FlightTrackerView from './FlightTracker/FlightTrackerView';
 import { Folder, FileText, Binary, Search, Tag, AlertTriangle, CheckCircle2 } from 'lucide-react';
 
