@@ -42,6 +42,7 @@ All career milestones, technical skills, production AI/ML systems, and deep-dive
     { cmd: 'dino / game', desc: 'Launch the retro CRT phosphor Dinosaur Runner arcade mini-game (Google Dino homage).', example: 'dino' },
     { cmd: 'history', desc: 'Display chronological command history list.', example: 'history' },
     { cmd: 'clear / cls', desc: 'Clear the terminal scrollback buffer.', example: 'clear' },
+    { cmd: 'flight / radar', desc: 'Display real-time Massachusetts airspace flight radar telemetry and mapping stats.', example: 'flight' },
   ],
   keybindings: [
     { key: 'Tab', action: 'Autocomplete current command, file path, or #tag with ghost text completion.' },
@@ -96,6 +97,20 @@ export const MAN_PAGES: Record<string, ManPage> = {
       { flag: '-h', desc: 'Human-readable file sizes (e.g., 4.2K).' },
     ],
     examples: ['ls', 'ls -l', 'ls projects', 'ls posts', 'ls about'],
+  },
+  matrix: {
+    command: 'MATRIX',
+    section: 1,
+    synopsis: 'matrix',
+    description: 'Engages the Matrix digital rain screensaver mode. Creates falling green glyphs matching terminal theme. Press any key to exit.',
+    examples: ['matrix'],
+  },
+  flight: {
+    command: 'FLIGHT',
+    section: 1,
+    synopsis: 'flight | radar | tracker',
+    description: 'Displays the MA Flight Tracker telemetry and radar status, geofenced for Massachusetts airspace using OpenSky Network data.',
+    examples: ['flight', 'radar'],
   },
   cat: {
     command: 'CAT',
