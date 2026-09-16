@@ -481,7 +481,7 @@ export function createInitialVFS(): VFSNode {
     'clear', 'cls', 'history', 'theme', 'audio', 'scanlines', 'crt',
     'grep', 'tree', 'weather', 'matrix', 'neofetch', 'fetch',
     'fortune', 'cowsay', 'date', 'echo', 'sudo', 'exit',
-    'dino', 'game'
+    'dino', 'game', 'flight', 'radar'
   ];
 
   const binChildren: Record<string, VFSNode> = {};

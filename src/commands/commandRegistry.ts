@@ -601,6 +601,30 @@ export function executeTerminalCommand(
     };
   }
 
+  // 22b. FLIGHT / RADAR
+  if (cmd === 'flight' || cmd === 'radar' || cmd === 'tracker') {
+    return {
+      type: 'text',
+      content: `
+================================================================================
+  MA Flight Tracker - Massachusetts Airspace Real-Time Radar
+================================================================================
+  Target: OpenSky Network API
+  Geofence: Massachusetts Bounding Box [41.2, -73.5, 42.9, -69.9]
+  Status: ACTIVE LINK ESTABLISHED
+
+  Aircrafts in Sector: 142 detected
+  Top Hub Activity: Logan International (BOS) - 45% of traffic
+  
+  * Tracking telemetry streaming...
+  * Interpolating state vectors...
+
+  [View Full Project: 'cat projects/ma-flight-tracker.md']
+================================================================================
+      `.trim(),
+    };
+  }
+
   // 23. FORTUNE / COWSAY
   if (cmd === 'fortune' || cmd === 'cowsay') {
     const randomQuote = FORTUNES[Math.floor(Math.random() * FORTUNES.length)];

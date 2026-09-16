@@ -40,6 +40,7 @@ export const QuickToolbar: React.FC<QuickToolbarProps> = ({
     { label: 'mail', icon: <Mail size={11} />, desc: 'Send Message' },
     { label: 'fortune', icon: <Quote size={11} />, desc: 'Fortune / Cowsay' },
     { label: 'weather', icon: <CloudSun size={11} />, desc: 'Weather' },
+    { label: 'flight', icon: <Plane size={11} />, desc: 'Flight Radar' },
     { label: 'neofetch', icon: <Terminal size={11} />, desc: 'SysInfo' },
     { label: 'matrix', icon: <Sparkles size={11} />, desc: 'Screensaver' },
     { label: 'dino', icon: <Gamepad2 size={11} />, desc: 'Dino Runner Game' },

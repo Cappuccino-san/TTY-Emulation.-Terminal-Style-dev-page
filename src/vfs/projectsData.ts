@@ -13,6 +13,17 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
+    slug: 'ma-flight-tracker',
+    filename: 'ma-flight-tracker.md',
+    name: 'MA Flight Tracker',
+    status: 'ACTIVE',
+    stars: 0,
+    tags: ['react', 'nextjs', 'tailwind', 'flight-tracker', 'aviation', 'ma', 'opensky-network'],
+    repo: 'https://github.com/cappuccino-san/MAFlightTracker',
+    summary: 'A real-time flight tracker focused exclusively on Massachusetts aircraft and airports, influenced by OpenSky Network.',
+    description: `# MA Flight Tracker\n\n**Role**: Full Stack Engineer\n**Stack**: React, Next.js, Tailwind, Mapping APIs, OpenSky Network\n\n---\n\n## Systems & Technical Implementation\n- **Real-Time Aviation Tracking**: Engineered a real-time flight tracker focused solely on Massachusetts airspace, integrating live aviation telemetry data.\n- **OpenSky Network Integration**: Leveraged OpenSky Network APIs to parse and render live flight data onto interactive maps, reducing payload size by geofencing coordinates.\n- **Optimized Rendering**: Dynamically interpolates aircraft state vectors (altitude, velocity, callsign) to create a smooth, radar-like tracking experience.`
+  },
+  {
     slug: 'a360-aging-dataset-pipeline',
     filename: 'a360-aging-dataset-pipeline.md',
     name: 'A360 Synthetic Aging & Compound GenAI Pipeline',

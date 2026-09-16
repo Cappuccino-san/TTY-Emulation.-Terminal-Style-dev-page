@@ -11,6 +11,29 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
+    slug: 'building-ma-flight-tracker',
+    filename: 'building-ma-flight-tracker.md',
+    title: 'Tracking Massachusetts Airspace: Building a Real-Time Flight Radar',
+    date: '2026-09-16',
+    readTime: '4 min read',
+    tags: ['flight-tracker', 'real-time', 'opensky-network', 'api-integration', 'react'],
+    summary: 'An overview of how I built the MA Flight Tracker, a localized radar system using OpenSky Network data for Massachusetts.',
+    content: `# Tracking Massachusetts Airspace: Building a Real-Time Flight Radar
+
+Building a regional flight tracker requires filtering vast amounts of global telemetry data down to localized coordinates. Inspired by the OpenSky Network, I created the **MA Flight Tracker** to focus exclusively on Massachusetts aircraft and airports.
+
+---
+
+## 1. Localized Data Ingestion
+Instead of rendering every flight worldwide, the system establishes a geofenced bounding box around Massachusetts. By querying the OpenSky Network API with specific coordinate boundaries, we drastically reduce payload sizes and improve rendering performance.
+
+## 2. Real-Time Mapping & Telemetry
+Each aircraft's state vector (containing altitude, velocity, callsign, and heading) is updated in real-time. The UI dynamically interpolates these positions between API polling intervals to create a smooth, radar-like experience.
+
+## 3. Future Enhancements
+The next steps involve adding historical flight paths and predictive landing estimations for major hubs like Logan International Airport (BOS).`
+  },
+  {
     slug: 'synthetic-data-with-latent-interpolation',
     filename: 'synthetic-data-with-latent-interpolation.md',
     title: 'Engineering Identity-Preserving Synthetic Datasets with Latent Diffusion & IPAdapter',
