@@ -22,13 +22,23 @@ const LiveWeatherWidget: React.FC<{
         .then(res => res.json())
         .then(json => {
           if (json.current) {
+            const liveTemp = `${Math.round(json.current.temperature_2m)}°F`;
+            const liveHumidity = `${Math.round(json.current.relative_humidity_2m)}%`;
+            const liveWind = `${Math.round(json.current.wind_speed_10m)} mph`;
+            const liveAscii = `
+     \\   /     Boston, MA (Live API)
+      .-.      Temp: ${liveTemp}
+   ― (   ) ―   Humidity: ${liveHumidity}
+      \`-'      Wind: ${liveWind}
+     /   \\     Visibility: Clear
+        `;
             setData({
               ...defaultData,
-              temp: `${Math.round(json.current.temperature_2m)}°F`,
-              humidity: `${Math.round(json.current.relative_humidity_2m)}%`,
-              wind: `${Math.round(json.current.wind_speed_10m)} mph`,
+              temp: liveTemp,
+              humidity: liveHumidity,
+              wind: liveWind,
               condition: 'Live API Data (Open-Meteo)',
-              ascii: defaultData.ascii
+              ascii: liveAscii
             });
           }
         })
