@@ -194,7 +194,7 @@ export default function FlightMap({ flights, selectedFlight, setSelectedFlight, 
             </Tooltip>
           </Marker>
         ))}
-        {flights.map((flight) => (
+        {(flights || []).map((flight) => (
           flight.latitude && flight.longitude && (
             <InterpolatedFlightMarker 
               key={flight.icao} 

@@ -46,17 +46,19 @@ function App() {
 
   useEffect(() => {
     const connectWs = () => {
-      // Connect to FastAPI backend dynamically
-      const host = window.location.hostname;
-      const wsUrl = host === 'localhost' || host === '127.0.0.1' 
-        ? 'ws://127.0.0.1:8000/ws' 
-        : `ws://${host}:8000/ws`;
-      const ws = new WebSocket(wsUrl);
-      wsRef.current = ws;
+      try {
+        const host = window.location.hostname;
+        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        const wsUrl = host === 'localhost' || host === '127.0.0.1' 
+          ? 'ws://127.0.0.1:8000/ws' 
+          : `${protocol}//${host}:8000/ws`;
+        
+        const ws = new WebSocket(wsUrl);
+        wsRef.current = ws;
 
-      ws.onopen = () => {
-        setStatus('Connected');
-      };
+        ws.onopen = () => {
+          setStatus('Connected');
+        };
 
       ws.onmessage = (event) => {
         try {
@@ -78,6 +80,10 @@ function App() {
         console.error("WebSocket error", err);
         ws.close();
       };
+      } catch (err) {
+        console.error("Failed to setup WebSocket:", err);
+        setStatus('Connection Error');
+      }
     };
 
     connectWs();
