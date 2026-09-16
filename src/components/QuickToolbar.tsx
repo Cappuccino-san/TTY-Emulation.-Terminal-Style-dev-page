@@ -16,6 +16,7 @@ import {
   GraduationCap,
   Quote,
   CloudSun,
+  Plane,
 } from 'lucide-react';
 
 interface QuickToolbarProps {
@@ -42,6 +43,7 @@ export const QuickToolbar: React.FC<QuickToolbarProps> = ({
     { label: 'neofetch', icon: <Terminal size={11} />, desc: 'SysInfo' },
     { label: 'matrix', icon: <Sparkles size={11} />, desc: 'Screensaver' },
     { label: 'dino', icon: <Gamepad2 size={11} />, desc: 'Dino Runner Game' },
+    { label: 'radar', icon: <Plane size={11} />, desc: 'Live Flights' },
     { label: 'help', icon: <HelpCircle size={11} />, desc: 'Help / Man' },
   ];
 

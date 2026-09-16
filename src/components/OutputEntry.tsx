@@ -5,6 +5,7 @@ import { MarkdownViewer } from './MarkdownViewer';
 import { ManPager } from './ManPager';
 import { NeofetchView } from './NeofetchView';
 import { MailComposer } from './MailComposer';
+import FlightTrackerView from './FlightTracker/FlightTrackerView';
 import { Folder, FileText, Binary, Search, Tag, AlertTriangle, CheckCircle2 } from 'lucide-react';
 
 interface OutputEntryProps {
@@ -304,6 +305,13 @@ export const OutputEntry: React.FC<OutputEntryProps> = ({
               <div><span style={{ color: themeConfig.dimText }}>Humidity:</span> {content.humidity}</div>
               <div><span style={{ color: themeConfig.dimText }}>Wind:</span> {content.wind}</div>
             </div>
+          </div>
+        )}
+
+        {/* 8.5 Radar / Flight Tracker */}
+        {type === 'radar' && (
+          <div className="my-2 p-1 border border-dashed rounded overflow-hidden bg-black" style={{ borderColor: themeConfig.border }}>
+            <FlightTrackerView />
           </div>
         )}
 

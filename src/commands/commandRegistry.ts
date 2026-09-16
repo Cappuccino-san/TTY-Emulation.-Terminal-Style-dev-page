@@ -161,6 +161,14 @@ export function executeTerminalCommand(
     };
   }
 
+  // 6.5 RADAR / FLIGHTS
+  if (cmd === 'radar' || cmd === 'flights') {
+    return {
+      type: 'radar',
+      content: {},
+    };
+  }
+
   // 7. PROJECTS (Direct command)
   if (cmd === 'projects') {
     const projNode = getNodeAtPath('/projects');

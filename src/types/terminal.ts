@@ -53,6 +53,7 @@ export type OutputType =
   | 'matrix'
   | 'weather'
   | 'dino'
+  | 'radar'
   | 'system';
 
 export interface HistoryEntry {
