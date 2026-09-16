@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import type { HistoryEntry, ThemeConfig } from '../types/terminal';
 import { formatBytes } from '../commands/commandRegistry';
 import { MarkdownViewer } from './MarkdownViewer';
@@ -8,6 +8,54 @@ import { MailComposer } from './MailComposer';
 // @ts-ignore - ported JSX component without type declarations
 import FlightTrackerView from './FlightTracker/FlightTrackerView';
 import { Folder, FileText, Binary, Search, Tag, AlertTriangle, CheckCircle2 } from 'lucide-react';
+
+const LiveWeatherWidget: React.FC<{
+  city: string;
+  defaultData: any;
+  themeConfig: ThemeConfig;
+}> = ({ city, defaultData, themeConfig }) => {
+  const [data, setData] = useState(defaultData);
+
+  useEffect(() => {
+    if (city.toLowerCase().includes('boston')) {
+      fetch('https://api.open-meteo.com/v1/forecast?latitude=42.3601&longitude=-71.0589&current=temperature_2m,relative_humidity_2m,wind_speed_10m&temperature_unit=fahrenheit&wind_speed_unit=mph')
+        .then(res => res.json())
+        .then(json => {
+          if (json.current) {
+            setData({
+              ...defaultData,
+              temp: `${Math.round(json.current.temperature_2m)}°F`,
+              humidity: `${Math.round(json.current.relative_humidity_2m)}%`,
+              wind: `${Math.round(json.current.wind_speed_10m)} mph`,
+              condition: 'Live API Data (Open-Meteo)',
+              ascii: defaultData.ascii
+            });
+          }
+        })
+        .catch(err => console.error("Weather fetch failed", err));
+    }
+  }, [city, defaultData]);
+
+  return (
+    <div
+      className="my-2 p-3 border rounded-xs font-mono text-xs max-w-lg"
+      style={{ borderColor: themeConfig.border, backgroundColor: 'rgba(0,0,0,0.3)' }}
+    >
+      <div className="font-bold pb-1 mb-2 border-b" style={{ borderColor: themeConfig.border, color: themeConfig.brightText }}>
+        WEATHER REPORT // {data.city.toUpperCase()}
+      </div>
+      <pre className="text-xs leading-tight mb-2" style={{ color: themeConfig.accent }}>
+        {data.ascii}
+      </pre>
+      <div className="grid grid-cols-2 gap-2 text-xs">
+        <div><span style={{ color: themeConfig.dimText }}>Temperature:</span> {data.temp}</div>
+        <div><span style={{ color: themeConfig.dimText }}>Condition:</span> {data.condition}</div>
+        <div><span style={{ color: themeConfig.dimText }}>Humidity:</span> {data.humidity}</div>
+        <div><span style={{ color: themeConfig.dimText }}>Wind:</span> {data.wind}</div>
+      </div>
+    </div>
+  );
+};
 
 interface OutputEntryProps {
   entry: HistoryEntry;
@@ -290,23 +338,7 @@ export const OutputEntry: React.FC<OutputEntryProps> = ({
 
         {/* 8. Weather Widget */}
         {type === 'weather' && content && (
-          <div
-            className="my-2 p-3 border rounded-xs font-mono text-xs max-w-lg"
-            style={{ borderColor: themeConfig.border, backgroundColor: 'rgba(0,0,0,0.3)' }}
-          >
-            <div className="font-bold pb-1 mb-2 border-b" style={{ borderColor: themeConfig.border, color: themeConfig.brightText }}>
-              WEATHER REPORT // {content.city.toUpperCase()}
-            </div>
-            <pre className="text-xs leading-tight mb-2" style={{ color: themeConfig.accent }}>
-              {content.ascii}
-            </pre>
-            <div className="grid grid-cols-2 gap-2 text-xs">
-              <div><span style={{ color: themeConfig.dimText }}>Temperature:</span> {content.temp}</div>
-              <div><span style={{ color: themeConfig.dimText }}>Condition:</span> {content.condition}</div>
-              <div><span style={{ color: themeConfig.dimText }}>Humidity:</span> {content.humidity}</div>
-              <div><span style={{ color: themeConfig.dimText }}>Wind:</span> {content.wind}</div>
-            </div>
-          </div>
+          <LiveWeatherWidget city={content.city} defaultData={content} themeConfig={themeConfig} />
         )}
 
         {/* 8.5 Radar / Flight Tracker */}
