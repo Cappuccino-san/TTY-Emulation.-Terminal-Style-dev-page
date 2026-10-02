@@ -26,14 +26,14 @@ export const PROJECTS: Project[] = [
   {
     slug: 'a360-aging-dataset-pipeline',
     filename: 'a360-aging-dataset-pipeline.md',
-    name: 'A360 Synthetic Aging & Compound GenAI Pipeline',
+    name: 'A360 Synthetic Aging Pipeline',
     status: 'ACTIVE',
     stars: 340,
-    tags: ['pytorch', 'bedrock', 'langgraph', 'vllm', 'tensorrt-llm', 'pgvector', 'comfyui', 'peft', 'lora'],
+    tags: ['pytorch', 'comfyui', 'peft', 'lora'],
     repo: 'https://github.com/cappuccino-san/a360-aging-pipeline',
     demo: 'https://linkedin.com/in/nicholas-napoli476',
-    summary: 'End-to-end GenAI workflows using AWS Bedrock, LangGraph, vLLM, pgvector, ComfyUI, IPAdapter FaceID, and LoRA/QLoRA.',
-    description: `# A360 Synthetic Aging & Compound GenAI Pipeline\n\n**Role**: AI/ML Workflow Engineer | Aesthetic360\n**Stack**: AWS Bedrock, LangGraph, Step Functions, vLLM, pgvector, ComfyUI, IPAdapter FaceID, PEFT (LoRA/QLoRA), PyTorch\n\n---\n\n## Systems & Technical Implementation\n- **End-to-End GenAI Workflows**: Owned software application development and training pipelines for end-to-end GenAI workflows and agentic systems for clinical photo processing (cropping, upscaling, enhancement, background removal) using AWS Bedrock, LangGraph, and Step Functions, with per-stage validation checks gating each pipeline step.\n- **Real-Time Inference & Vector Retrieval**: Evaluated real-time inference stacks for background-removal pipelines — vLLM serving models including Amazon Titan and Stability AI, paired with pgvector hybrid search over S3 data, versus HuggingFace tooling — with retrieval supplying project context for clinical workflows.\n- **Identity-Preserving Synthetic Aging Pipeline**: Engineered the A360 synthetic aging pipeline via ComfyUI, IPAdapter FaceID, and parameter-efficient fine-tuning (LoRA/QLoRA) via single-GPU fine-tuning to generate identity-consistent synthetic portraits across age cohorts (20–70), validated by visual inspection at 5-year intervals.`
+    summary: 'Engineered the A360 synthetic aging pipeline via ComfyUI, IPAdapter FaceID, and parameter-efficient fine-tuning (LoRA/QLoRA).',
+    description: `# A360 Synthetic Aging Pipeline\n\n**Role**: AI/ML Workflow Engineer | Aesthetic360\n**Stack**: ComfyUI, IPAdapter FaceID, PEFT (LoRA/QLoRA), PyTorch\n\n---\n\n## Systems & Technical Implementation\n- **Identity-Preserving Synthetic Aging Pipeline**: Engineered the A360 synthetic aging pipeline via ComfyUI, IPAdapter FaceID, and parameter-efficient fine-tuning (LoRA/QLoRA) via single-GPU fine-tuning to generate identity-consistent synthetic portraits across age cohorts (20–70), validated by visual inspection at 5-year intervals.`
   },
   {
     slug: 'distributed-clinical-data-pipeline',
@@ -49,13 +49,13 @@ export const PROJECTS: Project[] = [
   {
     slug: 'optics-vision-landmark-extractor',
     filename: 'optics-vision-landmark-extractor.md',
-    name: 'Deterministic Vision Validation & 3D LiDAR Registration',
+    name: 'Compound GenAI & Optics Vision Landmark Extractor',
     status: 'ACTIVE',
     stars: 480,
-    tags: ['pytorch', 'opencv', 'sam2', 'mediapipe', 'open3d'],
+    tags: ['pytorch', 'bedrock', 'langgraph', 'vllm', 'pgvector', 'opencv', 'sam2', 'mediapipe', 'open3d'],
     repo: 'https://github.com/cappuccino-san/optics-vision-extractor',
-    summary: 'Deterministic vision validation and feature extraction using PyTorch, OpenCV, SAM 2, MediaPipe, and Open3D point cloud registration.',
-    description: `# Deterministic Vision Validation & 3D LiDAR Registration\n\n**Role**: AI/ML Workflow Engineer | Aesthetic360\n**Stack**: PyTorch, OpenCV, SAM 2, MediaPipe, Open3D, 3D LiDAR\n\n---\n\n## Systems & Technical Implementation\n- **Optics-Aligned Feature Extraction & Boundary Tracking**: Built deterministic vision validation and optics-aligned feature extraction pipelines using PyTorch, OpenCV, SAM 2, and MediaPipe for landmark boundary tracking and 3D LiDAR point cloud registration (Open3D).`
+    summary: 'End-to-end GenAI workflows using AWS Bedrock, LangGraph, vLLM, pgvector, alongside vision extraction using OpenCV, SAM 2, and MediaPipe.',
+    description: `# Compound GenAI & Optics Vision Landmark Extractor\n\n**Role**: AI/ML Workflow Engineer | Aesthetic360\n**Stack**: AWS Bedrock, LangGraph, vLLM, pgvector, PyTorch, OpenCV, SAM 2, MediaPipe, Open3D\n\n---\n\n## Systems & Technical Implementation\n- **End-to-End GenAI Workflows**: Owned software application development and training pipelines for end-to-end GenAI workflows and agentic systems for clinical photo processing (cropping, upscaling, enhancement, background removal) using AWS Bedrock, LangGraph, and Step Functions, with per-stage validation checks gating each pipeline step.\n- **Real-Time Inference & Vector Retrieval**: Evaluated real-time inference stacks for background-removal pipelines — vLLM serving models including Amazon Titan and Stability AI, paired with pgvector hybrid search over S3 data, versus HuggingFace tooling — with retrieval supplying project context for clinical workflows.\n- **Optics-Aligned Feature Extraction & Boundary Tracking**: Built deterministic vision validation and optics-aligned feature extraction pipelines using PyTorch, OpenCV, SAM 2, and MediaPipe for landmark boundary tracking and 3D LiDAR point cloud registration (Open3D).`
   },
   {
     slug: 'aws-cloud-security-auditing',
