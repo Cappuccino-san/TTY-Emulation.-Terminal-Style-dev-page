@@ -37,11 +37,11 @@ AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Dep
 ---
 
 ## Quick Shell Shortcuts
-- Run `resume` or `cat about/resume.txt` to view full CV.
-- Run `skills` or `cat about/skills.json` for the full JSON skills matrix.
-- Run `experience` or `education` to inspect specific career milestones.
-- Run `ls -l projects` or `ls -l posts` to browse engineering work.
-- Run `mail` to transmit a direct message.
+- Run \`resume\` or \`cat about/resume.txt\` to view full CV.
+- Run \`skills\` or \`cat about/skills.json\` for the full JSON skills matrix.
+- Run \`experience\` or \`education\` to inspect specific career milestones.
+- Run \`ls -l projects\` or \`ls -l posts\` to browse engineering work.
+- Run \`mail\` to transmit a direct message.
 `;
 
 export const RESUME_TEXT = `================================================================================
