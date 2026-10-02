@@ -29,7 +29,7 @@ export const PROJECTS: Project[] = [
     name: 'A360 Synthetic Aging Pipeline',
     status: 'ACTIVE',
     stars: 340,
-    tags: ['comfyui', 'ipadapter', 'peft', 'lora', 'qlora'],
+    tags: ['comfyui', 'ipadapter', 'peft', 'lora', 'qlora', 'tensors'],
     repo: 'https://github.com/cappuccino-san/a360-aging-pipeline',
     demo: 'https://linkedin.com/in/nicholas-napoli476',
     summary: 'Engineered the A360 synthetic aging pipeline via ComfyUI, IPAdapter FaceID, and parameter-efficient fine-tuning (LoRA/QLoRA).',
