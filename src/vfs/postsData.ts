@@ -93,18 +93,18 @@ To ensure reproducibility across batch pipelines:
 `
   },
   {
-    slug: 'scaling-pyspark-databricks-multimodal',
-    filename: 'scaling-pyspark-databricks-multimodal.md',
+    slug: 'scaling-pyspark-aws-glue-multimodal',
+    filename: 'scaling-pyspark-aws-glue-multimodal.md',
     title: 'Architecting Distributed Big Data Pipelines for Multimodal Healthcare Records',
     date: '2026-07-28',
     readTime: '8 min read',
-    tags: ['pyspark', 'databricks', 'bigdata', 'aws-glue', 'data-engineering'],
-    summary: 'How distributed PySpark transforms on Databricks & AWS Glue cut multimodal ETL runtime by 68% across 10,000+ clinical records.',
+    tags: ['pyspark', 'bigdata', 'aws-glue', 'data-engineering'],
+    summary: 'How distributed PySpark transforms on AWS Glue cut multimodal ETL runtime by 68% across 10,000+ clinical records.',
     content: `# Architecting Distributed Big Data Pipelines for Multimodal Healthcare Records
 
 Modern clinical AI systems do not just consume text or tabular numbers—they ingest high-resolution RGB imagery, 3D LiDAR point clouds, longitudinal patient records, and EXIF camera optical metadata simultaneously.
 
-Processing this volume on single-node Python workers quickly runs into memory saturation and unpredictable runtimes. Here is how we designed a high-throughput, distributed pipeline using **PySpark**, **Databricks**, and **AWS Glue**.
+Processing this volume on single-node Python workers quickly runs into memory saturation and unpredictable runtimes. Here is how we designed a high-throughput, distributed pipeline using **PySpark** and **AWS Glue**.
 
 ---
 
@@ -117,13 +117,13 @@ Processing this volume on single-node Python workers quickly runs into memory sa
    [ AWS Glue Catalog ]
              │
              ▼
-   [ Databricks Cluster ] ── (PySpark Distributed Transformations)
+   [ AWS EMR / Glue Spark Cluster ] ── (PySpark Distributed Transformations)
        ├── Optical Metadata & EXIF Validation
        ├── PyTorch UDF for Quality Scoring
        └── Interocular Normalization
              │
              ▼
-[ S3 Delta Lake Table (ACID + Partitioned) ] ──► [ SageMaker ML Training ]
+[ S3 Data Lake (Parquet + Partitioned) ] ──► [ SageMaker ML Training ]
 \`\`\`
 
 ---
@@ -162,7 +162,7 @@ def filter_and_transform_clinical_dataset(spark_df):
 
 ## 2. Partition Strategy & Cost Efficiency
 - **Partition Pruning**: Segmented datasets by \`cohort_decade\` and \`acquisition_device\`, allowing downstream training jobs to read only 12% of the dataset per model iteration.
-- **Delta Lake Compaction**: Automated OPTIMIZE and Z-ORDER operations reduced small-file I/O overhead on S3 by 4.8x.
+- **Parquet Compaction**: Automated small-file compaction and partition tuning reduced I/O overhead on S3 by 4.8x.
 - **Outcome**: Total batch runtimes plummeted from **4 hours 15 minutes** down to **1 hour 18 minutes**, saving substantial AWS compute costs.
 `
   },
@@ -305,14 +305,14 @@ Every pull request building Docker images for Amazon ECR triggers:
 
 > *"Single-turn prompt engineering has hit a ceiling. Production systems demand Compound AI Architectures—stateful graphs of modular models, vector indices, and deterministic tool-calling guardrails."*
 
-In high-stakes clinical and enterprise workflows, relying on a solitary LLM call leads to non-deterministic failure modes. To achieve aerospace-grade reliability, we architected **Compound AI Workflows** leveraging **LangGraph**, **AWS Bedrock**, **vLLM**, and **pgvector**.
+In high-stakes clinical and enterprise workflows, relying on a solitary LLM call leads to non-deterministic failure modes. To achieve deterministic reliability, we architected **Compound AI Workflows** leveraging **LangGraph**, **AWS Bedrock**, **vLLM**, and **pgvector**.
 
 ---
 
 ## 1. State Graph Architecture & Self-Correction Loops
 
 By structuring inference as a cyclic directed state graph in LangGraph:
-- **Node 1 (Intent Classifier & PII Sanitizer)**: Scrub PHI/PII via **Microsoft Presidio** and validate input constraints with **Guardrails AI**.
+- **Node 1 (Intent Classifier & PII Sanitizer)**: Validate input constraints and scrub sensitive patterns with **Guardrails AI**.
 - **Node 2 (Hybrid Vector Retrieval)**: Query **pgvector** with dense HNSW embeddings and sparse BM25 indices to fetch verified clinical context.
 - **Node 3 (LLM Generation)**: Execute structured tool calls on AWS Bedrock (Claude 3.5 Sonnet / Llama 3.3).
 - **Node 4 (Hallucination Evaluator)**: If the output fails structural JSON schema validation or exceeds confidence bounds, route back to Node 3 with targeted feedback.
