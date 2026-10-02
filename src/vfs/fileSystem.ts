@@ -95,9 +95,9 @@ Aesthetic360 – AI/ML Workflow Engineer | Boston, MA | Nov 2025 – Present
   hybrid search over S3 data, versus HuggingFace tooling — with retrieval
   supplying project context for clinical workflows.
 • Engineered the A360 synthetic aging pipeline via ComfyUI, IPAdapter FaceID,
-  and parameter-efficient fine-tuning (LoRA/QLoRA) via single-GPU fine-tuning
-  to generate identity-consistent synthetic portraits across age cohorts
-  (20–70), validated by visual inspection at 5-year intervals.
+  and parameter-efficient fine-tuning (LoRA/QLoRA) via single-GPU fine-tuning,
+  using 12 male and 12 female synthetic AI models to generate identity-consistent
+  portraits across age cohorts (20–70), validated by visual inspection at 5-year intervals.
 • Architected distributed data pipelines leveraging Big Data technologies
   (PySpark, AWS Glue) to process, clean, and transform 10,000+ before/after
   clinical image pairs across S3 buckets and real-time data.
@@ -170,7 +170,7 @@ AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Dep
 ### Aesthetic360 – AI/ML Workflow Engineer | Boston, MA | Nov 2025 – Present
 - Owned software application development and training pipelines for end-to-end GenAI workflows and agentic systems for before and after photo processing (cropping, upscaling, downscaling, enhancement, background removal) using AWS Bedrock, LangGraph, and Step Functions, with per-stage validation checks gating each pipeline step.
 - Evaluated real-time inference stacks for image processing pipelines — vLLM serving models including Amazon Titan and Stability AI, paired with pgvector hybrid search over S3 data, versus HuggingFace tooling — with retrieval supplying project context for testing before and after photos for upscaling, downscaling, and background removal.
-- Engineered the A360 synthetic aging pipeline via ComfyUI, IPAdapter FaceID, and parameter-efficient fine-tuning (LoRA/QLoRA) via single-GPU fine-tuning to generate identity-consistent synthetic portraits across age cohorts (20–70), validated by visual inspection at 5-year intervals.
+- Engineered the A360 synthetic aging pipeline via ComfyUI, IPAdapter FaceID, and parameter-efficient fine-tuning (LoRA/QLoRA) via single-GPU fine-tuning, using 12 male and 12 female synthetic AI models to generate identity-consistent portraits across age cohorts (20–70), validated by visual inspection at 5-year intervals.
 - Architected distributed data pipelines leveraging Big Data technologies (PySpark, AWS Glue) to process, clean, and transform 10,000+ before/after clinical image pairs across S3 buckets and real-time data.
 - Built deterministic vision validation and optics-aligned feature extraction pipelines using PyTorch, OpenCV, SAM 2, and MediaPipe for landmark boundary tracking and 3D LiDAR point cloud registration (Open3D).
 - Hardened AWS cloud infrastructure with IAM least-privilege policies, KMS envelope encryption, and S3 controls aligned to NIST AI RMF, NIST CSF, and defense-in-depth design principles.
@@ -241,7 +241,7 @@ export const EXPERIENCE_MD = `# Professional Experience — Nicholas Napoli
 ## Aesthetic360 – AI/ML Workflow Engineer | Boston, MA | Nov 2025 – Present
 - Owned software application development and training pipelines for end-to-end GenAI workflows and agentic systems for before and after photo processing (cropping, upscaling, downscaling, enhancement, background removal) using AWS Bedrock, LangGraph, and Step Functions, with per-stage validation checks gating each pipeline step.
 - Evaluated real-time inference stacks for image processing pipelines — vLLM serving models including Amazon Titan and Stability AI, paired with pgvector hybrid search over S3 data, versus HuggingFace tooling — with retrieval supplying project context for testing before and after photos for upscaling, downscaling, and background removal.
-- Engineered the A360 synthetic aging pipeline via ComfyUI, IPAdapter FaceID, and parameter-efficient fine-tuning (LoRA/QLoRA) via single-GPU fine-tuning to generate identity-consistent synthetic portraits across age cohorts (20–70), validated by visual inspection at 5-year intervals.
+- Engineered the A360 synthetic aging pipeline via ComfyUI, IPAdapter FaceID, and parameter-efficient fine-tuning (LoRA/QLoRA) via single-GPU fine-tuning, using 12 male and 12 female synthetic AI models to generate identity-consistent portraits across age cohorts (20–70), validated by visual inspection at 5-year intervals.
 - Architected distributed data pipelines leveraging Big Data technologies (PySpark, AWS Glue) to process, clean, and transform 10,000+ before/after clinical image pairs across S3 buckets and real-time data.
 - Built deterministic vision validation and optics-aligned feature extraction pipelines using PyTorch, OpenCV, SAM 2, and MediaPipe for landmark boundary tracking and 3D LiDAR point cloud registration (Open3D).
 - Hardened AWS cloud infrastructure with IAM least-privilege policies, KMS envelope encryption, and S3 controls aligned to NIST AI RMF, NIST CSF, and defense-in-depth design principles.

@@ -88,7 +88,7 @@ To ensure reproducibility across batch pipelines:
 - Integrated automated landmark verification gates to discard generated frames exhibiting >1.5% interocular distortion.
 
 ## 3. Results & Impact
-- Generated **10,000+ paired synthetic clinical image sets** across 5 distinct age buckets (20s, 30s, 40s, 50s, 60s+).
+- Utilized **12 male and 12 female synthetic AI models** to generate identity-preserving progressions from **20 to 70 years old**.
 - Downstream diagnostic segmentation models achieved **94.8% generalization accuracy** without requiring access to protected patient health information (PHI).
 `
   },
