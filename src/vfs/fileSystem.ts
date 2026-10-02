@@ -17,15 +17,15 @@ export const ABOUT_CONTENT = `# Nicholas Napoli
 ---
 
 ## Professional Summary
-AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Deployment, Training Pipeline Development, and Data Engineering with a deep foundation in Large-Scale Systems, System Design, and secure cloud architecture on AWS. Proven expertise building Compound AI workflows (AWS Bedrock, LangGraph), hybrid vector retrieval (pgvector), and low-latency inference runtimes (vLLM, TensorRT-LLM) alongside distributed Big Data lakehouses (Databricks, PySpark, Delta Lake). Combines advanced computer vision (PyTorch, SAM 2, OpenCV) with an M.S. in Security Studies to execute deterministic workflows adhering to NIST AI RMF, NIST CSF, and strict engineering standards.
+AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Deployment, Training Pipeline Development, and Data Engineering with a deep foundation in Large-Scale Systems, System Design, and secure cloud architecture on AWS. Proven expertise building Compound AI workflows (AWS Bedrock, LangGraph), hybrid vector retrieval (pgvector), and low-latency inference runtimes (vLLM and TensorRT-LLM evaluated for runtime optimization) alongside distributed Big Data Lakehouses (PySpark, S3). Combines advanced computer vision (PyTorch, SAM 2, OpenCV) with an M.S. in Security Studies to execute deterministic workflows adhering to NIST AI RMF, NIST CSF, and strict engineering standards.
 
 ---
 
 ## Technical Skills
-- **Languages & Core**: Fluent in English and Italian, Python, SQL, TypeScript, JavaScript, HTML, CSS, Node.js, Bash, Linux, Java, C++, C#, Rust, MATLAB/Simulink, Perl, Data Structures & Algorithms, Statistics
-- **AI/ML/LLM & GenAI**: PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM, TensorRT-LLM, PEFT (LoRA, QLoRA), pgvector, Qdrant, MLflow, Weights & Biases, OpenCV, Segment Anything 2 (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI, Synthetic Data Generation, Open3D, PyTorch3D, Meta Llama, Qwen, DeepSeek, Mistral, Claude, OpenAI, Amazon Nova/Titan, Google Gemini
-- **Big Data, MLOps & Cloud**: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, ECR, EKS, CloudWatch, Cognito), Jupyter Notebook, Databricks, Apache Spark (PySpark), Delta Lake, Apache Airflow, Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System Design, Large-Scale Systems
-- **Software Engineering, Security & Ops**: Agile Software Development, FastAPI, React, PostgreSQL, REST APIs, NIST AI RMF, NIST CSF, ISO/IEC 42001, OWASP Top 10 for LLMs, AI Red Teaming, Guardrails AI, Presidio (PHI/PII Sanitization), MBSE, JIRA, Confluence, SOP Development, Operational Reporting & Reconciliation
+- **Languages & Core**: Fluent in English and Italian, Python, SQL, TypeScript, JavaScript, HTML, CSS, Node.js, Bash, Linux, C++, Data Structures & Algorithms, Statistics
+- **AI/ML/LLM & GenAI**: PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM, TensorRT-LLM, PEFT (LoRA, QLoRA), pgvector, OpenCV, Segment Anything 2 (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI, Synthetic Data Generation, Open3D, PyTorch3D, Meta Llama, Qwen, DeepSeek, Mistral, Claude, OpenAI, Amazon Nova/Titan, Google Gemini
+- **Big Data, MLOps & Cloud**: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, Step Functions, ECR, EKS, CloudWatch, Cognito), Jupyter Notebook, Apache Spark (PySpark), Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System Design, Large-Scale Systems
+- **Software Engineering, Security & Ops**: Agile Software Development, Development Security Operations (DevSecOps), FastAPI, React, PostgreSQL, REST APIs, NIST AI RMF, NIST CSF, ISO/IEC 42001, OWASP Top 10 for LLMs, Guardrails AI, Model-Based Systems Engineering (MBSE), JIRA, Confluence, SOP Development, Operational Reporting & Reconciliation
 
 ---
 
@@ -37,11 +37,11 @@ AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Dep
 ---
 
 ## Quick Shell Shortcuts
-- Run \`resume\` or \`cat about/resume.txt\` to view full CV.
-- Run \`skills\` or \`cat about/skills.json\` for the full JSON skills matrix.
-- Run \`experience\` or \`education\` to inspect specific career milestones.
-- Run \`ls -l projects\` or \`ls -l posts\` to browse engineering work.
-- Run \`mail\` to transmit a direct message.
+- Run `resume` or `cat about/resume.txt` to view full CV.
+- Run `skills` or `cat about/skills.json` for the full JSON skills matrix.
+- Run `experience` or `education` to inspect specific career milestones.
+- Run `ls -l projects` or `ls -l posts` to browse engineering work.
+- Run `mail` to transmit a direct message.
 `;
 
 export const RESUME_TEXT = `================================================================================
@@ -54,70 +54,70 @@ AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model
 Deployment, Training Pipeline Development, and Data Engineering with a deep
 foundation in Large-Scale Systems, System Design, and secure cloud architecture
 on AWS. Proven expertise building Compound AI workflows (AWS Bedrock, LangGraph),
-hybrid vector retrieval (pgvector), and low-latency inference runtimes (vLLM,
-TensorRT-LLM) alongside distributed Big Data lakehouses (Databricks, PySpark,
-Delta Lake). Combines advanced computer vision (PyTorch, SAM 2, OpenCV) with an
-M.S. in Security Studies to execute deterministic workflows adhering to NIST
-AI RMF, NIST CSF, and strict engineering standards.
+hybrid vector retrieval (pgvector), and low-latency inference runtimes (vLLM and
+TensorRT-LLM evaluated for runtime optimization) alongside distributed Big Data
+Lakehouses (PySpark, S3). Combines advanced computer vision (PyTorch, SAM 2, OpenCV)
+with an M.S. in Security Studies to execute deterministic workflows adhering to
+NIST AI RMF, NIST CSF, and strict engineering standards.
 
 --------------------------------------------------------------------------------
 TECHNICAL SKILLS
 --------------------------------------------------------------------------------
 • Languages & Core: Fluent in English and Italian, Python, SQL, TypeScript,
-  JavaScript, HTML, CSS, Node.js, Bash, Linux, Java, C++, C#, Rust,
-  MATLAB/Simulink, Perl, Data Structures & Algorithms, Statistics
+  JavaScript, HTML, CSS, Node.js, Bash, Linux, C++, Data Structures &
+  Algorithms, Statistics
 • AI/ML/LLM & GenAI: PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM,
-  TensorRT-LLM, PEFT (LoRA, QLoRA), pgvector, Qdrant, MLflow, Weights & Biases,
-  OpenCV, Segment Anything 2 (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI,
-  Synthetic Data Generation, Open3D, PyTorch3D, Meta Llama, Qwen, DeepSeek, Mistral, Claude, OpenAI, Amazon Nova/Titan, Google Gemini
-• Big Data, MLOps & Cloud: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, ECR,
-  EKS, CloudWatch, Cognito), Jupyter Notebook, Databricks, Apache Spark
-  (PySpark), Delta Lake, Apache Airflow, Docker, Terraform / AWS CDK,
-  CI/CD (GitHub Actions), System Design, Large-Scale Systems
-• Software Engineering, Security & Ops: Agile Software Development, FastAPI,
-  React, PostgreSQL, REST APIs, NIST AI RMF, NIST CSF, ISO/IEC 42001,
-  OWASP Top 10 for LLMs, AI Red Teaming, Guardrails AI, Presidio (PHI/PII
-  Sanitization), MBSE, JIRA, Confluence, SOP Development, Operational Reporting
-  & Reconciliation
+  TensorRT-LLM, PEFT (LoRA, QLoRA), pgvector, OpenCV, Segment Anything 2
+  (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI, Synthetic Data Generation,
+  Open3D, PyTorch3D, Meta Llama, Qwen, DeepSeek, Mistral, Claude, OpenAI,
+  Amazon Nova/Titan, Google Gemini
+• Big Data, MLOps & Cloud: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, Step
+  Functions, ECR, EKS, CloudWatch, Cognito), Jupyter Notebook, Apache Spark
+  (PySpark), Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System
+  Design, Large-Scale Systems
+• Software Engineering, Security & Ops: Agile Software Development, Development
+  Security Operations (DevSecOps), FastAPI, React, PostgreSQL, REST APIs, NIST
+  AI RMF, NIST CSF, ISO/IEC 42001, OWASP Top 10 for LLMs, Guardrails AI,
+  Model-Based Systems Engineering (MBSE), JIRA, Confluence, SOP Development,
+  Operational Reporting & Reconciliation
 
 --------------------------------------------------------------------------------
 PROFESSIONAL EXPERIENCE
 --------------------------------------------------------------------------------
 Aesthetic360 – AI/ML Workflow Engineer | Boston, MA | Nov 2025 – Present
-• Led software application development and training pipelines for end-to-end
-  GenAI workflows using AWS Bedrock, LangGraph, and Stability AI, establishing
-  deterministic fallback logic, tool calling, and self-correction loops.
-• Implemented high-throughput, low-latency model inference using vLLM and
-  quantized open-weight architectures, integrating pgvector hybrid semantic
-  search and prompt caching for clinical workflows.
+• Owned software application development and training pipelines for end-to-end
+  GenAI workflows and agentic systems for clinical photo processing (cropping,
+  upscaling, enhancement, background removal) using AWS Bedrock, LangGraph,
+  and Step Functions, with per-stage validation checks gating each pipeline
+  step.
+• Evaluated real-time inference stacks for background-removal pipelines — vLLM
+  serving models including Amazon Titan and Stability AI, paired with pgvector
+  hybrid search over S3 data, versus HuggingFace tooling — with retrieval
+  supplying project context for clinical workflows.
 • Engineered the A360 synthetic aging pipeline via ComfyUI, IPAdapter FaceID,
-  and parameter-efficient fine-tuning (LoRA/QLoRA), utilizing advanced
-  algorithms to generate identity-preserving clinical data across age cohorts
-  (20–70).
-• Architected distributed lakehouse data pipelines leveraging Big Data
-  technologies (PySpark, Databricks, Delta Lake, AWS Glue) to process, clean,
-  and transform 10,000+ multimodal patient records with strict ACID
-  transactional guarantees.
-• Standardized model lifecycle tracking via MLflow; automated DAG task
-  scheduling and retraining pipelines using Apache Airflow and GitHub Actions
-  CI/CD for continuous, zero-downtime deployment.
+  and parameter-efficient fine-tuning (LoRA/QLoRA) via single-GPU fine-tuning
+  to generate identity-consistent synthetic portraits across age cohorts
+  (20–70), validated by visual inspection at 5-year intervals.
+• Architected distributed data pipelines leveraging Big Data technologies
+  (PySpark, AWS Glue) to process, clean, and transform 10,000+ before/after
+  clinical image pairs across S3 buckets and real-time data.
 • Built deterministic vision validation and optics-aligned feature extraction
   pipelines using PyTorch, OpenCV, SAM 2, and MediaPipe for landmark boundary
   tracking and 3D LiDAR point cloud registration (Open3D).
 • Hardened AWS cloud infrastructure with IAM least-privilege policies, KMS
   envelope encryption, and S3 controls aligned to NIST AI RMF, NIST CSF, and
-  aerospace-grade engineering standards.
-• Conducted AI red teaming and security auditing adhering to OWASP Top 10 for
-  LLMs; implemented Guardrails AI and Microsoft Presidio for automated PHI/PII
-  sanitization across full-stack FastAPI and React applications.
+  defense-in-depth design principles.
+• Conducted security auditing adhering to OWASP Top 10 for LLMs; implemented
+  Guardrails AI input/output checks across full-stack FastAPI and React
+  applications.
 
 BOC International – Sales Relationship Coordinator | Boston, MA | Sep 2021 – Dec 2023
-• Directed enterprise operational data engineering workflows to audit high-volume
-  transit feeds, resolve data discrepancies, and verify port financial
-  settlements with strict statistical precision.
-• Owned daily, weekly, and monthly transit KPI reporting across enterprise client
-  portfolios, ensuring SLA adherence and automated data delivery for logistics
-  operations.
+• Ran operational data reporting workflows to audit high-volume transit feeds,
+  resolve data discrepancies, and verify port financial settlements for
+  enterprise clients with strict statistical precision.
+• Owned daily, weekly, and monthly transit Key Performance Indicators reporting
+  across enterprise client portfolios, ensuring Service-Level Agreement
+  adherence and automated data delivery for logistics operations.
 • Conducted lane feasibility and trade route research across foreign and
   domestic logistics partners, synthesizing market intelligence to guide
   strategic routing and business expansion.
@@ -131,8 +131,9 @@ Rx Photo – Project Liaison / QA & Integration | Boston, MA | Aug 2018 – Aug 
   software using OpenCV, MATLAB, and Linux, accelerating engineering patch
   cycles.
 • Supported executive engineering initiatives and model-based systems
-  engineering alignments, conducting CI/CD configuration and OWASP vulnerability
-  assessments across production software source code.
+  engineering alignments through Cross-Functional Collaboration, conducting
+  CI/CD configuration and OWASP vulnerability assessments across production
+  software source code.
 • Interfaced directly with enterprise clients via phone to validate credit card
   processing workflows, troubleshoot integration blockers, and train end users
   on core software functionality.
@@ -152,39 +153,38 @@ export const RESUME_MD = `# Nicholas Napoli
 ---
 
 ## PROFESSIONAL SUMMARY
-AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Deployment, Training Pipeline Development, and Data Engineering with a deep foundation in Large-Scale Systems, System Design, and secure cloud architecture on AWS. Proven expertise building Compound AI workflows (AWS Bedrock, LangGraph), hybrid vector retrieval (pgvector), and low-latency inference runtimes (vLLM, TensorRT-LLM) alongside distributed Big Data lakehouses (Databricks, PySpark, Delta Lake). Combines advanced computer vision (PyTorch, SAM 2, OpenCV) with an M.S. in Security Studies to execute deterministic workflows adhering to NIST AI RMF, NIST CSF, and strict engineering standards.
+AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Deployment, Training Pipeline Development, and Data Engineering with a deep foundation in Large-Scale Systems, System Design, and secure cloud architecture on AWS. Proven expertise building Compound AI workflows (AWS Bedrock, LangGraph), hybrid vector retrieval (pgvector), and low-latency inference runtimes (vLLM and TensorRT-LLM evaluated for runtime optimization) alongside distributed Big Data Lakehouses (PySpark, S3). Combines advanced computer vision (PyTorch, SAM 2, OpenCV) with an M.S. in Security Studies to execute deterministic workflows adhering to NIST AI RMF, NIST CSF, and strict engineering standards.
 
 ---
 
 ## TECHNICAL SKILLS
-- **Languages & Core**: Fluent in English and Italian, Python, SQL, TypeScript, JavaScript, HTML, CSS, Node.js, Bash, Linux, Java, C++, C#, Rust, MATLAB/Simulink, Perl, Data Structures & Algorithms, Statistics
-- **AI/ML/LLM & GenAI**: PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM, TensorRT-LLM, PEFT (LoRA, QLoRA), pgvector, Qdrant, MLflow, Weights & Biases, OpenCV, Segment Anything 2 (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI, Synthetic Data Generation, Open3D, PyTorch3D, Meta Llama, Qwen, DeepSeek, Mistral, Claude, OpenAI, Amazon Nova/Titan, Google Gemini
-- **Big Data, MLOps & Cloud**: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, ECR, EKS, CloudWatch, Cognito), Jupyter Notebook, Databricks, Apache Spark (PySpark), Delta Lake, Apache Airflow, Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System Design, Large-Scale Systems
-- **Software Engineering, Security & Ops**: Agile Software Development, FastAPI, React, PostgreSQL, REST APIs, NIST AI RMF, NIST CSF, ISO/IEC 42001, OWASP Top 10 for LLMs, AI Red Teaming, Guardrails AI, Presidio (PHI/PII Sanitization), MBSE, JIRA, Confluence, SOP Development, Operational Reporting & Reconciliation
+- **Languages & Core**: Fluent in English and Italian, Python, SQL, TypeScript, JavaScript, HTML, CSS, Node.js, Bash, Linux, C++, Data Structures & Algorithms, Statistics
+- **AI/ML/LLM & GenAI**: PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM, TensorRT-LLM, PEFT (LoRA, QLoRA), pgvector, OpenCV, Segment Anything 2 (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI, Synthetic Data Generation, Open3D, PyTorch3D, Meta Llama, Qwen, DeepSeek, Mistral, Claude, OpenAI, Amazon Nova/Titan, Google Gemini
+- **Big Data, MLOps & Cloud**: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, Step Functions, ECR, EKS, CloudWatch, Cognito), Jupyter Notebook, Apache Spark (PySpark), Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System Design, Large-Scale Systems
+- **Software Engineering, Security & Ops**: Agile Software Development, Development Security Operations (DevSecOps), FastAPI, React, PostgreSQL, REST APIs, NIST AI RMF, NIST CSF, ISO/IEC 42001, OWASP Top 10 for LLMs, Guardrails AI, Model-Based Systems Engineering (MBSE), JIRA, Confluence, SOP Development, Operational Reporting & Reconciliation
 
 ---
 
 ## PROFESSIONAL EXPERIENCE
 
 ### Aesthetic360 – AI/ML Workflow Engineer | Boston, MA | Nov 2025 – Present
-- Led software application development and training pipelines for end-to-end GenAI workflows using AWS Bedrock, LangGraph, and Stability AI, establishing deterministic fallback logic, tool calling, and self-correction loops.
-- Implemented high-throughput, low-latency model inference using vLLM and quantized open-weight architectures, integrating pgvector hybrid semantic search and prompt caching for clinical workflows.
-- Engineered the A360 synthetic aging pipeline via ComfyUI, IPAdapter FaceID, and parameter-efficient fine-tuning (LoRA/QLoRA), utilizing advanced algorithms to generate identity-preserving clinical data across age cohorts (20–70).
-- Architected distributed lakehouse data pipelines leveraging Big Data technologies (PySpark, Databricks, Delta Lake, AWS Glue) to process, clean, and transform 10,000+ multimodal patient records with strict ACID transactional guarantees.
-- Standardized model lifecycle tracking via MLflow; automated DAG task scheduling and retraining pipelines using Apache Airflow and GitHub Actions CI/CD for continuous, zero-downtime deployment.
+- Owned software application development and training pipelines for end-to-end GenAI workflows and agentic systems for clinical photo processing (cropping, upscaling, enhancement, background removal) using AWS Bedrock, LangGraph, and Step Functions, with per-stage validation checks gating each pipeline step.
+- Evaluated real-time inference stacks for background-removal pipelines — vLLM serving models including Amazon Titan and Stability AI, paired with pgvector hybrid search over S3 data, versus HuggingFace tooling — with retrieval supplying project context for clinical workflows.
+- Engineered the A360 synthetic aging pipeline via ComfyUI, IPAdapter FaceID, and parameter-efficient fine-tuning (LoRA/QLoRA) via single-GPU fine-tuning to generate identity-consistent synthetic portraits across age cohorts (20–70), validated by visual inspection at 5-year intervals.
+- Architected distributed data pipelines leveraging Big Data technologies (PySpark, AWS Glue) to process, clean, and transform 10,000+ before/after clinical image pairs across S3 buckets and real-time data.
 - Built deterministic vision validation and optics-aligned feature extraction pipelines using PyTorch, OpenCV, SAM 2, and MediaPipe for landmark boundary tracking and 3D LiDAR point cloud registration (Open3D).
-- Hardened AWS cloud infrastructure with IAM least-privilege policies, KMS envelope encryption, and S3 controls aligned to NIST AI RMF, NIST CSF, and aerospace-grade engineering standards.
-- Conducted AI red teaming and security auditing adhering to OWASP Top 10 for LLMs; implemented Guardrails AI and Microsoft Presidio for automated PHI/PII sanitization across full-stack FastAPI and React applications.
+- Hardened AWS cloud infrastructure with IAM least-privilege policies, KMS envelope encryption, and S3 controls aligned to NIST AI RMF, NIST CSF, and defense-in-depth design principles.
+- Conducted security auditing adhering to OWASP Top 10 for LLMs; implemented Guardrails AI input/output checks across full-stack FastAPI and React applications.
 
 ### BOC International – Sales Relationship Coordinator | Boston, MA | Sep 2021 – Dec 2023
-- Directed enterprise operational data engineering workflows to audit high-volume transit feeds, resolve data discrepancies, and verify port financial settlements with strict statistical precision.
-- Owned daily, weekly, and monthly transit KPI reporting across enterprise client portfolios, ensuring SLA adherence and automated data delivery for logistics operations.
+- Ran operational data reporting workflows to audit high-volume transit feeds, resolve data discrepancies, and verify port financial settlements for enterprise clients with strict statistical precision.
+- Owned daily, weekly, and monthly transit Key Performance Indicators reporting across enterprise client portfolios, ensuring Service-Level Agreement adherence and automated data delivery for logistics operations.
 - Conducted lane feasibility and trade route research across foreign and domestic logistics partners, synthesizing market intelligence to guide strategic routing and business expansion.
 - Standardized account tracking systems, operational SOPs, and inbound port container payment settlements, serving as primary escalation point for client inquiry resolution.
 
 ### Rx Photo – Project Liaison / QA & Integration | Boston, MA | Aug 2018 – Aug 2019
 - Executed software test engineering, automated defect isolation, and requirements management (JIRA, Confluence) on computer vision & optics software using OpenCV, MATLAB, and Linux, accelerating engineering patch cycles.
-- Supported executive engineering initiatives and model-based systems engineering alignments, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
+- Supported executive engineering initiatives and model-based systems engineering alignments through Cross-Functional Collaboration, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
 - Interfaced directly with enterprise clients via phone to validate credit card processing workflows, troubleshoot integration blockers, and train end users on core software functionality.
 
 ---
@@ -213,27 +213,24 @@ export const SKILLS_JSON = `{
     "languages_and_core": [
       "Fluent in English and Italian",
       "Python", "SQL", "TypeScript", "JavaScript", "HTML", "CSS",
-      "Node.js", "Bash", "Linux", "Java", "C++", "C#", "Rust",
-      "MATLAB/Simulink", "Perl", "Data Structures & Algorithms", "Statistics"
+      "Node.js", "Bash", "Linux", "C++", "Data Structures & Algorithms", "Statistics"
     ],
     "ai_ml_and_genai": [
       "PyTorch", "AWS Bedrock", "LangGraph", "LlamaIndex", "vLLM", "TensorRT-LLM",
-      "PEFT (LoRA, QLoRA)", "pgvector", "Qdrant", "MLflow", "Weights & Biases",
-      "OpenCV", "Segment Anything 2 (SAM 2)", "MediaPipe", "InsightFace",
-      "IPAdapter", "ComfyUI", "Synthetic Data Generation", "Open3D", "PyTorch3D",
-      "Meta Llama", "Qwen", "DeepSeek", "Mistral", "Claude", "OpenAI", "Amazon Nova/Titan", "Google Gemini"
+      "PEFT (LoRA, QLoRA)", "pgvector", "OpenCV", "Segment Anything 2 (SAM 2)",
+      "MediaPipe", "InsightFace", "IPAdapter", "ComfyUI", "Synthetic Data Generation",
+      "Open3D", "PyTorch3D", "Meta Llama", "Qwen", "DeepSeek", "Mistral", "Claude",
+      "OpenAI", "Amazon Nova/Titan", "Google Gemini"
     ],
     "big_data_mlops_and_cloud": [
-      "AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, ECR, EKS, CloudWatch, Cognito)",
-      "Jupyter Notebook", "Databricks", "Apache Spark (PySpark)", "Delta Lake",
-      "Apache Airflow", "Docker", "Terraform / AWS CDK", "CI/CD (GitHub Actions)",
-      "System Design", "Large-Scale Systems"
+      "AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, Step Functions, ECR, EKS, CloudWatch, Cognito)",
+      "Jupyter Notebook", "Apache Spark (PySpark)", "Docker", "Terraform / AWS CDK",
+      "CI/CD (GitHub Actions)", "System Design", "Large-Scale Systems"
     ],
     "software_engineering_security_and_ops": [
-      "Agile Software Development", "FastAPI", "React", "PostgreSQL",
-      "REST APIs", "NIST AI RMF", "NIST CSF", "ISO/IEC 42001",
-      "OWASP Top 10 for LLMs", "AI Red Teaming", "Guardrails AI",
-      "Microsoft Presidio (PHI/PII Sanitization)", "Model-Based Systems Engineering (MBSE)",
+      "Agile Software Development", "Development Security Operations (DevSecOps)", "FastAPI",
+      "React", "PostgreSQL", "REST APIs", "NIST AI RMF", "NIST CSF", "ISO/IEC 42001",
+      "OWASP Top 10 for LLMs", "Guardrails AI", "Model-Based Systems Engineering (MBSE)",
       "JIRA", "Confluence", "SOP Development", "Operational Reporting & Reconciliation"
     ]
   }
@@ -242,20 +239,19 @@ export const SKILLS_JSON = `{
 export const EXPERIENCE_MD = `# Professional Experience — Nicholas Napoli
 
 ## Aesthetic360 – AI/ML Workflow Engineer | Boston, MA | Nov 2025 – Present
-- Led software application development and training pipelines for end-to-end GenAI workflows using AWS Bedrock, LangGraph, and Stability AI, establishing deterministic fallback logic, tool calling, and self-correction loops.
-- Implemented high-throughput, low-latency model inference using vLLM and quantized open-weight architectures, integrating pgvector hybrid semantic search and prompt caching for clinical workflows.
-- Engineered the A360 synthetic aging pipeline via ComfyUI, IPAdapter FaceID, and parameter-efficient fine-tuning (LoRA/QLoRA), utilizing advanced algorithms to generate identity-preserving clinical data across age cohorts (20–70).
-- Architected distributed lakehouse data pipelines leveraging Big Data technologies (PySpark, Databricks, Delta Lake, AWS Glue) to process, clean, and transform 10,000+ multimodal patient records with strict ACID transactional guarantees.
-- Standardized model lifecycle tracking via MLflow; automated DAG task scheduling and retraining pipelines using Apache Airflow and GitHub Actions CI/CD for continuous, zero-downtime deployment.
+- Owned software application development and training pipelines for end-to-end GenAI workflows and agentic systems for clinical photo processing (cropping, upscaling, enhancement, background removal) using AWS Bedrock, LangGraph, and Step Functions, with per-stage validation checks gating each pipeline step.
+- Evaluated real-time inference stacks for background-removal pipelines — vLLM serving models including Amazon Titan and Stability AI, paired with pgvector hybrid search over S3 data, versus HuggingFace tooling — with retrieval supplying project context for clinical workflows.
+- Engineered the A360 synthetic aging pipeline via ComfyUI, IPAdapter FaceID, and parameter-efficient fine-tuning (LoRA/QLoRA) via single-GPU fine-tuning to generate identity-consistent synthetic portraits across age cohorts (20–70), validated by visual inspection at 5-year intervals.
+- Architected distributed data pipelines leveraging Big Data technologies (PySpark, AWS Glue) to process, clean, and transform 10,000+ before/after clinical image pairs across S3 buckets and real-time data.
 - Built deterministic vision validation and optics-aligned feature extraction pipelines using PyTorch, OpenCV, SAM 2, and MediaPipe for landmark boundary tracking and 3D LiDAR point cloud registration (Open3D).
-- Hardened AWS cloud infrastructure with IAM least-privilege policies, KMS envelope encryption, and S3 controls aligned to NIST AI RMF, NIST CSF, and aerospace-grade engineering standards.
-- Conducted AI red teaming and security auditing adhering to OWASP Top 10 for LLMs; implemented Guardrails AI and Microsoft Presidio for automated PHI/PII sanitization across full-stack FastAPI and React applications.
+- Hardened AWS cloud infrastructure with IAM least-privilege policies, KMS envelope encryption, and S3 controls aligned to NIST AI RMF, NIST CSF, and defense-in-depth design principles.
+- Conducted security auditing adhering to OWASP Top 10 for LLMs; implemented Guardrails AI input/output checks across full-stack FastAPI and React applications.
 
 ---
 
 ## BOC International – Sales Relationship Coordinator | Boston, MA | Sep 2021 – Dec 2023
-- Directed enterprise operational data engineering workflows to audit high-volume transit feeds, resolve data discrepancies, and verify port financial settlements with strict statistical precision.
-- Owned daily, weekly, and monthly transit KPI reporting across enterprise client portfolios, ensuring SLA adherence and automated data delivery for logistics operations.
+- Ran operational data reporting workflows to audit high-volume transit feeds, resolve data discrepancies, and verify port financial settlements for enterprise clients with strict statistical precision.
+- Owned daily, weekly, and monthly transit Key Performance Indicators reporting across enterprise client portfolios, ensuring Service-Level Agreement adherence and automated data delivery for logistics operations.
 - Conducted lane feasibility and trade route research across foreign and domestic logistics partners, synthesizing market intelligence to guide strategic routing and business expansion.
 - Standardized account tracking systems, operational SOPs, and inbound port container payment settlements, serving as primary escalation point for client inquiry resolution.
 
@@ -263,7 +259,7 @@ export const EXPERIENCE_MD = `# Professional Experience — Nicholas Napoli
 
 ## Rx Photo – Project Liaison / QA & Integration | Boston, MA | Aug 2018 – Aug 2019
 - Executed software test engineering, automated defect isolation, and requirements management (JIRA, Confluence) on computer vision & optics software using OpenCV, MATLAB, and Linux, accelerating engineering patch cycles.
-- Supported executive engineering initiatives and model-based systems engineering alignments, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
+- Supported executive engineering initiatives and model-based systems engineering alignments through Cross-Functional Collaboration, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.
 - Interfaced directly with enterprise clients via phone to validate credit card processing workflows, troubleshoot integration blockers, and train end users on core software functionality.
 `;
 
