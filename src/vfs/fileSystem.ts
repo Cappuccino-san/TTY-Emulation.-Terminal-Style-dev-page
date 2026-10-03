@@ -24,7 +24,7 @@ AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Dep
 ## Technical Skills
 - **Languages & Core**: Fluent in English and Italian, Python, SQL, TypeScript, JavaScript, HTML, CSS, Node.js, Bash, Linux, C++, Data Structures & Algorithms, Statistics
 - **AI/ML/LLM & GenAI**: PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM, TensorRT-LLM, PEFT (LoRA, QLoRA), pgvector, OpenCV, Segment Anything 2 (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI, Synthetic Data Generation, Open3D, PyTorch3D, Meta Llama, Qwen, DeepSeek, Mistral, Claude, OpenAI, Amazon Nova/Titan, Google Gemini
-- **Big Data, MLOps & Cloud**: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, Step Functions, ECR, EKS, CloudWatch, Cognito), Jupyter Notebook, Apache Spark (PySpark), Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System Design, Large-Scale Systems
+- **Big Data, MLOps & Cloud**: AWS (SageMaker, EC2, S3, KMS, IAM, Glue, Bedrock, Lambda, Step Functions, ECR, EKS, CloudWatch, CloudFront, Route 53, DynamoDB, SNS, Cognito, Certificate Manager), Jupyter Notebook, Apache Spark (PySpark), Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System Design, Large-Scale Systems
 - **Software Engineering, Security & Ops**: Agile Software Development, Development Security Operations (DevSecOps), FastAPI, React, PostgreSQL, REST APIs, NIST AI RMF, NIST CSF, ISO/IEC 42001, OWASP Top 10 for LLMs, Guardrails AI, Model-Based Systems Engineering (MBSE), JIRA, Confluence, SOP Development, Operational Reporting & Reconciliation
 
 ---
@@ -71,8 +71,9 @@ TECHNICAL SKILLS
   (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI, Synthetic Data Generation,
   Open3D, PyTorch3D, Meta Llama, Qwen, DeepSeek, Mistral, Claude, OpenAI,
   Amazon Nova/Titan, Google Gemini
-• Big Data, MLOps & Cloud: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, Step
-  Functions, ECR, EKS, CloudWatch, Cognito), Jupyter Notebook, Apache Spark
+• Big Data, MLOps & Cloud: AWS (SageMaker, EC2, S3, KMS, IAM, Glue, Bedrock,
+  Lambda, Step Functions, ECR, EKS, CloudWatch, CloudFront, Route 53,
+  DynamoDB, SNS, Cognito, Certificate Manager), Jupyter Notebook, Apache Spark
   (PySpark), Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System
   Design, Large-Scale Systems
 • Software Engineering, Security & Ops: Agile Software Development, Development
@@ -160,7 +161,7 @@ AI/ML Workflow & Systems Engineer specializing in Machine Learning, ML Model Dep
 ## TECHNICAL SKILLS
 - **Languages & Core**: Fluent in English and Italian, Python, SQL, TypeScript, JavaScript, HTML, CSS, Node.js, Bash, Linux, C++, Data Structures & Algorithms, Statistics
 - **AI/ML/LLM & GenAI**: PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM, TensorRT-LLM, PEFT (LoRA, QLoRA), pgvector, OpenCV, Segment Anything 2 (SAM 2), MediaPipe, InsightFace, IPAdapter, ComfyUI, Synthetic Data Generation, Open3D, PyTorch3D, Meta Llama, Qwen, DeepSeek, Mistral, Claude, OpenAI, Amazon Nova/Titan, Google Gemini
-- **Big Data, MLOps & Cloud**: AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, Step Functions, ECR, EKS, CloudWatch, Cognito), Jupyter Notebook, Apache Spark (PySpark), Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System Design, Large-Scale Systems
+- **Big Data, MLOps & Cloud**: AWS (SageMaker, EC2, S3, KMS, IAM, Glue, Bedrock, Lambda, Step Functions, ECR, EKS, CloudWatch, CloudFront, Route 53, DynamoDB, SNS, Cognito, Certificate Manager), Jupyter Notebook, Apache Spark (PySpark), Docker, Terraform / AWS CDK, CI/CD (GitHub Actions), System Design, Large-Scale Systems
 - **Software Engineering, Security & Ops**: Agile Software Development, Development Security Operations (DevSecOps), FastAPI, React, PostgreSQL, REST APIs, NIST AI RMF, NIST CSF, ISO/IEC 42001, OWASP Top 10 for LLMs, Guardrails AI, Model-Based Systems Engineering (MBSE), JIRA, Confluence, SOP Development, Operational Reporting & Reconciliation
 
 ---
@@ -223,7 +224,7 @@ export const SKILLS_JSON = `{
       "OpenAI", "Amazon Nova/Titan", "Google Gemini"
     ],
     "big_data_mlops_and_cloud": [
-      "AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, Step Functions, ECR, EKS, CloudWatch, Cognito)",
+      "AWS (SageMaker, EC2, S3, KMS, IAM, Glue, Bedrock, Lambda, Step Functions, ECR, EKS, CloudWatch, CloudFront, Route 53, DynamoDB, SNS, Cognito, Certificate Manager)",
       "Jupyter Notebook", "Apache Spark (PySpark)", "Docker", "Terraform / AWS CDK",
       "CI/CD (GitHub Actions)", "System Design", "Large-Scale Systems"
     ],

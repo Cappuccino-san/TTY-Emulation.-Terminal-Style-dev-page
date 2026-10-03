@@ -16,7 +16,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: 'Tracking Massachusetts Airspace: Building a Real-Time Flight Radar',
     date: '2026-09-16',
     readTime: '4 min read',
-    tags: ['flight-tracker', 'real-time', 'opensky-network', 'api-integration', 'react'],
+    tags: ['React', 'System Design', 'API Integration'],
     summary: 'An overview of how I built the MA Flight Tracker, a localized radar system using OpenSky Network data for Massachusetts.',
     content: `# Tracking Massachusetts Airspace: Building a Real-Time Flight Radar
 
@@ -39,7 +39,7 @@ The next steps involve adding historical flight paths and predictive landing est
     title: 'Engineering Identity-Preserving Synthetic Datasets with Latent Diffusion & IPAdapter',
     date: '2026-08-14',
     readTime: '6 min read',
-    tags: ['genai', 'pytorch', 'comfyui', 'machine-learning', 'synthetic-data'],
+    tags: ['PyTorch', 'ComfyUI', 'IPAdapter', 'InsightFace', 'Synthetic Data Generation'],
     summary: 'Constructing deterministic age progression manifolds with IPAdapter FaceID, InsightFace embeddings, and custom latent trajectory interpolation.',
     content: `# Engineering Identity-Preserving Synthetic Datasets with Latent Diffusion & IPAdapter
 
@@ -98,7 +98,7 @@ To ensure reproducibility across batch pipelines:
     title: 'Architecting Distributed Big Data Pipelines for Multimodal Healthcare Records',
     date: '2026-07-28',
     readTime: '8 min read',
-    tags: ['pyspark', 'bigdata', 'aws-glue', 'data-engineering'],
+    tags: ['Apache Spark (PySpark)', 'AWS Glue', 'S3', 'Large-Scale Systems'],
     summary: 'How distributed PySpark transforms on AWS Glue cut multimodal ETL runtime by 68% across 10,000+ clinical records.',
     content: `# Architecting Distributed Big Data Pipelines for Multimodal Healthcare Records
 
@@ -172,7 +172,7 @@ def filter_and_transform_clinical_dataset(spark_df):
     title: 'Deterministic Optics: Combining MediaPipe, OpenCV, and 3D LiDAR Point Clouds',
     date: '2026-06-19',
     readTime: '7 min read',
-    tags: ['opencv', 'mediapipe', 'computer-vision', 'optics', 'lidar'],
+    tags: ['OpenCV', 'MediaPipe', 'Open3D'],
     summary: 'Sub-millimeter anatomical feature extraction, facial landmark alignment, and optical distortion calibration.',
     content: `# Deterministic Optics: Combining MediaPipe, OpenCV, and 3D LiDAR Point Clouds
 
@@ -245,7 +245,7 @@ By raycasting 2D landmark coordinates against the aligned 3D LiDAR point cloud, 
     title: 'Hardening Production GenAI & SageMaker Workflows for NIST CSF Compliance',
     date: '2026-05-10',
     readTime: '5 min read',
-    tags: ['aws', 'security', 'mlops', 'sagemaker', 'nist-csf', 'iso-iec-42001'],
+    tags: ['AWS', 'SageMaker', 'NIST CSF', 'ISO/IEC 42001', 'CI/CD (GitHub Actions)'],
     summary: 'Implementing least-privilege IAM, KMS encryption keys, CloudWatch drift telemetry, and automated CI/CD security scanning.',
     content: `# Hardening Production GenAI & SageMaker Workflows for NIST CSF Compliance
 
@@ -299,7 +299,7 @@ Every pull request building Docker images for Amazon ECR triggers:
     title: 'Building Stateful Compound AI Workflows with LangGraph, AWS Bedrock & pgvector',
     date: '2026-08-28',
     readTime: '6 min read',
-    tags: ['genai', 'langgraph', 'bedrock', 'pgvector', 'vllm', 'nist-ai-rmf'],
+    tags: ['LangGraph', 'AWS Bedrock', 'pgvector', 'vLLM', 'NIST AI RMF', 'Guardrails AI'],
     summary: 'Designing stateful agentic workflows with deterministic fallback routing, tool calling, self-correction loops, and Guardrails AI sanitization.',
     content: `# Building Stateful Compound AI Workflows with LangGraph, AWS Bedrock & pgvector
 
