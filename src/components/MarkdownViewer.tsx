@@ -279,10 +279,21 @@ export const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
         if (linkMatch[1]) parts.push(linkMatch[1]);
         const href = linkMatch[3];
         const label = linkMatch[2];
+        const isInternalCmd =
+          href.startsWith('cat ') ||
+          href.startsWith('ls ') ||
+          href.startsWith('cd ') ||
+          href.startsWith('/projects/') ||
+          href.startsWith('/posts/') ||
+          href.startsWith('projects/') ||
+          href.startsWith('posts/');
+        const cmdToRun = href.startsWith('/') || href.startsWith('projects/') || href.startsWith('posts/')
+          ? `cat ${href}`
+          : href;
         parts.push(
           <a
             key={`link-${key++}`}
-            href={href}
+            href={isInternalCmd ? `#${cmdToRun}` : href}
             target={href.startsWith('http') ? '_blank' : undefined}
             rel="noopener noreferrer"
             className="underline cursor-pointer hover:opacity-100"
@@ -291,6 +302,9 @@ export const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
               if (href.startsWith('mailto:')) {
                 e.preventDefault();
                 onCommandClick?.('mail');
+              } else if (isInternalCmd) {
+                e.preventDefault();
+                onCommandClick?.(cmdToRun);
               }
             }}
           >

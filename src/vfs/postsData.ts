@@ -356,6 +356,238 @@ For repetitive feature classification queries:
 - Reduced end-to-end P95 latency from **1,400ms down to 185ms** while saving over 70% in API inference costs.
 - Enforced strict compliance with **NIST AI RMF** risk management principles throughout the deployment lifecycle.
 `
+  },
+  {
+    slug: 'wanderweg-walking-tour-guide',
+    filename: 'wanderweg-walking-tour-guide.md',
+    title: 'Wanderweg: Building an Offline-First Flutter Walking Tour Guide for Germany',
+    date: '2026-10-29',
+    readTime: '5 min read',
+    tags: ['Flutter', 'Dart', 'SQLite', 'MBTiles', 'Offline-First', 'Mobile'],
+    summary: 'Designing a manifest-driven, walking-first Flutter tour guide for Berlin, Dresden, and Leipzig with 1-7 day dynamic city planning and a 7.0 MB Berlin SQLite MBTiles offline pack.',
+    content: `# Wanderweg: Building an Offline-First Flutter Walking Tour Guide for Germany
+
+> *"Walking only. No booking. No checkouts. No payments. No affiliate links. Just a great walk."*
+
+**Project Detail**: [projects/wanderweg.md](projects/wanderweg.md) | **GitHub Repository**: [github.com/Cappuccino-san/Wanderweg](https://github.com/Cappuccino-san/Wanderweg)  
+**Status**: In Progress (Code- and test-verified prototype; repository link only, no hosted demo link yet)
+
+---
+
+## 1. Overview & Stack
+**Wanderweg** is a multi-city walking tour guide built in **Flutter / Dart** for unhurried pedestrian travel across **Berlin, Dresden, and Leipzig**. Rather than cluttering the interface with ticket checkouts or affiliate links, the app focuses strictly on curated walking routes, offline map reliability, and plain-language pedestrian navigation.
+
+## 2. Curated Walks & Cities
+- **Berlin (Code- & Test-Verified Prototype)**: Features 3 curated walks — **Mitte Essentials**, **Kreuzberg Flavours & Landwehr Canal**, and **Cold War Borderlines & Eastward River Finish** — linking confirmed anchors (*Brandenburg Gate, Reichstag, Unter den Linden, Checkpoint Charlie, East Side Gallery*). East Side Gallery is structured as an eastward river finish / separate transit segment rather than forced on foot into the central walk.
+- **Dresden (Demo Proposal)**: Approved 1-day Baroque Spine (*Frauenkirche → Brühl's Terrace → Zwinger → Semperoper → Residenzschloss*) with an Innere Neustadt extension across the Elbe.
+- **Leipzig (Demo Proposal)**: Approved 1-day central spine weaving Bach's musical legacy and the 1989 Peaceful Revolution (*Markt / Altes Rathaus → Nikolaikirche → Mädler Passage → Thomaskirche → Augustusplatz*).
+- **Austria (Schema Stub)**: Included in \`city-manifest.json\` as a pure schema stub with zero invented cities or packs to verify multi-country extensibility.
+
+## 3. Country-to-City Planner & Berlin Offline Pack
+- **Dynamic 1–7 Day City Planner**: Reads countries and cities from \`city-manifest.json\`, supports city reordering, and lets travellers set **1–7 days per city**, dynamically resizing daily walking plans instead of cramming stops.
+- **Berlin Offline Pack**: Bundles a **7.0 MB SQLite MBTiles** archive containing **236 genuine OpenStreetMap pedestrian tiles** for full airplane-mode navigation.
+- **Live Walk Mode & Moon Mode UI**: High-contrast dark default theme (\`#101418\` canvas) with a 1-tap Sun/Moon toggle, 1-minute stop cards, off-route recovery, "End early to nearest station" shortcut, and a multi-city Trip Journal.
+- **Verification Honesty**: Verified by **37 passing Flutter tests** and **0 static analysis issues**. Content packs are code- and test-verified; food hours, prices, and walking timings have not yet been ground-walked in Germany.
+
+---
+
+### Links & Resources
+- **Inspect Project File**: [projects/wanderweg.md](projects/wanderweg.md) (\`cat projects/wanderweg.md\`)
+- **Source Code**: [https://github.com/Cappuccino-san/Wanderweg](https://github.com/Cappuccino-san/Wanderweg)
+`
+  },
+  {
+    slug: 'divisa-outfit-chatbot',
+    filename: 'divisa-outfit-chatbot.md',
+    title: 'Divisa: Zero-Dependency JavaScript Outfit Chatbot Across 13 Occasions',
+    date: '2026-10-29',
+    readTime: '5 min read',
+    tags: ['JavaScript', 'HTML5', 'CSS3', 'Rule-Based NLP', 'SVG', 'UI Design'],
+    summary: 'How Divisa locks a key garment, separates Male and Female presets across a 301-item catalogue, and renders 3-option outfit carousels with SVG Model/Flat-lay toggles for 13 occasions.',
+    content: `# Divisa: Zero-Dependency JavaScript Outfit Chatbot Across 13 Occasions
+
+**Project Detail**: [projects/divisa.md](projects/divisa.md) | **GitHub Repository**: [github.com/Cappuccino-san/Divisa](https://github.com/Cappuccino-san/Divisa)  
+**Status**: Active / Open Source
+
+---
+
+## 1. Overview & Architecture
+**Divisa** (Italian for *uniform*) is an outfit chatbot built in vanilla **JavaScript, HTML5, and CSS3** with zero build step and no external dependencies. You pick **Male** or **Female**, lock the specific piece(s) you want to wear, and receive complete outfits across **13 occasions** (**Night Out** first and default).
+
+\`\`\`
+User Input ──► DivisaParser.parseInput(text, gender) [Longest-Match + Colour Barrier]
+           ──► DivisaGender.audFits [Male (288) / Female (285) Filter]
+           ──► DivisaOutfits.buildOutfit(gender, occasion, locks, variant)
+           ──► DivisaModel.modelSVG / flatLayHTML + "Why it works" Notes
+\`\`\`
+
+## 2. Catalogue, Parser & Occasion Engine
+- **301-Item Catalogue**: Contains 288 Twelve70 vocabulary items (TOP 64, OUTERWEAR 68, BOTTOM 34, FOOTWEAR 122) plus 13 female staple garments. Male presets access 288 items and never receive female-only items; Female presets access 285 items and never receive male-only shoes or trousers.
+- **13 Occasions (Night Out First)**: Night Out (first and default), Club, Dinner, Family Gathering, Date Night, Brunch / Day Out, Party, Wedding, Formal, Concert / Gig, Christening, Job Interview, and Work / Smart.
+- **Interactive Outfit Cards**: Each occasion card provides a **3-variant carousel**, a **Model / Flat-lay toggle** (switching between an illustrated SVG figure dynamically coloured by the outfit and flat-lay item tiles with shade names and hex codes), and **"Why it works" notes**.
+- **Longest-Match Parser & Styling Guards**: Uses a consume-the-words parser with a colour barrier (*"white sambas and a harrington"* parses cleanly as White Sambas + plain Harrington, and *"dress shirt"* never triggers a dress), deterministic sock/hosiery rules, conversational dislike pivoting, and a wedding-white guard that flags white/ivory/cream guest items reserved for the bride.
+
+---
+
+### Links & Resources
+- **Inspect Project File**: [projects/divisa.md](projects/divisa.md) (\`cat projects/divisa.md\`)
+- **Source Code**: [https://github.com/Cappuccino-san/Divisa](https://github.com/Cappuccino-san/Divisa)
+`
+  },
+  {
+    slug: 'latin-translator-rule-based-nlp',
+    filename: 'latin-translator-rule-based-nlp.md',
+    title: 'Deterministic Latin NLP: Whitaker-Style Morphology, Syntax Parsing & Full Virgil Corpus Browser',
+    date: '2026-10-29',
+    readTime: '6 min read',
+    tags: ['Python', 'FastAPI', 'Pydantic', 'NLP', 'Computational Linguistics', 'Pytest'],
+    summary: 'Engineering a rule-based Python/FastAPI Latin NLP analyzer with declensions 1-5, conjugations 1-4, irregular verbs, 4,596 lexicon entries, and 94.0% token recognition across Virgil.',
+    content: `# Deterministic Latin NLP: Whitaker-Style Morphology, Syntax Parsing & Full Virgil Corpus Browser
+
+**Project Detail**: [projects/latin-translator.md](projects/latin-translator.md) | **GitHub Repository**: [github.com/Cappuccino-san/latin-translator](https://github.com/Cappuccino-san/latin-translator)  
+**Status**: Active / Open Source
+
+---
+
+## 1. Why Deterministic Rule-Based Latin NLP?
+Instead of hallucinating fluent paraphrases, this **Python / FastAPI** Latin NLP system implements a testable, auditable grammar pipeline: **Lexer → Whitaker-Style Morphology → Curated Lexicon → Syntactic Parser → Web UI / REST API / Chrome Extension**. It delivers word-by-word literal glosses and grammatical parse explanations — explicitly **not** fluent English machine translation.
+
+## 2. Morphology, Syntax & Virgil Browser
+- **Whitaker-Style Morphology**: Handles Latin nouns across **declensions 1–5**, verbs across **conjugations 1–4**, adjectives, and irregular verbs (**esse, ire, fero, volo, possum**), stripping enclitics (\`-que\`, \`-ve\`, \`-ne\`) and normalizing macrons.
+- **Syntactic Role & Case Explanations**: Resolves subject-verb agreement (including implied 1st/2nd/3rd person pronouns), direct objects, prepositional governance, accusative of duration (*per multos annos*), accusative-plus-infinitive (*AcI*), vocative address (*Musa*), and ablative constructions (means, separation/agent, place where, time, and ablative absolute).
+- **Complete Virgil Corpus Browser**: Serves all 26 books of Virgil (*Aeneid* Books I–XII, *Eclogues* Poems I–X, *Georgics* Books I–IV — **12,915 lines / 83,612 word tokens**) with an interactive Sentence Picker, bilingual reader (\`/virgil/read\`), and credited public-domain translations (Williams 1910, Rhoades 1921). Unknown tokens are transparently marked \`[unknown]\` with \`0.00\` confidence.
+
+## 3. Key Metrics & Benchmark Honesty
+- **Lexicon Size**: **4,596** verified entries.
+- **Golden Benchmark**: **4,530 / 4,530** attested forms (100.0% F1 in-distribution regression test).
+- **Pytest Suite**: **137** passing unit and integration tests.
+- **Virgil Token Recognition**: **94.0%** (**78,617 / 83,612** tokens recognized across the full Virgil corpus; 100% on *Aeneid* 1.1–33).
+- **Coverage Caveat**: Coverage measures **tokens recognized** by the lexicon and morphology engine, not end-to-end dependency parse accuracy on poetic syntax.
+
+---
+
+### Links & Resources
+- **Inspect Project File**: [projects/latin-translator.md](projects/latin-translator.md) (\`cat projects/latin-translator.md\`)
+- **Source Code**: [https://github.com/Cappuccino-san/latin-translator](https://github.com/Cappuccino-san/latin-translator)
+`
+  },
+  {
+    slug: 'aethelgard-sovereign-cognitive-twin',
+    filename: 'aethelgard-sovereign-cognitive-twin.md',
+    title: 'Project Aethelgard: Local-First Sovereign Cognitive Twin & Cryptographic Provenance Engine',
+    date: '2026-10-28',
+    readTime: '6 min read',
+    tags: ['Python', 'SQLite', 'KùzuDB', 'FastMCP', 'Cryptography', 'Hybrid Search'],
+    summary: 'Preserving verifiable engineering context with a BLAKE3 + Ed25519 SQLite WAL ledger, decoupled FTS5 + sqlite-vec + KùzuDB views, 3-way hybrid RRF search, and FastMCP.',
+    content: `# Project Aethelgard: Local-First Sovereign Cognitive Twin & Cryptographic Provenance Engine
+
+> *"Models will come and go. Aethelgard is the part that stays, remembers, and can prove what it remembers."*
+
+**Project Detail**: [projects/aethelgard.md](projects/aethelgard.md) | **GitHub Repository**: [github.com/Cappuccino-san/Aethelgard](https://github.com/Cappuccino-san/Aethelgard)  
+**Status**: Active / v1.0.0 (Code repository only — never includes runtime \`ledger.db\`, graph files, signing keys, or secrets)
+
+---
+
+## 1. Overview & Cryptographic Ledger
+As foundation models commoditize, your engineering context — decisions made, alternatives rejected, and execution lineage — remains scattered across ephemeral chats and commit logs. **Aethelgard** is a local-first Python provenance engine that records events into an append-only **SQLite WAL ledger** formatted in RFC 8785 Canonical JSON, linked via a **BLAKE3 Merkle hash chain**, and signed with a persistent **Ed25519** key stored outside the repository. Before any event is persisted, a **Privacy Airlock** scrubs high-entropy secrets and credentials.
+
+## 2. Decoupled Views, 3-Way Hybrid RRF & FastMCP
+- **Three Disposable Views**: The immutable ledger projects into **SQLite FTS5** (BM25 lexical search), **sqlite-vec** (768d semantic vectors via Ollama \`nomic-embed-text\` with deterministic fallback), and **KùzuDB** (property graph tracking \`Decision\`, \`ExecutionArtifact\`, and \`SUPERSEDES\` edges). All views are disposable and rebuildable via \`twin rebuild-views\`.
+- **3-Way Hybrid Reciprocal Rank Fusion (RRF)**: Combines lexical, vector, and graph rankings while penalizing superseded decisions and applying exponential half-life time decay.
+- **FastMCP Bridge & Passive Capture**: Exposes 5 canonical MCP tools over \`stdio\` (\`recall_context\`, \`commit_decision\`, \`trace_entity_history\`, \`log_execution_artifact\`, \`verify_provenance\`) plus a non-blocking Git post-commit hook and Watchdog daemon.
+
+## 3. Security Honesty: Tamper-Evident, NOT Tamper-Proof
+- **Tamper-Evident**: \`twin verify\` detects silent middle edits or broken hashes/signatures across the Merkle chain. It is **not tamper-proof**: an adversary with access to both the local ledger and the local Ed25519 key could rewrite and re-sign the history, and timestamps are local rather than external trusted time.
+- **Strict Artifact Hygiene**: Code link only — runtime \`ledger.db\`, KùzuDB graph files, signing keys, and secrets are never committed or linked.
+
+---
+
+### Links & Resources
+- **Inspect Project File**: [projects/aethelgard.md](projects/aethelgard.md) (\`cat projects/aethelgard.md\`)
+- **Source Code**: [https://github.com/Cappuccino-san/Aethelgard](https://github.com/Cappuccino-san/Aethelgard)
+`
+  },
+  {
+    slug: 'rag-decision-system-architecture',
+    filename: 'rag-decision-system-architecture.md',
+    title: 'Beyond Chat Answers: Building a Structured RAG Policy & Compliance Decision System',
+    date: '2026-10-20',
+    readTime: '5 min read',
+    tags: ['Python', 'FastAPI', 'Pydantic', 'RAG', 'LangChain', 'Semantic Search'],
+    summary: 'Ingesting policy/compliance docs with section-aware chunking and semantic search to return approve/flag/reject decisions with citations and calibrated confidence scores.',
+    content: `# Beyond Chat Answers: Building a Structured RAG Policy & Compliance Decision System
+
+> *"A RAG chatbot gives you a paragraph and hopes you're convinced. Systems that act on an answer need a schema, evidence, and a number they can set a threshold on."*
+
+**Project Detail**: [projects/rag-decision-system.md](projects/rag-decision-system.md) | **GitHub Repository**: [github.com/Cappuccino-san/RAG-Decision-System](https://github.com/Cappuccino-san/RAG-Decision-System)  
+**Status**: Active / Open Source
+
+---
+
+## 1. Overview & Pipeline Design
+Built with **Python, FastAPI, Pydantic, and LangChain**, the **RAG-Powered Decision System** evaluates proposed actions against policy and compliance documents and returns a structured Pydantic \`DecisionResult\` — \`approve\`, \`flag\`, \`reject\`, or \`needs_human_review\` — paired with exact section citations and a confidence score computed directly from retrieval evidence.
+
+\`\`\`json
+{
+  "decision": "reject",
+  "rationale": "Vendors may only receive data after a security review and a signed DPA.",
+  "risk_flags": ["vendor_sharing_without_dpa_or_review", "external_data_sharing_needs_verification"],
+  "confidence": 0.61,
+  "citations": [{"document": "vendor_risk.md", "section": "Before sharing data with a vendor", "score": 0.71}]
+}
+\`\`\`
+
+## 2. Section-Aware Chunking, Retrieval & Guardrailed Decisions
+- **Section-Aware Chunking & Pluggable Embeddings**: Splits policy Markdown by section headers with overlap (\`ingest/chunker.py\`) and supports \`hashing\` (offline deterministic default), \`local\` (\`sentence-transformers\` \`all-MiniLM-L6-v2\`), and \`openai\` embedding modes.
+- **Evidence-Computed Confidence**: Calculates confidence from best-match cosine similarity, top-result consistency, and source coverage — never from LLM self-reported confidence.
+- **Deterministic Risk Rules + Guardrailed LLM**: Named rules (\`decide/rules.py\`) enforce policy prohibitions and conditions; an optional LangChain decider is guardrailed so it cannot override a prohibition or a low-confidence human-review escalation.
+- **Architectural Scope**: Uses synthetic policy documents and an **in-memory vector store** with JSON persistence (\`vectorstore.py\`) to demonstrate testable retrieval and decision evaluation (scoring 9/9 decision accuracy and 8/8 retrieval hit rate in \`eval/evaluate.py\`), rather than claiming to be a managed production vector database.
+
+---
+
+### Links & Resources
+- **Inspect Project File**: [projects/rag-decision-system.md](projects/rag-decision-system.md) (\`cat projects/rag-decision-system.md\`)
+- **Source Code**: [https://github.com/Cappuccino-san/RAG-Decision-System](https://github.com/Cappuccino-san/RAG-Decision-System)
+`
+  },
+  {
+    slug: 'workflow-orchestrator-deterministic-triage',
+    filename: 'workflow-orchestrator-deterministic-triage.md',
+    title: 'AI Workflow Orchestrator: Deterministic Triage for Tickets, Emails & Log Alerts',
+    date: '2026-10-20',
+    readTime: '5 min read',
+    tags: ['Python', 'FastAPI', 'Pydantic', 'LangChain', 'SQLite', 'System Design'],
+    summary: 'Combining a LangChain structured classifier (with rules fallback), deterministic P1-P4 priority rules, confidence gating, and a full SQLite audit trail in Python and FastAPI.',
+    content: `# AI Workflow Orchestrator: Deterministic Triage for Tickets, Emails & Log Alerts
+
+> *"Most AI demos stop at 'the model answered.' Real operations teams need: classification → rules → action → audit, with a human gate wherever the model isn't confident enough to act."*
+
+**Project Detail**: [projects/workflow-orchestrator.md](projects/workflow-orchestrator.md) | **GitHub Repository**: [github.com/Cappuccino-san/Workflow-Orchestrator](https://github.com/Cappuccino-san/Workflow-Orchestrator)  
+**Status**: Active / Open Source
+
+---
+
+## 1. Overview & 6-Stage Triage Pipeline
+Built with **Python, FastAPI, Pydantic, LangChain, and SQLite**, the **AI Workflow Orchestrator** unifies operational triage across incoming **tickets, emails, and log alerts**:
+1. **Ingest**: Normalizes raw tickets, emails, and logs into a unified Pydantic \`WorkItem\` schema.
+2. **Classify**: Uses a LangChain structured-output LLM classifier (\`CLASSIFIER_MODE=llm\`) or a deterministic rules fallback to extract category, urgency, sentiment, and confidence.
+3. **Prioritize**: A deterministic Python rules engine (\`rules/engine.py\`) assigns **P1–P4** priority and target queue (\`security\`, \`platform-oncall\`, \`general-triage\`). The LLM never decides priority — identical inputs always produce identical priorities.
+4. **Gate**: Routes items with confidence below threshold to \`[HUMAN REVIEW]\` instead of auto-routing.
+5. **Act**: Executes mocked, safe actions (queue routing and acknowledgement drafting).
+6. **Audit**: Records every item, classification, rule fired, action, and timestamp in a **SQLite audit log** (\`audit.py\`) for full replayability and inspection via \`/triage\`, \`/triage/batch\`, \`/audit\`, and \`/health\`.
+
+\`\`\`
+T-1001  ticket -> security  high      P1  queue=security         rule=high_urgency_security_or_outage  conf=0.88  [auto-routed]
+L-2001  log    -> outage    critical  P1  queue=platform-oncall  rule=critical_urgency                 conf=0.88  [auto-routed]
+T-1003  ticket -> other     medium    P3  queue=general-triage   rule=default                          conf=0.40  [HUMAN REVIEW]
+\`\`\`
+
+---
+
+### Links & Resources
+- **Inspect Project File**: [projects/workflow-orchestrator.md](projects/workflow-orchestrator.md) (\`cat projects/workflow-orchestrator.md\`)
+- **Source Code**: [https://github.com/Cappuccino-san/Workflow-Orchestrator](https://github.com/Cappuccino-san/Workflow-Orchestrator)
+`
   }
 ];
 
