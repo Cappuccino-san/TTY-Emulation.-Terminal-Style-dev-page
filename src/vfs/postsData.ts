@@ -588,6 +588,46 @@ T-1003  ticket -> other     medium    P3  queue=general-triage   rule=default   
 - **Inspect Project File**: [projects/workflow-orchestrator.md](projects/workflow-orchestrator.md) (\`cat projects/workflow-orchestrator.md\`)
 - **Source Code**: [https://github.com/Cappuccino-san/Workflow-Orchestrator](https://github.com/Cappuccino-san/Workflow-Orchestrator)
 `
+  },
+  {
+    slug: 'iphone-lockscreen-tool-resizer',
+    filename: 'iphone-lockscreen-tool-resizer.md',
+    title: 'iPhone Lockscreen Tool: Single-File On-Device Wallpaper Resizer & Black-Bar Trimmer',
+    date: '2026-10-29',
+    readTime: '4 min read',
+    tags: ['HTML5', 'JavaScript', 'CSS3', 'Canvas API', 'Image Processing', 'Offline-First'],
+    summary: 'Building a self-contained HTML tool that auto-trims screenshot black bars, previews live with clock and % visible across 14 iPhone models, and exports native JPGs or ZIPs on-device.',
+    content: `# iPhone Lockscreen Tool: Single-File On-Device Wallpaper Resizer & Black-Bar Trimmer
+
+> *"Resize any image to an exact iPhone lockscreen wallpaper — no cropping guesswork, no black bars, no spaces. Everything runs locally in your browser."*
+
+**Project Detail**: [projects/iphone-lockscreen-tool.md](projects/iphone-lockscreen-tool.md) | **GitHub Repository**: [github.com/Cappuccino-san/iPhone-Lockscreen-Tool](https://github.com/Cappuccino-san/iPhone-Lockscreen-Tool)  
+**Status**: Active / Open Source
+
+---
+
+## 1. Overview & Zero-Build Single-File Architecture
+**iPhone Lockscreen Tool** (\`iphone-lockscreen-tool.html\`) is a single self-contained HTML file that turns landscape screenshots, anime stills, or photos into pixel-exact iPhone lockscreen wallpapers. All image processing runs 100% locally on-device in the browser using the HTML5 Canvas API — no uploads, no backend server, and no build step.
+
+- **Target Resolutions**: Defaults to **iPhone 14 (1170 × 2532)** with **13 other iPhone models** available.
+- **Formats & Exports**: Accepts single or batch JPG, PNG, and WebP files and exports at native device resolution as a **single JPG** or a **batch ZIP archive** (with automatic sequential download fallback).
+
+## 2. Resizing Modes, Auto-Trimming & Live Preview
+- **Four Framing Modes**:
+  - **Fill**: Edge-to-edge full crop with no spaces.
+  - **Balanced (62% Default)**: Scales the image to fill **62%** of screen height by default (adjustable), preserving more horizontal context than Fill with smaller top/bottom fills.
+  - **Extend**: Keeps 100% of the image visible and mirrors the scene above and below without blur bands.
+  - **Fit**: Keeps 100% of the image visible with a blurred fill above and below.
+- **Automatic Black-Bar Trimming**: Detects and strips baked-in letterbox/pillarbox black bars from screenshots before computing the target crop.
+- **Interactive Phone Preview**: Displays a live lockscreen preview with the iOS clock overlay, **drag-to-reframe** support (plus arrow-key nudging on desktop), and a real-time **% visible** indicator.
+- **On-Device Self-Check Suite**: Includes a built-in **Run tests** runner that verifies native resolution output, black-bar trimming, all 4 modes, JPG generation, safe/unique filenames, and batch export directly on-device.
+
+---
+
+### Links & Resources
+- **Inspect Project File**: [projects/iphone-lockscreen-tool.md](projects/iphone-lockscreen-tool.md) (\`cat projects/iphone-lockscreen-tool.md\`)
+- **Source Code**: [https://github.com/Cappuccino-san/iPhone-Lockscreen-Tool](https://github.com/Cappuccino-san/iPhone-Lockscreen-Tool)
+`
   }
 ];
 
