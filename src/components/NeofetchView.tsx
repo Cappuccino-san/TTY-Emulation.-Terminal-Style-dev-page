@@ -18,13 +18,13 @@ const ASCII_LOGO = `
 export const NeofetchView: React.FC<NeofetchViewProps> = ({ themeConfig, onCommandClick }) => {
   const infoItems = [
     { label: 'Engineer', value: 'Nicholas Napoli (AI/ML Workflow & Systems Engineer)' },
-    { label: 'Location', value: 'Winthrop, MA' },
+    { label: 'Location', value: 'Winthrop, MA & Tampa, FL' },
     { label: 'Certifications', value: 'AWS Certified AI Practitioner (AIF-C01) | Amazon Web Services | Issued Mar 2026' },
     { label: 'Education', value: 'M.S. Security Studies (GPA: 3.90) | B.S. (Cum Laude, GPA: 3.50)' },
-    { label: 'Languages', value: 'Fluent in English and Italian, Python, SQL, TypeScript, JavaScript, HTML, CSS, Node.js, Bash, Linux, C++, Data Structures & Algorithms, Statistics' },
-    { label: 'AI/ML & GenAI', value: 'PyTorch, AWS Bedrock, LangGraph, LlamaIndex, vLLM, TensorRT-LLM, PEFT, pgvector, SAM 2, OpenCV, MediaPipe' },
-    { label: 'Big Data & Cloud', value: 'AWS, Jupyter Notebook, Apache Spark (PySpark), Docker, Terraform / AWS CDK, System Design' },
-    { label: 'Security & Ops', value: 'Agile, DevSecOps, FastAPI, React, PostgreSQL, NIST AI RMF, NIST CSF, ISO/IEC 42001, OWASP Top 10, Guardrails AI, MBSE' },
+    { label: 'Languages', value: 'Fluent in English and Italian, Python, SQL, TypeScript, JavaScript, HTML, CSS, Node.js, Bash, PowerShell, Linux, C++, Data Structures & Algorithms, Statistics' },
+    { label: 'AI/ML & GenAI', value: 'PyTorch, AWS Bedrock, LangGraph, LangChain, LlamaIndex, MCP, RAG, vLLM, TensorRT-LLM, PEFT, pgvector, SAM 2, OpenCV, MediaPipe' },
+    { label: 'Big Data & Cloud', value: 'AWS, Azure, GCP, Supabase, Jupyter Notebook, Apache Spark (PySpark), Docker, AWS CDK, System Design, Large-Scale Systems' },
+    { label: 'Security & Ops', value: 'Git, DevSecOps, FastAPI, Pydantic, React, PostgreSQL, SQLite, MySQL, REST APIs, NIST AI RMF, NIST CSF, MITRE ATT&CK, ISO/IEC 42001, OWASP Top 10, Guardrails AI, Wireshark, TCP/UDP, MBSE, JIRA, Confluence, ClickUp' },
     { label: 'Contact', value: 'njnapoli99@gmail.com | (857) 205-3266' },
     { label: 'Website', value: 'https://napnet.click/' },
     { label: 'LinkedIn', value: 'linkedin.com/in/nicholas-napoli476' },
