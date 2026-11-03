@@ -628,6 +628,85 @@ T-1003  ticket -> other     medium    P3  queue=general-triage   rule=default   
 - **Inspect Project File**: [projects/iphone-lockscreen-tool.md](projects/iphone-lockscreen-tool.md) (\`cat projects/iphone-lockscreen-tool.md\`)
 - **Source Code**: [https://github.com/Cappuccino-san/iPhone-Lockscreen-Tool](https://github.com/Cappuccino-san/iPhone-Lockscreen-Tool)
 `
+  },
+  {
+    slug: 'production-agent-patterns-reference-architectures',
+    filename: 'production-agent-patterns-reference-architectures.md',
+    title: 'Production Agent Patterns: 15 Enterprise Architectures for Agentic AI Engineering',
+    date: '2026-11-03',
+    readTime: '6 min read',
+    tags: ['Python', 'FastAPI', 'LangGraph', 'Pydantic', 'SQLite', 'Docker', 'Agentic AI', 'OpenTelemetry', 'Pytest'],
+    summary: 'A deep dive into 15 battle-tested enterprise agentic architectures covering autonomous execution loops, human-in-the-loop gates, inter-agent security proxies, and containerized micro-sandboxes.',
+    content: `# Production Agent Patterns: 15 Enterprise Architectures for Agentic AI Engineering
+
+> *"Moving agentic AI from brittle demo scripts to resilient enterprise production requires strict schemas, deterministic validation gates, observable telemetry, and sandboxed execution."*
+
+**Project Detail**: [projects/production-agent-patterns.md](projects/production-agent-patterns.md) | **GitHub Repository**: [github.com/Cappuccino-san/Production-Agent-Patterns](https://github.com/Cappuccino-san/Production-Agent-Patterns)  
+**Status**: Active / Open Source
+
+---
+
+## 1. Beyond the Toy ReAct Loop
+
+Most agent tutorials rely on unbounded prompt loops with freeform string outputs and uncontrolled tool access. In enterprise environments, this approach leads to cascading hallucinations, unpredictable cost spikes, and security vulnerabilities.
+
+The **Production Agent Patterns** repository provides 15 standalone, production-ready reference implementations engineered around five foundational pillars:
+- **Strict Pydantic v2 Contracts**: Every inter-agent message and tool parameter is typed and validated.
+- **Explicit State Machines**: Workflows are modeled as directed graphs with LangGraph, ensuring auditable state transitions.
+- **Local-First Persistence**: Execution states and telemetry persist to SQLite WAL (\`journal_mode=WAL\`) with FTS5 lexical indexing.
+- **Zero-Trust Security & Sandboxing**: Code execution occurs in isolated, resource-capped containers without network egress.
+- **Observability by Design**: Distributed tracing with OpenTelemetry spans every LLM hop, tool call, and human approval gate.
+
+---
+
+## 2. Core Autonomous Architectures
+
+1. **Prompt-to-Code ReAct Agent (\`01-prompt-to-code-react-agent\`)**:
+   Implements an autonomous reasoning-action loop with AST parsing gates that validate Python syntax before execution, persisting run traces to SQLite WAL.
+2. **Hybrid RAG with SQLite FTS5 (\`02-rag-hybrid-sqlite-fts5-agent\`)**:
+   Implements Reciprocal Rank Fusion (RRF) across dense vector embeddings and SQLite FTS5 BM25 lexical search, avoiding heavy external vector infrastructure when local SQLite suffices.
+3. **Plan-and-Execute DAG Workflow (\`03-plan-and-execute-workflow-agent\`)**:
+   Deconstructs ambiguous objectives into a dependency graph of discrete tasks. When individual steps fail, an execution replanner adjusts the DAG without restarting from scratch.
+4. **Self-Reflective Critic (\`04-self-reflective-critic-agent\`)**:
+   Dual-agent Actor-Critic pattern where an evaluator agent scores candidate solutions against structured rubrics, with strict convergence thresholds to prevent infinite critique loops.
+5. **Human-in-the-Loop Gate (\`05-human-in-the-loop-approval-agent\`)**:
+   Tokenized pause-and-resume workflows utilizing LangGraph interrupts, persisting paused state so humans can approve high-risk actions.
+6. **Typed Multi-Agent Swarm (\`06-typed-multi-agent-swarm\`)**:
+   Specialized Researcher, Coder, and Reviewer agents collaborating via structured Pydantic models rather than loose conversational text.
+
+---
+
+## 3. Governance, Observability & Security
+
+7. **Async Slack HITL Gate (\`07-async-hitl-slack-gate\`)**:
+   Dispatches interactive Slack Block Kit cards to on-call channels, allowing approvals or rejections via webhook callbacks that safely resume long-running agent workflows.
+8. **Trajectory Eval CI Gate (\`08-trajectory-eval-ci-gate\`)**:
+   Replays recorded agent execution trajectories against golden reference DAGs during CI/CD to detect regressions in reasoning paths or tool selection.
+9. **OpenTelemetry Tracer (\`09-opentelemetry-agent-tracer\`)**:
+   Standardized distributed tracing emitting spans across model calls, prompt assembly, and tool invocations compatible with OpenTelemetry collectors.
+10. **Inter-Agent Sanitization Proxy (\`10-inter-agent-sanitization-proxy\`)**:
+    Security layer placed between interacting agents to inspect and sanitize data, neutralizing prompt injection attacks and preventing data exfiltration.
+11. **Sandboxed Code Executor (\`11-sandboxed-code-executor\`)**:
+    Hardened Docker micro-sandbox enforcing CPU/memory quotas, execution timeouts, and complete egress network isolation for generated code.
+12. **Cost Kill-Switch Middleware (\`12-cost-kill-switch-middleware\`)**:
+    Middleware that tracks token expenditure in real time, automatically terminating runs or degrading to smaller models when threshold limits are reached.
+
+---
+
+## 4. Resilience & Production Operations
+
+13. **API-to-Browser Fallback (\`13-api-to-browser-fallback-agent\`)**:
+    Dynamic routing agent that falls back to Playwright headless browser automation whenever primary REST APIs encounter downtime or rate limits.
+14. **Shadow Trajectory Comparator (\`14-shadow-trajectory-comparator\`)**:
+    Runs prospective agent versions in shadow mode alongside production traffic, diffing token cost, latency, and step accuracy before deployment.
+15. **Architecture Teardown Cockpit (\`15-public-architecture-teardown\`)**:
+    A visual dashboard comparing topologies, cost benchmarks, and state machine transitions across all 15 architectures.
+
+---
+
+### Links & Resources
+- **Inspect Project File**: [projects/production-agent-patterns.md](projects/production-agent-patterns.md) (\`cat projects/production-agent-patterns.md\`)
+- **Source Code**: [https://github.com/Cappuccino-san/Production-Agent-Patterns](https://github.com/Cappuccino-san/Production-Agent-Patterns)
+`
   }
 ];
-
