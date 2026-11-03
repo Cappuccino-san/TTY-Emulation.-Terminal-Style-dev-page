@@ -10,6 +10,7 @@ import {
 import { BLOG_POSTS } from '../vfs/postsData';
 import { PROJECTS } from '../vfs/projectsData';
 import { MAN_PAGES, MAIN_HELP_MAN } from './manPages';
+import { AGENT_TOOLS, getToolsOverviewMarkdown } from './agentToolsData';
 
 // Helper to format byte sizes
 export function formatBytes(bytes: number): string {
@@ -625,6 +626,49 @@ export function executeTerminalCommand(
     };
   }
 
+  // 22c. TOOLS / AGENTS / PATTERNS (15 Enterprise Agentic AI Architectures)
+  if (cmd === 'tools' || cmd === 'agents' || cmd === 'agent' || cmd === 'patterns') {
+    const target = cmdArgs[0]?.toLowerCase();
+    
+    // If no argument or 'list' or 'help', return full interactive overview
+    if (!target || target === 'list' || target === 'help' || target === 'all') {
+      return {
+        type: 'markdown',
+        content: {
+          title: '15 Tools — Production Agentic AI Architectures',
+          filename: '15-tools-overview.md',
+          date: '2026-11-03',
+          content: getToolsOverviewMarkdown(),
+          path: '/projects/production-agent-patterns.md',
+        },
+      };
+    }
+
+    // Try finding by ID (e.g. '1', '01') or by slug substring (e.g. 'react', 'rag', 'swarm')
+    const toolNum = parseInt(target, 10);
+    const matchedTool = AGENT_TOOLS.find(
+      (t) => t.id === toolNum || t.slug.includes(target) || t.name.toLowerCase().includes(target)
+    );
+
+    if (matchedTool) {
+      return {
+        type: 'markdown',
+        content: {
+          title: matchedTool.name,
+          filename: `${matchedTool.slug}.md`,
+          date: '2026-11-03',
+          content: matchedTool.simulation,
+          path: '/projects/production-agent-patterns.md',
+        },
+      };
+    }
+
+    return {
+      type: 'warning',
+      content: `Agent tool '${target}' not found. Valid IDs: 1 to 15 (e.g. 'tools 1' or 'agent react'). Type 'tools' to view the full catalog.`,
+    };
+  }
+
   // 23. FORTUNE / COWSAY
   if (cmd === 'fortune' || cmd === 'cowsay') {
     const randomQuote = FORTUNES[Math.floor(Math.random() * FORTUNES.length)];
@@ -717,7 +761,7 @@ export function executeTerminalCommand(
 
   // Unknown command fallback with smart suggestions
   const allKnownCmds = [
-    'resume', 'cv', 'skills', 'experience', 'education', 'contact', 'projects', 'posts',
+    'resume', 'cv', 'skills', 'experience', 'education', 'contact', 'projects', 'posts', 'tools', 'agents', 'agent',
     'ls', 'cat', 'cd', 'whoami', 'mail', 'help', 'man', 'grep',
     'theme', 'audio', 'scanlines', 'crt', 'tree', 'neofetch',
     'matrix', 'weather', 'tags', 'fortune', 'history', 'clear', 'pwd',

@@ -283,6 +283,8 @@ export const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
           href.startsWith('cat ') ||
           href.startsWith('ls ') ||
           href.startsWith('cd ') ||
+          href.startsWith('tools') ||
+          href.startsWith('agent') ||
           href.startsWith('/projects/') ||
           href.startsWith('/posts/') ||
           href.startsWith('projects/') ||

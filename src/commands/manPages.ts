@@ -23,6 +23,7 @@ All career milestones, technical skills, production AI/ML systems, and deep-dive
     { cmd: 'experience', desc: 'Display professional engineering work history and achievements.', example: 'experience' },
     { cmd: 'education', desc: 'Display academic credentials (UMass Lowell M.S. 3.90 GPA, High Point B.S. Cum Laude, AWS Certified AI Practitioner).', example: 'education' },
     { cmd: 'projects', desc: 'Browse flagship production machine learning pipelines and full-stack systems.', example: 'projects' },
+    { cmd: 'tools [1-15]', desc: 'Interactive execution traces & architecture cockpit for 15 Production Agentic AI patterns.', example: 'tools 1' },
     { cmd: 'posts', desc: 'List technical engineering write-ups and pipeline architectural blueprints.', example: 'posts' },
     { cmd: 'whoami', desc: 'Display author identity, professional summary, contact info, and coordinates.', example: 'whoami' },
     { cmd: 'mail', desc: 'Launch interactive message composer to contact Nicholas Napoli directly (njnapoli99@gmail.com).', example: 'mail' },

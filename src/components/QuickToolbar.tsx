@@ -17,6 +17,7 @@ import {
   Quote,
   CloudSun,
   Plane,
+  Bot,
 } from 'lucide-react';
 
 interface QuickToolbarProps {
@@ -33,6 +34,7 @@ export const QuickToolbar: React.FC<QuickToolbarProps> = ({
     { label: 'resume', icon: <Award size={11} />, desc: 'Resume' },
     { label: 'skills', icon: <Cpu size={11} />, desc: 'Skills Matrix' },
     { label: 'projects', icon: <Folder size={11} />, desc: 'AI/ML Projects' },
+    { label: 'tools', icon: <Bot size={11} />, desc: '15 Agentic Tools' },
     { label: 'posts', icon: <FileText size={11} />, desc: 'Articles' },
     { label: 'experience', icon: <Briefcase size={11} />, desc: 'Experience' },
     { label: 'education', icon: <GraduationCap size={11} />, desc: 'Education & Certs' },

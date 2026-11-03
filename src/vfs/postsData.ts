@@ -708,5 +708,61 @@ The **Production Agent Patterns** repository provides 15 standalone, production-
 - **Inspect Project File**: [projects/production-agent-patterns.md](projects/production-agent-patterns.md) (\`cat projects/production-agent-patterns.md\`)
 - **Source Code**: [https://github.com/Cappuccino-san/Production-Agent-Patterns](https://github.com/Cappuccino-san/Production-Agent-Patterns)
 `
+  },
+  {
+    slug: 'mlops-lifecycle-airflow-mlflow',
+    filename: 'mlops-lifecycle-airflow-mlflow.md',
+    title: 'Automating Model Lifecycle & Retraining DAGs: Production MLOps with MLflow & Apache Airflow',
+    date: '2026-11-03',
+    readTime: '5 min read',
+    tags: ['MLflow', 'Apache Airflow', 'Docker', 'CI/CD (GitHub Actions)', 'AWS S3', 'Model Registry', 'Automation'],
+    summary: 'Designing resilient MLOps architectures for automated drift detection, model evaluation gates, and continuous retraining with MLflow and Apache Airflow.',
+    content: `# Automating Model Lifecycle & Retraining DAGs: Production MLOps with MLflow & Apache Airflow
+
+> *"ML models in production don't fail loudly with stack traces; they fail silently through distribution drift. Resilient systems automate the entire lifecycle from drift detection to canary deployment."*
+
+**Project Detail**: [projects/mlops-lifecycle-airflow-mlflow.md](projects/mlops-lifecycle-airflow-mlflow.md) | **GitHub Repository**: [github.com/cappuccino-san/mlops-airflow-pipeline](https://github.com/cappuccino-san/mlops-airflow-pipeline)  
+**Status**: Shipped / Production
+
+---
+
+## 1. The Challenge of Silent Model Degradation
+In multimodal clinical workflows and real-time inference systems, data distributions continuously shift. Relying on manual retraining cycles creates operational lag and risk.
+
+This architecture standardizes:
+- **Centralized Experiment & Model Registry**: Tracking hyperparameters, metrics, and versioned weights in MLflow.
+- **Automated DAG Scheduling**: Apache Airflow DAGs monitoring data quality and feature drift.
+- **Validation Gates & Transition Hooks**: Blocking model promotion unless automated eval benchmarks exceed the current production champion.
+- **Zero-Downtime Blue/Green Deployments**: Containerized inference services updated dynamically via CI/CD.
+
+---
+
+## 2. Airflow DAG Workflow
+
+\`\`\`mermaid
+flowchart TD
+    A["Airflow Sensor: Daily Data Drift Check"] --> B{"Drift > Threshold (15%)?"}
+    B -- No --> C["Log Telemetry & Stand Down"]
+    B -- Yes --> D["Trigger Retraining Task Pod"]
+    D --> E["MLflow Experiment Run & Metrics"]
+    E --> F{"Eval Metric > Production Champion?"}
+    F -- No --> G["Alert MLOps On-Call & Halt"]
+    F -- Yes --> H["Promote to MLflow Staging"]
+    H --> I["Deploy Blue/Green Canary"]
+\`\`\`
+
+---
+
+## 3. Systems & Technical Implementation
+- **MLflow Model Registry**: Standardized experiment tracking, metric logging (FID score, loss curves, inference latency), and model artifact lineage.
+- **Deterministic Airflow DAGs**: Implemented idempotent task nodes with automatic retry backoff, Slack alerting webhooks, and S3 artifact checkpoints.
+- **GitHub Actions & Docker**: Multi-stage Docker builds executing pytest suites, verifying AST contracts, and packaging lightweight inference images.
+
+---
+
+### Links & Resources
+- **Inspect Project File**: [projects/mlops-lifecycle-airflow-mlflow.md](projects/mlops-lifecycle-airflow-mlflow.md) (\`cat projects/mlops-lifecycle-airflow-mlflow.md\`)
+- **Source Code**: [https://github.com/cappuccino-san/mlops-airflow-pipeline](https://github.com/cappuccino-san/mlops-airflow-pipeline)
+`
   }
 ];
