@@ -31,7 +31,14 @@ Instead of rendering every flight worldwide, the system establishes a geofenced 
 Each aircraft's state vector (containing altitude, velocity, callsign, and heading) is updated in real-time. The UI dynamically interpolates these positions between API polling intervals to create a smooth, radar-like experience.
 
 ## 3. Future Enhancements
-The next steps involve adding historical flight paths and predictive landing estimations for major hubs like Logan International Airport (BOS).`
+The next steps involve adding historical flight paths and predictive landing estimations for major hubs like Logan International Airport (BOS).
+
+---
+
+### Links & Resources
+- **Inspect Project File**: [projects/ma-flight-tracker.md](projects/ma-flight-tracker.md) (\`cat projects/ma-flight-tracker.md\`)
+- **Source Code**: [https://github.com/Cappuccino-san/MAFlightTracker](https://github.com/Cappuccino-san/MAFlightTracker)
+`
   },
   {
     slug: 'synthetic-data-with-latent-interpolation',
@@ -763,6 +770,89 @@ flowchart TD
 ### Links & Resources
 - **Inspect Project File**: [projects/mlops-lifecycle-airflow-mlflow.md](projects/mlops-lifecycle-airflow-mlflow.md) (\`cat projects/mlops-lifecycle-airflow-mlflow.md\`)
 - **Source Code**: [https://github.com/cappuccino-san/mlops-airflow-pipeline](https://github.com/cappuccino-san/mlops-airflow-pipeline)
+`
+  },
+
+  {
+    slug: 'building-tty-emulation-terminal-blog',
+    filename: 'building-tty-emulation-terminal-blog.md',
+    title: 'Simulating Cathode Ray Tubes: Building a High-Fidelity Retro Terminal Portfolio in React 19',
+    date: '2026-11-02',
+    readTime: '6 min read',
+    tags: ['React 19', 'TypeScript', 'Vite', 'Tailwind CSS', 'Web Audio API', 'CRT Simulation'],
+    summary: 'Engineering a hardware-accurate retro terminal portfolio with 8-second rolling raster electron sweeps, procedural Web Audio keypress synthesis, virtual Unix filesystem, and color-mix phosphor bloom.',
+    content: `# Simulating Cathode Ray Tubes: Building a High-Fidelity Retro Terminal Portfolio in React 19
+
+> *"Most developer portfolios are static grids of cards. TTY Emulation recreates the tactile, analog experience of early computing hardware — complete with phosphor bloom, vacuum tube collapses, and procedural acoustic feedback."*
+
+**Project Detail**: [projects/tty-emulation.md](projects/tty-emulation.md) | **GitHub Repository**: [github.com/Cappuccino-san/TTY-Emulation.-Terminal-Style-dev-page](https://github.com/Cappuccino-san/TTY-Emulation.-Terminal-Style-dev-page)  
+**Status**: Active / Production
+
+---
+
+## 1. The Physics of Vintage Displays
+Cathode ray tubes weren't just low-resolution monitors; they were analog vacuum tubes with complex electron physics. Replicating that authentically in modern web standards required five distinct layers:
+- **Rolling Raster Sweeps**: An 8-second continuous linear gradient sweep simulating the vertical refresh cycle of electron guns.
+- **Stepped Phosphor Flicker**: An irregular CSS \`@keyframes\` animation simulating voltage fluctuations in 1980s power supplies.
+- **Phosphor Bloom via \`color-mix()\`**: Modern CSS color mixing dynamically calculating inner glow, text shadow, and border highlights based on the active phosphor chemistry (P1 Green, P3 Amber, etc.).
+- **Vignette Curvature & Inset Chassis**: Physical screen bezels with spherical radial gradients and hardware PWR LED indicators.
+- **Coil Degauss Physics (\`degauss\`)**: Simulating the high-amplitude magnetic oscillation used to neutralize color purity defects on CRT apertures.
+
+---
+
+## 2. Procedural Web Audio Keypress Synthesizer
+Rather than loading hundreds of kilobytes of static MP3/WAV click audio files, all sound effects in TTY Emulation are synthesized dynamically using the browser's native Web Audio API:
+- **Keypresses**: White noise bursts shaped with an exponential volume decay envelope (\`0.02s\`).
+- **Return / Enter**: Low-frequency sine wave thump (\`120Hz\`) layered with a mechanical impact tick.
+- **Degauss Hum**: A decaying \`60Hz\` powerline hum mixed with harmonic overtones that sweeps to zero over 1.2 seconds.
+- **Power Down (\`exit\`)**: Frequency sweep collapsing toward zero with an exponential pitch descent.
+
+---
+
+## 3. The In-Memory Virtual File System (VFS)
+The website is structured as a hierarchical Unix filesystem:
+- \`/about/\`: Resumes, skills matrix (\`skills.json\`), contact details, and career history.
+- \`/projects/\`: Technical breakdowns of all engineering systems.
+- \`/posts/\`: Long-form architectural write-ups and essays.
+- Built-in command interpreter supporting \`ls\`, \`cat\`, \`cd\`, \`pwd\`, \`tree\`, \`grep\`, \`neofetch\`, \`mail\`, and \`tools\`.
+
+---
+
+### Links & Resources
+- **Inspect Project File**: [projects/tty-emulation.md](projects/tty-emulation.md) (\`cat projects/tty-emulation.md\`)
+- **Source Code**: [https://github.com/Cappuccino-san/TTY-Emulation.-Terminal-Style-dev-page](https://github.com/Cappuccino-san/TTY-Emulation.-Terminal-Style-dev-page)
+`
+  },
+  {
+    slug: 'zero-dependency-web-architecture',
+    filename: 'zero-dependency-web-architecture.md',
+    title: 'Back to Basics: Clean, Zero-Dependency Web Architecture & Semantic HTML',
+    date: '2025-06-26',
+    readTime: '3 min read',
+    tags: ['HTML5', 'CSS3', 'Web Standards', 'Zero-Build'],
+    summary: 'A reflection on clean zero-dependency web architecture, semantic markup, and the foundational simplicity of building without framework bloat.',
+    content: `# Back to Basics: Clean, Zero-Dependency Web Architecture & Semantic HTML
+
+> *"Frameworks come and go, but semantic HTML and clean CSS remain the eternal foundation of the web."*
+
+**Project Detail**: [projects/basic-website.md](projects/basic-website.md) | **GitHub Repository**: [github.com/Cappuccino-san/basic-website](https://github.com/Cappuccino-san/basic-website)  
+**Status**: Open Source
+
+---
+
+## 1. The Value of Minimal Web Architecture
+In an era where a simple "Hello World" project can pull in hundreds of megabytes of \`node_modules\`, returning to zero-dependency web architecture provides crucial perspective on performance, accessibility, and longevity.
+
+The **basic-website** repository establishes:
+- **Instant Execution**: Runs natively in any browser from local filesystem or lightweight HTTP server without build tools.
+- **Semantic HTML5**: Native elements (\`<main>\`, \`<article>\`, \`<header>\`, \`<section>\`) providing built-in screen reader support without complex ARIA gymnastics.
+- **Responsive CSS Layouts**: Flexible grid and flexbox patterns adapted to mobile, tablet, and desktop viewports.
+
+---
+
+### Links & Resources
+- **Inspect Project File**: [projects/basic-website.md](projects/basic-website.md) (\`cat projects/basic-website.md\`)
+- **Source Code**: [https://github.com/Cappuccino-san/basic-website](https://github.com/Cappuccino-san/basic-website)
 `
   }
 ];

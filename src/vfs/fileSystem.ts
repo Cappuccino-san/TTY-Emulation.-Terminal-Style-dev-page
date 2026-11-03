@@ -145,6 +145,42 @@ Rx Photo – Project Liaison / QA & Integration | Boston, MA (Part-Time / Remote
   on core software functionality.
 
 --------------------------------------------------------------------------------
+OPEN SOURCE SYSTEMS & PUBLIC GITHUB REPOSITORIES
+--------------------------------------------------------------------------------
+• Production Agent Patterns (github.com/Cappuccino-san/Production-Agent-Patterns)
+  15 enterprise reference architectures for agentic AI: ReAct with AST validation,
+  SQLite FTS5 RAG, topological DAGs, multi-agent swarms, HITL gates, micro-sandboxes.
+• TTY Emulation (github.com/Cappuccino-san/TTY-Emulation.-Terminal-Style-dev-page)
+  Hardware-accurate CRT terminal portfolio (VT100/Apple II) in React 19, TypeScript,
+  Vite, procedural Web Audio keypress synthesizer, and virtual filesystem.
+• Aethelgard (github.com/Cappuccino-san/Aethelgard)
+  Local-first sovereign cognitive twin with cryptographic provenance (BLAKE3 +
+  Ed25519), 3-way hybrid RRF search (FTS5 + sqlite-vec + KùzuDB), and FastMCP bridge.
+• RAG Decision System (github.com/Cappuccino-san/RAG-Decision-System)
+  Policy & compliance decision engine with section-aware chunking, semantic search,
+  and schema-validated approve/flag/reject decisions with exact citations.
+• AI Workflow Orchestrator (github.com/Cappuccino-san/Workflow-Orchestrator)
+  Deterministic triage engine normalizing tickets, emails, and alerts with LangChain
+  classification, P1-P4 business rules, and full SQLite audit trails.
+• Latin NLP & Virgil Corpus Browser (github.com/Cappuccino-san/latin-translator)
+  Rule-based morphology, syntax parser, and bilingual reader across 83,612 tokens
+  of Virgil's Aeneid, Eclogues, and Georgics with 94.0% token recognition.
+• Wanderweg (github.com/Cappuccino-san/Wanderweg)
+  Walking-first virtual tour guide app for Germany in Flutter/Dart with offline
+  SQLite MBTiles map navigation and manifest-driven multi-city trip planner.
+• Divisa (github.com/Cappuccino-san/Divisa)
+  Zero-dependency outfit chatbot in vanilla JS with illustrated SVG model previews
+  and flat-lay tile cards across 13 occasions and 301 apparel items.
+• iPhone Lockscreen Tool (github.com/Cappuccino-san/iPhone-Lockscreen-Tool)
+  Single-file on-device canvas wallpaper resizer auto-trimming screenshot black
+  bars across 14 iPhone resolutions with zero cloud uploads.
+• MA Flight Tracker (github.com/Cappuccino-san/MAFlightTracker)
+  Real-time aviation radar focused on Massachusetts airspace, geofencing OpenSky
+  Network API telemetry with dynamic state vector interpolation.
+• Basic Website (github.com/Cappuccino-san/basic-website)
+  Minimal zero-dependency web architecture boilerplate for standards-based HTML5.
+
+--------------------------------------------------------------------------------
 EDUCATION & CERTIFICATIONS
 --------------------------------------------------------------------------------
 • M.S., Security Studies Concentration: Cybersecurity | University of Massachusetts Lowell (GPA: 3.90) | Jan 2024 – Sep 2025
@@ -196,6 +232,21 @@ AI/ML Workflow & Systems Engineer specializing in AI/ML Model Deployment, Traini
 
 ---
 
+## OPEN SOURCE SYSTEMS & PUBLIC GITHUB REPOSITORIES
+- **[Production Agent Patterns](https://github.com/Cappuccino-san/Production-Agent-Patterns)**: 15 standalone reference architectures for enterprise agentic AI with FastAPI, LangGraph, Pydantic v2, SQLite WAL, and sandboxed Docker runtimes.
+- **[TTY Emulation](https://github.com/Cappuccino-san/TTY-Emulation.-Terminal-Style-dev-page)**: High-fidelity retro CRT developer terminal in React 19, TypeScript, procedural Web Audio synthesizer, and virtual file system.
+- **[Aethelgard](https://github.com/Cappuccino-san/Aethelgard)**: Local-first sovereign cognitive twin with cryptographic provenance (BLAKE3 + Ed25519), 3-way hybrid RRF search, and FastMCP integration.
+- **[RAG Decision System](https://github.com/Cappuccino-san/RAG-Decision-System)**: Deterministic policy decision engine with calibrated confidence scoring and schema-validated citations.
+- **[AI Workflow Orchestrator](https://github.com/Cappuccino-san/Workflow-Orchestrator)**: Unified deterministic triage engine across tickets, emails, and alerts with SQLite audit replay.
+- **[Latin NLP & Virgil Browser](https://github.com/Cappuccino-san/latin-translator)**: Whitaker-style morphology and syntactic parsing engine across 83,612 tokens of Virgil (94.0% token coverage).
+- **[Wanderweg](https://github.com/Cappuccino-san/Wanderweg)**: Walking-first tour guide app for Germany in Flutter/Dart with bundled offline SQLite MBTiles.
+- **[Divisa](https://github.com/Cappuccino-san/Divisa)**: Zero-dependency JavaScript outfit chatbot with illustrated SVG model and flat-lay rendering across 13 occasions.
+- **[iPhone Lockscreen Tool](https://github.com/Cappuccino-san/iPhone-Lockscreen-Tool)**: Single self-contained HTML on-device canvas wallpaper resizer across 14 iPhone models.
+- **[MA Flight Tracker](https://github.com/Cappuccino-san/MAFlightTracker)**: Localized Massachusetts real-time flight radar integrating OpenSky Network telemetry.
+- **[Basic Website](https://github.com/Cappuccino-san/basic-website)**: Zero-dependency web boilerplate establishing clean, standards-compliant HTML5/CSS architecture.
+
+---
+
 ## EDUCATION & CERTIFICATIONS
 - **M.S., Security Studies Concentration: Cybersecurity** | University of Massachusetts Lowell (GPA: 3.90) | Jan 2024 – Sep 2025
 - **B.S., International Business Concentration: Italian** | High Point University (Cum Laude, Honors Scholar, GPA: 3.50) | Aug 2017 – May 2021
@@ -219,29 +270,30 @@ export const SKILLS_JSON = `{
   "technical_skills": {
     "languages_and_core": [
       "Fluent in English and Italian",
-      "Python", "SQL", "TypeScript", "JavaScript", "HTML", "CSS",
+      "Python", "SQL", "TypeScript", "JavaScript", "Dart", "HTML", "CSS",
       "Node.js", "Bash", "Linux", "Java", "C++", "C#", "Rust", "MATLAB/Simulink", "Perl",
       "Data Structures & Algorithms", "Statistics"
     ],
     "ai_ml_and_genai": [
       "PyTorch", "AWS Bedrock", "LangGraph", "LangChain", "LlamaIndex", "Model Context Protocol (MCP)",
-      "Retrieval-Augmented Generation (RAG)", "Embeddings & Semantic Search", "vLLM", "TensorRT-LLM",
+      "FastMCP", "Retrieval-Augmented Generation (RAG)", "Embeddings & Semantic Search", "vLLM", "TensorRT-LLM",
       "PEFT (LoRA, QLoRA)", "pgvector", "Qdrant", "MLflow", "Weights & Biases", "OpenCV",
       "Segment Anything 2 (SAM 2)", "MediaPipe", "InsightFace", "IPAdapter", "ComfyUI",
       "Synthetic Data Generation", "Open3D", "PyTorch3D", "Meta Llama", "Qwen", "DeepSeek",
-      "Mistral", "Claude", "OpenAI", "Amazon Nova/Titan", "Google Gemini"
+      "Mistral", "Claude", "OpenAI", "Amazon Nova/Titan", "Google Gemini", "Rule-Based NLP"
     ],
     "big_data_mlops_and_cloud": [
       "AWS (SageMaker, S3, KMS, IAM, Glue, Bedrock, Step Functions, ECR, EKS, CloudWatch, Cognito, EC2, Lambda, DynamoDB, SNS, CloudFront, Route 53, Certificate Manager, VPC)",
       "Databricks", "Apache Spark (PySpark)", "Delta Lake", "Apache Airflow", "Docker", "Terraform / AWS CDK",
+      "SQLite (WAL, FTS5, sqlite-vec)", "KùzuDB Property Graph", "MBTiles Offline",
       "Azure", "GCP", "Supabase", "Jupyter Notebook", "CI/CD (GitHub Actions)", "System Design", "Large-Scale Systems"
     ],
     "software_engineering_security_and_ops": [
       "Git", "Agile Software Development", "Development Security Operations (DevSecOps)", "FastAPI",
-      "Pydantic", "React", "PostgreSQL", "SQLite", "MySQL", "REST APIs", "NIST AI RMF", "NIST CSF",
+      "Pydantic", "React 19", "Flutter", "PostgreSQL", "SQLite", "MySQL", "REST APIs", "NIST AI RMF", "NIST CSF",
       "ISO/IEC 42001", "OWASP Top 10 for LLMs", "AI Red Teaming", "Guardrails AI",
-      "Microsoft Presidio (PHI/PII Sanitization)", "Wireshark", "TCP/UDP",
-      "Model-Based Systems Engineering (MBSE)", "JIRA", "Confluence", "ClickUp",
+      "Microsoft Presidio (PHI/PII Sanitization)", "Cryptography (BLAKE3, Ed25519)", "Web Audio API",
+      "HTML5 Canvas API", "Wireshark", "TCP/UDP", "Model-Based Systems Engineering (MBSE)", "JIRA", "Confluence", "ClickUp",
       "SOP Development", "Operational Reporting & Reconciliation"
     ]
   }
