@@ -17,7 +17,7 @@ export const ABOUT_CONTENT = `# Nicholas Napoli
 ---
 
 ## Professional Summary
-AI/ML Workflow & Systems Engineer specializing in AI/ML Model Deployment, Training Pipeline Development, and Data Engineering with a deep foundation in Large-Scale Systems, System Design, and secure cloud architecture on AWS. Proven expertise building Compound AI workflows (AWS Bedrock, LangGraph), hybrid vector retrieval (pgvector), and low-latency inference runtimes (vLLM and TensorRT-LLM evaluated for runtime optimization) alongside distributed Big Data Lakehouses (PySpark, S3). Combines advanced computer vision (PyTorch, SAM 2, OpenCV) with an M.S. in Security Studies to execute deterministic workflows adhering to NIST AI RMF, NIST CSF, and strict engineering standards.
+AI/ML Workflow & Systems Engineer specializing in Generative AI Pipelines, Agentic Orchestration, Computer Vision Workflows, and Data Engineering, with a deep foundation in Large-Scale Systems, System Design, and secure cloud architecture on AWS. Proven expertise building Compound AI workflows (AWS Bedrock, LangGraph), hybrid vector retrieval (pgvector), and low-latency inference runtimes (vLLM and TensorRT-LLM evaluated for runtime optimization) alongside distributed Big Data Lakehouses (PySpark, S3). Combines advanced computer vision (PyTorch, SAM 2, OpenCV) with an M.S. in Security Studies to execute deterministic workflows adhering to NIST AI RMF, NIST CSF, and strict engineering standards.
 
 ---
 
@@ -51,15 +51,15 @@ export const RESUME_TEXT = `====================================================
 ================================================================================
 
 PROFESSIONAL SUMMARY
-AI/ML Workflow & Systems Engineer specializing in AI/ML Model Deployment, Training
-Pipeline Development, and Data Engineering with a deep foundation in Large-Scale
-Systems, System Design, and secure cloud architecture on AWS. Proven expertise
-building Compound AI workflows (AWS Bedrock, LangGraph), hybrid vector retrieval
-(pgvector), and low-latency inference runtimes (vLLM and TensorRT-LLM evaluated
-for runtime optimization) alongside distributed Big Data Lakehouses (PySpark, S3).
-Combines advanced computer vision (PyTorch, SAM 2, OpenCV) with an M.S. in Security
-Studies to execute deterministic workflows adhering to NIST AI RMF, NIST CSF, and
-strict engineering standards.
+AI/ML Workflow & Systems Engineer specializing in Generative AI Pipelines, Agentic
+Orchestration, Computer Vision Workflows, and Data Engineering, with a deep
+foundation in Large-Scale Systems, System Design, and secure cloud architecture on
+AWS. Proven expertise building Compound AI workflows (AWS Bedrock, LangGraph),
+hybrid vector retrieval (pgvector), and low-latency inference runtimes (vLLM and
+TensorRT-LLM evaluated for runtime optimization) alongside distributed Big Data
+Lakehouses (PySpark, S3). Combines advanced computer vision (PyTorch, SAM 2,
+OpenCV) with an M.S. in Security Studies to execute deterministic workflows
+adhering to NIST AI RMF, NIST CSF, and strict engineering standards.
 
 --------------------------------------------------------------------------------
 TECHNICAL SKILLS
@@ -195,7 +195,7 @@ export const RESUME_MD = `# Nicholas Napoli
 ---
 
 ## PROFESSIONAL SUMMARY
-AI/ML Workflow & Systems Engineer specializing in AI/ML Model Deployment, Training Pipeline Development, and Data Engineering with a deep foundation in Large-Scale Systems, System Design, and secure cloud architecture on AWS. Proven expertise building Compound AI workflows (AWS Bedrock, LangGraph), hybrid vector retrieval (pgvector), and low-latency inference runtimes (vLLM and TensorRT-LLM evaluated for runtime optimization) alongside distributed Big Data Lakehouses (PySpark, S3). Combines advanced computer vision (PyTorch, SAM 2, OpenCV) with an M.S. in Security Studies to execute deterministic workflows adhering to NIST AI RMF, NIST CSF, and strict engineering standards.
+AI/ML Workflow & Systems Engineer specializing in Generative AI Pipelines, Agentic Orchestration, Computer Vision Workflows, and Data Engineering, with a deep foundation in Large-Scale Systems, System Design, and secure cloud architecture on AWS. Proven expertise building Compound AI workflows (AWS Bedrock, LangGraph), hybrid vector retrieval (pgvector), and low-latency inference runtimes (vLLM and TensorRT-LLM evaluated for runtime optimization) alongside distributed Big Data Lakehouses (PySpark, S3). Combines advanced computer vision (PyTorch, SAM 2, OpenCV) with an M.S. in Security Studies to execute deterministic workflows adhering to NIST AI RMF, NIST CSF, and strict engineering standards.
 
 ---
 
