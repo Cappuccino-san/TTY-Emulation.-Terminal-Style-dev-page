@@ -155,6 +155,14 @@ software.
 --------------------------------------------------------------------------------
 OPEN SOURCE SYSTEMS & PUBLIC GITHUB REPOSITORIES
 --------------------------------------------------------------------------------
+• Hyperion (github.com/Cappuccino-san/Hyperion)
+  Real-time institutional options positioning, dealer hedging analytics (GEX,
+  VEX, DEX, Charm), and automated intraday execution terminal in Next.js 14,
+  TypeScript, Tailwind CSS, Zustand, and Three.js.
+• Trauma Team (github.com/Cappuccino-san/Trauma-Team)
+  High-stakes HEMS dispatch decision engine modeling dynamic helicopter flight
+  physics, real-time NOAA weather limits, and FAA Part 135 regulations on a
+  Rust, Go, and Svelte stack.
 • Production Agent Patterns (github.com/Cappuccino-san/Production-Agent-Patterns)
   15 enterprise reference architectures for agentic AI: ReAct with AST validation,
   SQLite FTS5 RAG, topological DAGs, multi-agent swarms, HITL gates, micro-sandboxes.
@@ -241,6 +249,8 @@ AI/ML Engineer building production LLM backend systems, deterministic computer v
 ---
 
 ## OPEN SOURCE SYSTEMS & PUBLIC GITHUB REPOSITORIES
+- **[Hyperion](https://github.com/Cappuccino-san/Hyperion)**: Real-time institutional options positioning, dealer hedging analytics (GEX, VEX, DEX, Charm), and automated intraday execution terminal built with Next.js 14, TypeScript, Tailwind CSS, Zustand, and Three.js.
+- **[Trauma Team](https://github.com/Cappuccino-san/Trauma-Team)**: High-stakes HEMS dispatch decision engine modeling dynamic helicopter flight physics, real-time NOAA weather limits, and FAA Part 135 regulations on a Rust, Go, and Svelte stack.
 - **[Production Agent Patterns](https://github.com/Cappuccino-san/Production-Agent-Patterns)**: 15 standalone reference architectures for enterprise agentic AI with FastAPI, LangGraph, Pydantic v2, SQLite WAL, and sandboxed Docker runtimes.
 - **[TTY Emulation](https://github.com/Cappuccino-san/TTY-Emulation.-Terminal-Style-dev-page)**: High-fidelity retro CRT developer terminal in React 19, TypeScript, procedural Web Audio synthesizer, and virtual file system.
 - **[Aethelgard](https://github.com/Cappuccino-san/Aethelgard)**: Local-first sovereign cognitive twin with cryptographic provenance (BLAKE3 + Ed25519), 3-way hybrid RRF search, and FastMCP integration.
