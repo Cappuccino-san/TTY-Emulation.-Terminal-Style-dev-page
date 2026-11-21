@@ -47,7 +47,7 @@ const FORTUNES = [
   "Premature optimization is the root of all evil. Profiling with PyTorch & eBPF is the cure.",
   "Simplicity and least-privilege security are prerequisites for reliable systems. -- NIST CSF",
   "Talk is cheap. Show me the code. -- Linus Torvalds",
-  "Distributed systems are hard; deterministic single-node pipelines and PySpark clusters make them manageable."
+  "Distributed systems are hard; deterministic CV pipelines, strict contracts, and idempotent backends make them dependable."
 ];
 
 export function executeTerminalCommand(
@@ -95,7 +95,7 @@ export function executeTerminalCommand(
       content: {
         title: 'Nicholas Napoli — Curriculum Vitae',
         filename: 'resume.md',
-        date: '2026-09-01',
+        date: resumeNode?.updatedAt || '2026-11-21',
         content: resumeNode?.content || '',
         path: '/about/resume.md',
       },
@@ -110,7 +110,7 @@ export function executeTerminalCommand(
       content: {
         title: 'Nicholas Napoli — Technical Skills Matrix',
         filename: 'skills.json',
-        date: '2026-09-01',
+        date: skillsNode?.updatedAt || '2026-11-21',
         content: `\`\`\`json\n${skillsNode?.content || ''}\n\`\`\``,
         path: '/about/skills.json',
       },
@@ -125,7 +125,7 @@ export function executeTerminalCommand(
       content: {
         title: 'Nicholas Napoli — Professional Experience',
         filename: 'experience.md',
-        date: '2026-09-01',
+        date: expNode?.updatedAt || '2026-11-21',
         content: expNode?.content || '',
         path: '/about/experience.md',
       },
@@ -140,7 +140,7 @@ export function executeTerminalCommand(
       content: {
         title: 'Nicholas Napoli — Education & Certifications',
         filename: 'education.md',
-        date: '2026-09-01',
+        date: eduNode?.updatedAt || '2026-11-21',
         content: eduNode?.content || '',
         path: '/about/education.md',
       },
@@ -155,7 +155,7 @@ export function executeTerminalCommand(
       content: {
         title: 'Nicholas Napoli — Contact Information',
         filename: 'contact.md',
-        date: '2026-09-01',
+        date: contactNode?.updatedAt || '2026-11-21',
         content: contactNode?.content || '',
         path: '/about/contact.md',
       },
@@ -275,7 +275,7 @@ export function executeTerminalCommand(
           content: {
             title: projMatch.name,
             filename: projMatch.filename,
-            date: '2026-08-01',
+            date: '2026-11-21',
             tags: projMatch.tags,
             content: projMatch.description,
             path: `/projects/${projMatch.filename}`,
@@ -373,7 +373,7 @@ export function executeTerminalCommand(
       content: {
         title: 'Nicholas Napoli — Profile & Bio',
         filename: 'whoami.md',
-        date: '2026-09-01',
+        date: aboutNode?.updatedAt || '2026-11-21',
         content: aboutNode?.content || '',
         path: '/about/whoami.md',
       },

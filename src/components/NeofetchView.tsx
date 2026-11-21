@@ -17,14 +17,14 @@ const ASCII_LOGO = `
 
 export const NeofetchView: React.FC<NeofetchViewProps> = ({ themeConfig, onCommandClick }) => {
   const infoItems = [
-    { label: 'Engineer', value: 'Nicholas Napoli (AI/ML Workflow & Systems Engineer)' },
+    { label: 'Engineer', value: 'Nicholas Napoli (AI/ML Workflow Engineer)' },
     { label: 'Location', value: 'Winthrop, MA & Tampa, FL' },
     { label: 'Certifications', value: 'AWS Certified AI Practitioner (AIF-C01) | Amazon Web Services | Issued Mar 2026' },
-    { label: 'Education', value: 'M.S. Security Studies (GPA: 3.90) | B.S. (Cum Laude, GPA: 3.50)' },
-    { label: 'Languages', value: 'Fluent in English and Italian, Python, SQL, TypeScript, JavaScript, HTML, CSS, Node.js, Bash, Linux, Java, C++, C#, Rust, MATLAB/Simulink, Perl, Data Structures & Algorithms, Statistics' },
-    { label: 'AI/ML & GenAI', value: 'PyTorch, AWS Bedrock, LangGraph, LlamaIndex, MCP, vLLM, TensorRT-LLM, PEFT, pgvector, Qdrant, MLflow, Weights & Biases, SAM 2, OpenCV, MediaPipe, Meta Llama, Qwen, Claude, OpenAI' },
-    { label: 'Big Data & Cloud', value: 'AWS, Databricks, Apache Spark (PySpark), Delta Lake, Apache Airflow, Docker, Terraform / AWS CDK, Azure, GCP, Supabase, Large-Scale Systems' },
-    { label: 'Security & Ops', value: 'DevSecOps, FastAPI, Pydantic, React, PostgreSQL, SQLite, REST APIs, NIST AI RMF, NIST CSF, ISO/IEC 42001, OWASP Top 10 for LLMs, AI Red Teaming, Guardrails AI, Microsoft Presidio' },
+    { label: 'Education', value: 'M.S. Security Studies (GPA: 3.90) | B.S.B.A. (Cum Laude, GPA: 3.50)' },
+    { label: 'Languages', value: 'Fluent in English and Italian, Python, SQL, TypeScript, JavaScript, Rust, Go, MATLAB, Bash, PowerShell, Linux, Data Structures & Algorithms, Statistics' },
+    { label: 'AI/ML & CV', value: 'AWS Bedrock, Bedrock AgentCore, Strands Agents, LangChain, RAG, Langfuse, PyTorch, Transformers, ONNX Runtime, OpenCV, MediaPipe, Florence-2, U²-Net, Diffusers, SDXL, ComfyUI, Hugging Face, Gradio' },
+    { label: 'Backend & Cloud', value: 'AWS (SageMaker Studio, S3, KMS, IAM, CloudWatch, EC2, Route 53), FastAPI, Node.js, Next.js, React, Svelte, gRPC, SQLAlchemy 2.0, Alembic, Pydantic v2, Supabase, PostgreSQL, SQLite, Docker, pytest, moto, boto3' },
+    { label: 'Security & Ops', value: 'DevSecOps, HIPAA-Oriented AI Design, NIST AI RMF, NIST CSF, OWASP Top 10 for LLMs, MITRE ATT&CK, ISO/IEC 42001, Wireshark, MBSE, JIRA, Confluence, SOP Development' },
     { label: 'Contact', value: 'njnapoli99@gmail.com | (857) 205-3266' },
     { label: 'Website', value: 'https://napnet.click/' },
     { label: 'LinkedIn', value: 'linkedin.com/in/nicholas-napoli476' },

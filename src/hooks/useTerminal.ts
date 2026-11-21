@@ -38,13 +38,13 @@ const INITIAL_ENTRIES: HistoryEntry[] = [
     timestamp: new Date().toISOString(),
     path: '/',
     type: 'text',
-    content: `Nicholas Napoli // AI/ML Workflow & Systems Engineer (Winthrop, MA & Tampa, FL)
-AWS Certified AI Practitioner (AIF-C01) | M.S. Security Studies (GPA 3.90) | B.S. Cum Laude
+    content: `Nicholas Napoli // AI/ML Workflow Engineer (Winthrop, MA & Tampa, FL)
+AWS Certified AI Practitioner (AIF-C01) | M.S. Security Studies (GPA 3.90) | B.S.B.A. Cum Laude
 
 ⚡ Quick Commands:
   • 'resume'   - View complete Curriculum Vitae
   • 'skills'   - View technical skills & framework matrix
-  • 'projects' - Explore AI/ML pipelines, PySpark ETL & vision systems
+  • 'projects' - Explore LLM backends, SageMaker endpoints & CV systems
   • 'posts'    - Read technical engineering write-ups
   • 'mail'     - Send a direct message or job inquiry
   • 'dino'     - Play retro CRT Dinosaur Runner mini-game
@@ -66,7 +66,7 @@ AWS Certified AI Practitioner (AIF-C01) | M.S. Security Studies (GPA 3.90) | B.S
         type: 'file',
         path: `/projects/${proj.filename}`,
         size: proj.description.length,
-        updatedAt: '2026-08-01',
+        updatedAt: '2026-11-21',
         permissions: '-rwxr-xr-x',
         owner: 'nicholas',
         title: proj.name,

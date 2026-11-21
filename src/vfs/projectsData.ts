@@ -24,83 +24,67 @@ export const PROJECTS: Project[] = [
     description: `# MA Flight Tracker\n\n**Role**: Full Stack Engineer\n**Stack**: React, Next.js, Tailwind, Mapping APIs, OpenSky Network\n\n---\n\n## Systems & Technical Implementation\n- **Real-Time Aviation Tracking**: Engineered a real-time flight tracker focused solely on Massachusetts airspace, integrating live aviation telemetry data.\n- **OpenSky Network Integration**: Leveraged OpenSky Network APIs to parse and render live flight data onto interactive maps, reducing payload size by geofencing coordinates.\n- **Optimized Rendering**: Dynamically interpolates aircraft state vectors (altitude, velocity, callsign) to create a smooth, radar-like tracking experience.`
   },
   {
+    slug: 'a360-reach-llm-backend',
+    filename: 'a360-reach-llm-backend.md',
+    name: 'A360 Reach — Production LLM Backend, Audit Lineage & Consultation-to-Email Pipeline',
+    status: 'SHIPPED',
+    tags: ['FastAPI', 'SQLAlchemy 2.0', 'PostgreSQL', 'Alembic', 'Pydantic v2', 'AWS Bedrock', 'Bedrock AgentCore', 'Strands Agents', 'HIPAA-Oriented AI Design', 'pytest'],
+    summary: 'Engineered the patient_emails persistence/versioning/rerun backend (214 passing tests) and 4-stage consultation-to-email pipeline with Claude 3.5 Sonnet, PHI-safe SHA-256 prompt fingerprinting, and strict Pydantic v2 contracts.',
+    description: `# A360 Reach — Production LLM Backend, Audit Lineage & Consultation-to-Email Pipeline\n\n**Role**: AI/ML Workflow Engineer | Aesthetics360\n**Stack**: FastAPI, SQLAlchemy 2.0, PostgreSQL, Alembic, Pydantic v2, AWS Bedrock (Claude 3.5 Sonnet), Bedrock AgentCore, Strands Agents, pytest\n**Status**: Shipped / Production (Proprietary B2B Clinical Aesthetics SaaS)\n\n---\n\n## Systems & Technical Implementation\n- **Production LLM Backend & Audit Lineage (A360 Reach)**: Engineered the \`patient_emails\` persistence, versioning, and rerun subsystem (DAL and Alembic migrations) in FastAPI, SQLAlchemy 2.0, and PostgreSQL—implementing blocking idempotent writes (\`IntegrityError\` rollback), self-referencing \`rerun_parent_id\` lineage traversal, \`difflib\` version diffing, PHI-safe 6-field SHA-256 \`prompt_hash\` fingerprinting (excluding transcripts/PII), DB CHECK & partial unique dedup constraints, and strict Pydantic v2 contracts (\`extra="forbid"\`) unifying local Strands and Bedrock AgentCore paths (**214 passing backend tests; 107 newly authored**).\n- **Consultation-to-Email Pipeline (A360-Reach-Emails)**: Built a 4-stage transcript-to-email pipeline combining 3 deterministic rule-based extractors (visit classification, opportunity, commercial KPI) with an AWS Bedrock Claude 3.5 Sonnet email generator, Pydantic readiness contracts (confidence and completeness gates), and a SHA-256-hashed markdown knowledge base.`
+  },
+  {
+    slug: 'a360-sagemaker-bg-removal',
+    filename: 'a360-sagemaker-bg-removal.md',
+    name: 'AWS SageMaker Background-Removal Service & ONNX Benchmarks (WARP)',
+    status: 'SHIPPED',
+    tags: ['AWS SageMaker', 'ONNX Runtime', 'U²-Net', 'FastAPI', 'AWS S3', 'CloudWatch', 'Computer Vision'],
+    summary: 'Benchmarked U²-Net, Silueta, and SAM across clinical photos (784-run ONNX Runtime benchmark across 196 images) and deployed a live SageMaker U²-Net endpoint behind an async FastAPI REST API with S3 AES-256 storage.',
+    description: `# AWS SageMaker Background-Removal Service & ONNX Benchmarks (sagemaker-photo-processing & WARP)\n\n**Role**: AI/ML Workflow Engineer | Aesthetics360\n**Stack**: AWS SageMaker, ONNX Runtime, U²-Net, Silueta, SAM, FastAPI, Amazon S3 (AES-256), CloudWatch\n**Status**: Shipped / Production (Proprietary B2B Clinical Aesthetics SaaS)\n\n---\n\n## Systems & Technical Implementation\n- **Clinical Model & ONNX Runtime Benchmarking**: Benchmarked U²-Net, Silueta, and SAM on clinical photos (**U²-Net 0.22s vs. SAM 2.35s, n=27**) plus a **784-run ONNX Runtime benchmark** across **196 clinical images** (**416ms avg for U²-Net, 100% success**).\n- **Live SageMaker Deployment & Async REST API**: Deployed a live SageMaker U²-Net endpoint (with Silueta fallback) behind an async FastAPI REST API featuring S3 AES-256 encrypted storage, automated orphan cleanup, and CloudWatch operational metrics (**100% endpoint smoke-test pass rate**).`
+  },
+  {
+    slug: 'a360-imageiq-hf-spaces',
+    filename: 'a360-imageiq-hf-spaces.md',
+    name: 'ImageIQ Deterministic Clinical CV Suite & 6 HF Gradio Spaces',
+    status: 'SHIPPED',
+    tags: ['OpenCV', 'MediaPipe', 'Florence-2', 'Hugging Face', 'Gradio', 'ONNX Runtime', 'NumPy', 'Pillow', 'boto3', 'pytest', 'moto'],
+    summary: 'Local-first Python CV pipeline (anatomy-first body cropper, composite panel splitting, FaceMesh/BlazeFace fallback, Eval V1 baselines, 212 pytest functions) plus 6 Hugging Face Gradio Spaces (130 additional tests).',
+    description: `# ImageIQ Deterministic Clinical CV Suite & 6 HF Gradio Spaces\n\n**Role**: AI/ML Workflow Engineer | Aesthetics360\n**Stack**: Python, MediaPipe, OpenCV, NumPy, Pillow, boto3, Florence-2, Diffusers, ONNX Runtime, Hugging Face Gradio Spaces, pytest, moto[s3]\n**Status**: Shipped / Production (Proprietary B2B Clinical Aesthetics SaaS)\n\n---\n\n## Systems & Technical Implementation\n- **Deterministic Clinical CV Suite (ImageIQ)**: Built a local-first Python CV pipeline featuring an anatomy-first body crop engine, composite panel splitting, multi-scale FaceMesh/BlazeFace fallback, before/after pairing, explicit JSON failure contracts, locked Eval V1 baselines (**16 body / 9 face cases**), and config-only local/S3 storage (**212 pytest functions / 214 items with \`moto[s3]\`**).\n- **6 Hugging Face Gradio Spaces**: Shipped 6 interactive clinical CV Gradio Spaces covering a Florence-2 matched before/after auto-cropper, MediaPipe 1:1 batch ZIP cropper, SD x4 upscaler, and ONNX background-remover benchmarks (**130 additional pytest tests**).`
+  },
+  {
     slug: 'a360-aging-dataset-pipeline',
     filename: 'a360-aging-dataset-pipeline.md',
-    name: 'A360 Synthetic Aging Pipeline',
-    status: 'ACTIVE',
-    stars: 340,
-    tags: ['ComfyUI', 'IPAdapter', 'PEFT (LoRA, QLoRA)', 'PyTorch', 'Synthetic Data Generation'],
-    repo: 'https://github.com/cappuccino-san/a360-aging-pipeline',
-    demo: 'https://linkedin.com/in/nicholas-napoli476',
-    summary: 'Engineered a proprietary synthetic aging pipeline via ComfyUI, IPAdapter FaceID, and single-GPU LoRA/QLoRA fine-tuning, successfully generating high-fidelity, identity-consistent synthetic portraits across a 50-year demographic span (ages 20–70).',
-    description: `# A360 Synthetic Aging Pipeline\n\n**Role**: AI/ML Workflow Engineer | Aesthetic360\n**Stack**: ComfyUI, IPAdapter FaceID, PEFT (LoRA/QLoRA), PyTorch\n\n---\n\n## Systems & Technical Implementation\n- **Identity-Preserving Synthetic Aging Pipeline**: Engineered a proprietary synthetic aging pipeline via ComfyUI, IPAdapter FaceID, and single-GPU LoRA/QLoRA fine-tuning, successfully generating high-fidelity, identity-consistent synthetic portraits across a 50-year demographic span (ages 20–70).`
-  },
-  {
-    slug: 'distributed-clinical-data-pipeline',
-    filename: 'distributed-clinical-data-pipeline.md',
-    name: 'Distributed Clinical Lakehouse Pipeline',
+    name: 'A360-ADP — Synthetic Facial Aging Pipeline',
     status: 'SHIPPED',
-    stars: 215,
-    tags: ['Apache Spark (PySpark)', 'Databricks', 'Delta Lake', 'AWS Glue', 'S3', 'Large-Scale Systems', 'ACID Transactions'],
-    repo: 'https://github.com/cappuccino-san/clinical-etl-spark',
-    summary: 'Architected distributed lakehouse data pipelines leveraging Big Data technologies (PySpark, Databricks, Delta Lake, AWS Glue) to process, clean, and transform 10,000+ multimodal patient records with strict ACID transactional guarantees.',
-    description: `# Distributed Clinical Lakehouse Pipeline\n\n**Role**: AI/ML Workflow Engineer | Aesthetic360\n**Stack**: PySpark, Databricks, Delta Lake, AWS Glue, Amazon S3, ACID Transactions, Big Data Lakehouse\n\n---\n\n## Systems & Technical Implementation\n- **Distributed Lakehouse Pipelines**: Architected distributed lakehouse data pipelines leveraging PySpark, Databricks, Delta Lake, and AWS Glue to process, clean, and transform 10,000+ multimodal patient records with strict ACID transactional guarantees.\n- **Multimodal Dataset Preparation**: Engineered high-throughput ETL jobs cleaning and processing 10,000+ before/after clinical image pairs, enabling the successful training of proprietary GenAI tools including upscalers, croppers, and background removers.\n- **Schema Enforcement & Partitioning**: Enforced Delta Lake schema validation, z-ordering, and partition pruning across S3 tables, cutting query scan latencies by over 60%.`
+    tags: ['ComfyUI', 'SDXL', 'Diffusers', 'Gemini', 'Synthetic Data Generation', 'HIPAA-Oriented AI Design', 'Python'],
+    summary: 'Deterministic synthetic facial aging workflow spanning ages 20–70 (5-year intervals) with zero real patient PHI, pairing Gemini 2.5 Flash anchors with a 61-node ComfyUI SDXL parallel latent-interpolation graph.',
+    description: `# A360-ADP — Synthetic Facial Aging Pipeline\n\n**Role**: AI/ML Workflow Engineer | Aesthetics360\n**Stack**: ComfyUI, SDXL (epicrealismXL), Gemini 2.5 Flash, Python Watchdog, Excel Metadata Automation\n**Status**: Shipped / Production (Zero Real Patient PHI)\n\n---\n\n## Systems & Technical Implementation\n- **Zero-PHI Synthetic Aging Workflow**: Engineered a deterministic synthetic facial aging workflow spanning **ages 20–70 (5-year intervals)** with **zero real patient PHI**.\n- **Parallel Latent-Interpolation Graph**: Paired Gemini 2.5 Flash age-20/70 anchor portraits with a **61-node ComfyUI SDXL (\`epicrealismXL\`) parallel latent-interpolation graph** (fixed seed, low-denoise refinement).\n- **Demographic Coverage & Automation**: Built across a **20-subject Fitzpatrick I–VI demographic cohort**, backed by a Python watchdog and Excel metadata & prompt automation pipeline.`
   },
   {
-    slug: 'optics-vision-landmark-extractor',
-    filename: 'optics-vision-landmark-extractor.md',
-    name: 'Compound GenAI & Optics Vision Landmark Extractor',
-    status: 'ACTIVE',
-    stars: 480,
-    tags: ['PyTorch', 'AWS Bedrock', 'LangGraph', 'Step Functions', 'vLLM', 'pgvector', 'OpenCV', 'Segment Anything 2 (SAM 2)', 'MediaPipe', 'Open3D', 'Jupyter Notebook', 'SageMaker'],
-    repo: 'https://github.com/cappuccino-san/optics-vision-extractor',
-    summary: 'End-to-end GenAI clinical photo processing with AWS Bedrock/LangGraph, real-time inference optimization (vLLM, pgvector), and deterministic vision validation (PyTorch, SAM 2, MediaPipe).',
-    description: `# Compound GenAI & Optics Vision Landmark Extractor\n\n**Role**: AI/ML Workflow Engineer | Aesthetic360\n**Stack**: AWS Bedrock, LangGraph, vLLM, pgvector, PyTorch, OpenCV, SAM 2, MediaPipe, Open3D\n\n---\n\n## Systems & Technical Implementation\n- **End-to-End GenAI Applications**: Owned end-to-end GenAI software applications and training pipelines for clinical photo processing using AWS Bedrock, LangGraph, and Step Functions, eliminating manual processing bottlenecks to accelerate med-spa client onboarding.\n- **Real-Time Inference & Vector Retrieval**: Evaluated and optimized real-time inference stacks (vLLM serving Amazon Titan/Stability AI vs. HuggingFace) to reduce per-image latency, integrating pgvector hybrid search over S3 data to supply highly relevant retrieval context for clinical workflows.\n- **Deterministic Vision Validation Pipelines**: Built deterministic vision validation pipelines using PyTorch, OpenCV, SAM 2, and MediaPipe, establishing strict validation gates that minimized LiDAR registration error and ensured high-precision mask accuracy prior to downstream processing.`
-  },
-  {
-    slug: 'aws-cloud-security-auditing',
-    filename: 'aws-cloud-security-auditing.md',
-    name: 'AWS Cloud Security, AI Auditing & PHI/PII Sanitization',
+    slug: 'a360-clinical-imaging-3d-sandbox',
+    filename: 'a360-clinical-imaging-3d-sandbox.md',
+    name: 'AWS Clinical Imaging Sandbox & 3D Depth Notebooks',
     status: 'SHIPPED',
-    stars: 190,
-    tags: ['AWS', 'KMS', 'IAM', 'S3', 'NIST AI RMF', 'NIST CSF', 'OWASP Top 10 for LLMs', 'AI Red Teaming', 'Guardrails AI', 'Microsoft Presidio', 'FastAPI', 'React'],
-    repo: 'https://github.com/cappuccino-san/mlops-drift-sentinel',
-    summary: 'Hardened AWS cloud infrastructure with IAM least-privilege, KMS envelope encryption, and S3 controls aligned to NIST AI RMF/CSF; conducted AI red teaming with Guardrails AI and Microsoft Presidio for PHI/PII sanitization.',
-    description: `# AWS Cloud Security, AI Auditing & PHI/PII Sanitization\n\n**Role**: AI/ML Workflow Engineer | Aesthetic360\n**Stack**: AWS (IAM, KMS, S3), NIST AI RMF, NIST CSF, OWASP Top 10 for LLMs, AI Red Teaming, Guardrails AI, Microsoft Presidio, FastAPI, React\n\n---\n\n## Systems & Technical Implementation\n- **AWS Infrastructure Hardening**: Hardened AWS cloud infrastructure with IAM least-privilege policies, KMS envelope encryption, and strict S3 controls, establishing a secure baseline aligned to NIST AI RMF, NIST CSF, and aerospace-grade standards.\n- **AI Red Teaming & OWASP Top 10 Compliance**: Conducted adversarial AI red teaming and security auditing adhering to the OWASP Top 10 for LLMs, validating model boundaries against prompt injection, data exfiltration, and model evasion.\n- **Automated PHI/PII Sanitization**: Integrated Guardrails AI and Microsoft Presidio into production FastAPI/React pipelines, automatically scrubbing sensitive personal health information before ingestion into LLM context windows.`
-  },
-  {
-    slug: 'mlops-lifecycle-airflow-mlflow',
-    filename: 'mlops-lifecycle-airflow-mlflow.md',
-    name: 'MLOps Automated Lifecycle & Retraining Pipeline',
-    status: 'SHIPPED',
-    stars: 205,
-    tags: ['MLflow', 'Apache Airflow', 'Docker', 'CI/CD (GitHub Actions)', 'AWS S3', 'Model Registry', 'Automation'],
-    repo: 'https://github.com/cappuccino-san/mlops-airflow-pipeline',
-    summary: 'Standardized model lifecycle tracking via MLflow with automated DAG task scheduling and retraining pipelines using Apache Airflow and GitHub Actions CI/CD for continuous, zero-downtime deployment.',
-    description: `# MLOps Automated Lifecycle & Retraining Pipeline\n\n**Role**: AI/ML Workflow Engineer | Aesthetic360\n**Stack**: MLflow, Apache Airflow, Docker, GitHub Actions CI/CD, AWS S3, ECR, Python\n**Status**: Shipped / Production\n\n---\n\n## Systems & Technical Implementation\n- **Standardized Model Lifecycle**: Standardized experiment tracking, parameter logging, and artifact storage using MLflow Model Registry, enforcing semantic versioning and transition stages (Staging -> Production).\n- **Automated Retraining DAGs**: Built Apache Airflow DAGs triggering scheduled drift detection, model evaluation, and automated retraining pipelines with validation gates to prevent model degradation.\n- **CI/CD Deployment Pipelines**: Integrated GitHub Actions and Docker containerization for automated test execution, model artifact linting, and zero-downtime blue/green deployment.`
+    tags: ['AWS SageMaker Studio', 'AWS S3', 'KMS', 'IAM', 'JupyterLab', 'SciPy', 'OpenCV', 'NumPy', '3D Depth'],
+    summary: 'SSE-KMS/IAM-scoped S3 data lake (a360-imaging-poc-dev) and 9 SageMaker Unified Studio JupyterLab notebooks automating schema migration, depth-to-RGB alignment, Laplacian QC, .ply 3D point clouds, and Lambertian relighting.',
+    description: `# AWS Clinical Imaging Sandbox & 3D Depth Notebooks\n\n**Role**: AI/ML Workflow Engineer | Aesthetics360\n**Stack**: AWS SageMaker Unified Studio, Amazon S3 (SSE-KMS), IAM, JupyterLab, SciPy, OpenCV, NumPy\n**Status**: Shipped / Production\n\n---\n\n## Systems & Technical Implementation\n- **Secure Clinical Data Lake**: Configured an SSE-KMS/IAM-scoped S3 data lake (\`a360-imaging-poc-dev\`) for clinical imaging R&D.\n- **9 SageMaker Unified Studio Notebooks**: Authored 9 JupyterLab notebooks automating metadata schema migration (**5→12 top-level sections, 57 leaf fields**), \`float32→uint16\` depth conversion, SciPy bilinear depth-to-RGB alignment, OpenCV Laplacian blur/exposure QC, pure-NumPy camera-intrinsics **3D point-cloud export (\`.ply\`)**, and depth-to-normals **Lambertian relighting**.`
   },
   {
     slug: 'enterprise-transit-data-audit',
     filename: 'enterprise-transit-data-audit.md',
-    name: 'Enterprise Operational Data Engineering & Audit Workflow',
+    name: 'Enterprise Operational Data Reporting & Transit Reconciliation',
     status: 'SHIPPED',
-    stars: 175,
-    tags: ['Operational Reporting & Reconciliation', 'Statistics', 'SOP Development'],
-    repo: 'https://github.com/cappuccino-san/transit-data-audit',
-    summary: 'Enterprise operational data reporting workflows to audit high-volume transit feeds, resolve data discrepancies, and verify port financial settlements.',
-    description: `# Enterprise Operational Data Engineering & Audit Workflow\n\n**Role**: Sales Relationship Coordinator | BOC International\n**Stack**: Operational Data Reporting, Transit Feeds, KPI Reporting, Statistical Reconciliation, SOP Development\n\n---\n\n## Systems & Technical Implementation\n- **High-Volume Transit Audit & Reconciliation**: Ran operational data reporting workflows to audit high-volume transit feeds, resolve data discrepancies, and verify port financial settlements for enterprise clients with strict statistical precision.\n- **Enterprise Client KPI Reporting**: Owned daily, weekly, and monthly transit Key Performance Indicators reporting across enterprise client portfolios, ensuring Service-Level Agreement adherence and automated data delivery for logistics operations.\n- **Strategic Route Research**: Conducted lane feasibility and trade route research across foreign and domestic logistics partners, synthesizing market intelligence to guide strategic routing and business expansion.\n- **Operational SOPs & Payment Settlements**: Standardized account tracking systems, operational SOPs, and inbound port container payment settlements, serving as primary escalation point for client inquiry resolution.`
+    tags: ['Operational Reporting', 'Statistics', 'SOP Development'],
+    summary: 'Operational data reporting and reconciliation workflows auditing high-volume enterprise transit feeds, KPIs, SLA adherence, and port financial settlements at BOC International.',
+    description: `# Enterprise Operational Data Reporting & Transit Reconciliation\n\n**Role**: Sales Relationship Coordinator | BOC International | Sep 2021 – Jan 2023\n**Context**: International freight forwarding and global logistics provider; ran operational data reporting and reconciliation across high-volume enterprise transit feeds.\n**Stack**: Operational Data Reporting, Transit Feeds, KPI Reporting, Statistical Reconciliation, SOP Development\n\n---\n\n## Systems & Technical Implementation\n- **High-Volume Transit Audit & Reconciliation**: Audited high-volume transit feeds and resolved data discrepancies via operational reporting workflows, verifying port financial settlements for enterprise clients.\n- **Enterprise Client KPI Reporting**: Owned daily, weekly, and monthly transit KPI reporting across enterprise portfolios to enforce SLA adherence and automated logistics data delivery.\n- **Route Feasibility & Standardized SOPs**: Conducted lane feasibility and trade route research across foreign and domestic partners to guide routing and expansion; standardized SOPs and container payment settlements as primary client escalation point.`
   },
   {
     slug: 'rxphoto-qa-client-integration',
     filename: 'rxphoto-qa-client-integration.md',
     name: 'Computer Vision Test Engineering & Client Integration',
     status: 'SHIPPED',
-    stars: 160,
-    tags: ['OpenCV', 'Linux', 'JIRA', 'Confluence', 'CI/CD (GitHub Actions)'],
-    repo: 'https://github.com/cappuccino-san/cv-qa-integration',
-    summary: 'Software test engineering on computer vision & optics software using OpenCV, MATLAB, and Linux, paired with direct client integration.',
-    description: `# Computer Vision Test Engineering & Client Integration\n\n**Role**: Project Liaison / QA & Integration | Rx Photo (Part-Time / Remote during academic terms)
-**Timeline**: Jun 2018 – Sep 2021\n**Stack**: OpenCV, MATLAB, Linux, JIRA, Confluence, CI/CD, OWASP, Client Workflow Troubleshooting\n\n---\n\n## Systems & Technical Implementation\n- **Software Test Engineering & Defect Isolation**: Executed software test engineering, automated defect isolation, and requirements management (JIRA, Confluence) on computer vision & optics software using OpenCV, MATLAB, and Linux, accelerating engineering patch cycles.\n- **CI/CD & OWASP Vulnerability Assessments**: Supported executive engineering initiatives and model-based systems engineering alignments through Cross-Functional Collaboration, conducting CI/CD configuration and OWASP vulnerability assessments across production software source code.\n- **Enterprise Client Workflow Troubleshooting**: Interfaced directly with enterprise clients via phone to validate credit card processing workflows, troubleshoot integration blockers, and train end users on core software functionality.`
+    tags: ['OpenCV', 'MATLAB', 'Linux', 'JIRA', 'Confluence', 'CI/CD', 'OWASP', 'MBSE'],
+    summary: 'Automated QA testing, defect isolation, CI/CD configuration, and OWASP vulnerability assessments on OpenCV/MATLAB clinical photography optics software at Rx Photo (Acquired by PatientNOW).',
+    description: `# Computer Vision Test Engineering & Client Integration\n\n**Role**: Project Liaison / QA & Integration | Rx Photo (Acquired by PatientNOW) | Boston, MA (Part-Time / Remote)\n**Timeline**: Jun 2018 – Mar 2021\n**Context**: Enterprise clinical photography software provider; executed automated QA testing and defect isolation on OpenCV/MATLAB computer vision and optics software.\n**Stack**: OpenCV, MATLAB, Linux, JIRA, Confluence, CI/CD, OWASP, MBSE\n\n---\n\n## Systems & Technical Implementation\n- **Software Test Engineering & Defect Isolation**: Executed software test engineering, automated defect isolation, and requirements management (JIRA, Confluence) on OpenCV/MATLAB optics software in Linux, accelerating engineering patch cycles.\n- **CI/CD, OWASP & MBSE Alignment**: Conducted CI/CD configuration and OWASP vulnerability assessments while aligning model-based systems engineering (MBSE) initiatives across teams.\n- **Enterprise Client Workflow Troubleshooting**: Interfaced directly with enterprise clients via phone to validate credit card processing workflows, troubleshoot integration blockers, and train clinical end users.`
   },
   {
     slug: 'wanderweg',

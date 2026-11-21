@@ -43,229 +43,158 @@ The next steps involve adding historical flight paths and predictive landing est
   {
     slug: 'synthetic-data-with-latent-interpolation',
     filename: 'synthetic-data-with-latent-interpolation.md',
-    title: 'Engineering Identity-Preserving Synthetic Datasets with Latent Diffusion & IPAdapter',
+    title: 'A360-ADP: Deterministic Synthetic Facial Aging with Zero Real Patient PHI',
     date: '2026-08-14',
     readTime: '6 min read',
-    tags: ['PyTorch', 'ComfyUI', 'IPAdapter', 'InsightFace', 'Synthetic Data Generation'],
-    summary: 'Constructing deterministic age progression manifolds with IPAdapter FaceID, InsightFace embeddings, and custom latent trajectory interpolation.',
-    content: `# Engineering Identity-Preserving Synthetic Datasets with Latent Diffusion & IPAdapter
+    tags: ['ComfyUI', 'SDXL', 'Diffusers', 'Gemini', 'Synthetic Data Generation', 'HIPAA-Oriented AI Design'],
+    summary: 'Pairing Gemini 2.5 Flash age-20/70 anchors with a 61-node ComfyUI SDXL parallel latent-interpolation graph across a 20-subject Fitzpatrick I–VI cohort with zero real patient PHI.',
+    content: `# A360-ADP: Deterministic Synthetic Facial Aging with Zero Real Patient PHI
 
-> *"In clinical machine learning, authentic patient diversity is paramount—yet privacy and sample scarcity are eternal bottlenecks. Deterministic synthetic data generation bridges this gap."*
+> *"In clinical aesthetics ML, longitudinal facial data across decades is scarce and tightly regulated. Deterministic synthetic cohorts let us evaluate and build vision pipelines with zero real patient PHI."*
 
-When training computer vision models for longitudinal medical imaging (such as dermatological skin progression and anatomical aging), gathering paired ground-truth images across decades is statistically near-impossible. 
-
-To solve this at scale, we engineered the **A360 Aging Dataset Pipeline**, generating high-fidelity, identity-locked synthetic cohorts across ages 20 through 70.
+**Project Detail**: [projects/a360-aging-dataset-pipeline.md](projects/a360-aging-dataset-pipeline.md)
 
 ---
 
-## 1. The Core Challenge: Identity Drift vs. Feature Evolution
+## 1. The Core Challenge: Longitudinal Aging Without Patient PHI
 
-Standard text-to-image diffusion models (\`Stable Diffusion\`, \`Flux\`) drift significantly when prompted with aging modifiers (e.g., *"a 65 year old version of person X"*). The model alters facial bone topology, eye geometry, and cranial contours, breaking identity invariance.
+Training and evaluating clinical facial analysis workflows across a 50-year age span (ages 20–70) is nearly impossible with real patient photography due to privacy constraints, lighting drift, and multi-decade collection gaps.
 
-To enforce strict structural identity retention:
-1. **InsightFace ArcFace Embeddings**: Extract 512-dimensional normalized facial feature vectors from baseline ground truth images.
-2. **IPAdapter FaceID Conditioning**: Inject the extracted identity tensor directly into the cross-attention layers of the UNet / Transformer backbone.
-3. **Calibrated Latent Space Interpolation**: Apply linear and geodesic vector projections along an empirical aging manifold.
-
-\`\`\`python
-import torch
-import torch.nn.functional as F
-
-class AgingLatentInterpolator:
-    def __init__(self, age_basis_path: str):
-        # Pre-computed principal component direction for biological aging in latent space
-        self.age_direction = torch.load(age_basis_path)
-
-    def interpolate(self, base_latent: torch.Tensor, current_age: int, target_age: int, alpha: float = 1.0) -> torch.Tensor:
-        delta_years = target_age - current_age
-        progression_factor = (delta_years / 50.0) * alpha
-        
-        # Orthogonal projection to avoid identity distortion
-        shifted_latent = base_latent + (progression_factor * self.age_direction.to(base_latent.device))
-        return shifted_latent
-\`\`\`
+To solve this safely, we engineered **A360-ADP** — a deterministic synthetic facial aging workflow spanning **ages 20–70 in 5-year intervals** with **zero real patient PHI**.
 
 ---
 
-## 2. ComfyUI Headless Execution & Deterministic Fallbacks
+## 2. Two-Endpoint Anchors + 61-Node ComfyUI SDXL Latent Interpolation
 
-To ensure reproducibility across batch pipelines:
-- Configured headless execution nodes inside containerized **AWS SageMaker / ECR** worker pools.
-- Established **deterministic fallback logic** via AWS Bedrock (Stability AI API) when local GPU clusters experience peak queue contention.
-- Integrated automated landmark verification gates to discard generated frames exhibiting >1.5% interocular distortion.
+Rather than prompting a diffusion model independently at each age step (which causes severe facial geometry drift), the pipeline anchors both endpoints and interpolates deterministically in latent space:
 
-## 3. Results & Impact
-- Generated **10,000+ paired synthetic clinical image sets** across 5 distinct age buckets (20s, 30s, 40s, 50s, 60s+).
-- Downstream diagnostic segmentation models achieved **94.8% generalization accuracy** without requiring access to protected patient health information (PHI).
+1. **Age-20 & Age-70 Anchor Generation**: Paired **Gemini 2.5 Flash** anchor portraits establish consistent identity endpoints for each synthetic subject.
+2. **61-Node ComfyUI SDXL Graph (\`epicrealismXL\`)**: Runs a parallel latent-interpolation graph with a **fixed seed** and **low-denoise refinement** to generate smooth, identity-consistent 5-year progressions from 20 to 70.
+3. **Fitzpatrick I–VI Demographic Coverage**: Structured around a **20-subject Fitzpatrick I–VI demographic cohort** so downstream clinical vision evaluation spans diverse skin tones and facial structures.
+
+---
+
+## 3. Automated Watchdog & Metadata Pipeline
+
+To keep batch generation reproducible and auditable:
+- Built a **Python watchdog** and **Excel metadata & prompt automation pipeline** that tracks subject IDs, Fitzpatrick phototypes, fixed seeds, prompt templates, and generated interval outputs.
+- Guarantees reproducible re-runs and clean cohort organization without touching a single real patient photograph.
 `
   },
   {
-    slug: 'scaling-pyspark-aws-glue-multimodal',
-    filename: 'scaling-pyspark-aws-glue-multimodal.md',
-    title: 'Architecting Distributed Big Data Pipelines for Multimodal Healthcare Records',
+    slug: 'sagemaker-onnx-bg-removal-benchmarks',
+    filename: 'sagemaker-onnx-bg-removal-benchmarks.md',
+    title: 'Benchmarking ONNX Background Removal & Deploying Live SageMaker U²-Net Endpoints (WARP)',
     date: '2026-07-28',
-    readTime: '8 min read',
-    tags: ['Apache Spark (PySpark)', 'AWS Glue', 'S3', 'Large-Scale Systems'],
-    summary: 'How distributed PySpark transforms on AWS Glue cut multimodal ETL runtime by 68% across 10,000+ clinical records.',
-    content: `# Architecting Distributed Big Data Pipelines for Multimodal Healthcare Records
+    readTime: '6 min read',
+    tags: ['AWS SageMaker', 'ONNX Runtime', 'U²-Net', 'FastAPI', 'AWS S3', 'CloudWatch', 'Computer Vision'],
+    summary: 'How a 784-run ONNX Runtime benchmark across 196 clinical images drove a live AWS SageMaker U²-Net endpoint with Silueta fallback behind an async FastAPI REST API.',
+    content: `# Benchmarking ONNX Background Removal & Deploying Live SageMaker U²-Net Endpoints (WARP)
 
-Modern clinical AI systems do not just consume text or tabular numbers—they ingest high-resolution RGB imagery, 3D LiDAR point clouds, longitudinal patient records, and EXIF camera optical metadata simultaneously.
+> *"Model selection in production computer vision isn't about leaderboard hype—it's about latency, reliability, and predictable failure recovery on real clinical photography."*
 
-Processing this volume on single-node Python workers quickly runs into memory saturation and unpredictable runtimes. Here is how we designed a high-throughput, distributed pipeline using **PySpark** and **AWS Glue**.
-
----
-
-## Architecture Blueprint
-
-\`\`\`
-[ Raw Ingestion S3 Bucket ]
-             │
-             ▼
-   [ AWS Glue Catalog ]
-             │
-             ▼
-   [ AWS EMR / Glue Spark Cluster ] ── (PySpark Distributed Transformations)
-       ├── Optical Metadata & EXIF Validation
-       ├── PyTorch UDF for Quality Scoring
-       └── Interocular Normalization
-             │
-             ▼
-[ S3 Data Lake (Parquet + Partitioned) ] ──► [ SageMaker ML Training ]
-\`\`\`
+**Project Detail**: [projects/a360-sagemaker-bg-removal.md](projects/a360-sagemaker-bg-removal.md)
 
 ---
 
-## 1. Custom PySpark User-Defined Functions (UDFs) with PyTorch
+## 1. Clinical Model & ONNX Runtime Benchmarks
 
-To perform batch computer vision checks across millions of partitions without Python serialization bottlenecks:
+Before provisioning managed GPU/CPU inference infrastructure, we systematically benchmarked segmentation candidates on real clinical photos:
 
-\`\`\`python
-from pyspark.sql.functions import udf, col
-from pyspark.sql.types import FloatType
-import io
-from PIL import Image
-
-@udf(returnType=FloatType())
-def calculate_sharpness_udf(image_bytes: bytes) -> float:
-    if not image_bytes:
-        return 0.0
-    image = Image.open(io.BytesIO(image_bytes)).convert("L")
-    import cv2
-    import numpy as np
-    img_np = np.array(image)
-    return float(cv2.Laplacian(img_np, cv2.CV_64F).var())
-
-# Distributed transformation on 10,000+ record batches
-def filter_and_transform_clinical_dataset(spark_df):
-    return (
-        spark_df
-        .withColumn("sharpness_score", calculate_sharpness_udf(col("raw_image_bytes")))
-        .filter(col("sharpness_score") >= 120.0)
-        .withColumn("is_optically_valid", col("interocular_dist") > 50.0)
-    )
-\`\`\`
+- **Initial Model Comparison (n=27)**: Evaluated **U²-Net**, **Silueta**, and **SAM** on clinical photography — **U²-Net averaged 0.22s vs. SAM at 2.35s** (over 10x faster with clean clinical subject edges).
+- **784-Run ONNX Runtime Benchmark**: Expanded testing across **196 clinical images** under **ONNX Runtime**, achieving **416ms average latency for U²-Net** with a **100% success rate**.
 
 ---
 
-## 2. Partition Strategy & Cost Efficiency
-- **Partition Pruning**: Segmented datasets by \`cohort_decade\` and \`acquisition_device\`, allowing downstream training jobs to read only 12% of the dataset per model iteration.
-- **Parquet Compaction**: Automated small-file compaction and partition tuning reduced I/O overhead on S3 by 4.8x.
-- **Outcome**: Total batch runtimes plummeted from **4 hours 15 minutes** down to **1 hour 18 minutes**, saving substantial AWS compute costs.
+## 2. Live SageMaker Architecture & Async FastAPI Service
+
+\`\`\`
+[ Client / Clinical App ]
+           │
+           ▼
+ [ Async FastAPI REST API ] ──► [ Amazon CloudWatch Metrics ]
+      │              │
+      │              ▼
+      │     [ Amazon S3 (AES-256) + Orphan Cleanup ]
+      ▼
+ [ Live AWS SageMaker Endpoint ]
+      ├── Primary: U²-Net (ONNX)
+      └── Fallback: Silueta
+\`\`\`
+
+### Production Hardening
+- **Fallback Resilience**: Deployed the live SageMaker **U²-Net** endpoint with an automatic **Silueta fallback** path.
+- **Encrypted Storage & Hygiene**: Stored processed artifacts in **Amazon S3 with AES-256 encryption** paired with automated **orphan cleanup** routines.
+- **Observability & Verification**: Instrumented **CloudWatch** operational metrics and validated deployments with automated smoke tests (**100% endpoint smoke-test pass rate**).
 `
   },
   {
     slug: 'deterministic-cv-optics-feature-extraction',
     filename: 'deterministic-cv-optics-feature-extraction.md',
-    title: 'Deterministic Optics: Combining MediaPipe, OpenCV, and 3D LiDAR Point Clouds',
+    title: 'Clinical 3D Depth Notebooks: Schema Migration, Depth-to-RGB Alignment & Pure-NumPy Point Clouds',
     date: '2026-06-19',
     readTime: '7 min read',
-    tags: ['OpenCV', 'MediaPipe', 'Open3D'],
-    summary: 'Sub-millimeter anatomical feature extraction, facial landmark alignment, and optical distortion calibration.',
-    content: `# Deterministic Optics: Combining MediaPipe, OpenCV, and 3D LiDAR Point Clouds
+    tags: ['AWS SageMaker Studio', 'OpenCV', 'SciPy', 'NumPy', 'JupyterLab', '3D Depth'],
+    summary: 'Inside 9 SageMaker Unified Studio JupyterLab notebooks automating clinical metadata migration (5→12 sections), bilinear depth-to-RGB alignment, Laplacian QC, .ply export, and Lambertian relighting.',
+    content: `# Clinical 3D Depth Notebooks: Schema Migration, Depth-to-RGB Alignment & Pure-NumPy Point Clouds
 
-In aesthetic medicine and clinical facial analysis, deep learning estimates alone are insufficient. When measuring facial asymmetry, volumetric changes, or aging markers, measurements must be **physically calibrated and millimeter-accurate**.
-
-Here is our methodology for pairing **MediaPipe 468-point facial meshes**, **OpenCV optical calibration**, and **3D LiDAR point cloud fusion**.
+**Project Detail**: [projects/a360-clinical-imaging-3d-sandbox.md](projects/a360-clinical-imaging-3d-sandbox.md)
 
 ---
 
-## 1. Intrinsic Camera Calibration & Distortion Correction
+## 1. Secure Clinical Imaging Sandbox
 
-Raw smartphone or clinical camera lenses introduce barrel distortion. Before computing any Euclidean distance:
+All R&D depth and RGB datasets live inside an **SSE-KMS / IAM-scoped S3 data lake** (\`a360-imaging-poc-dev\`) accessed from **AWS SageMaker Unified Studio JupyterLab**. Across **9 production-grade notebooks**, we standardized the full pre-processing, quality control, and 3D geometry pipeline.
+
+---
+
+## 2. Automated Metadata Migration & Depth Alignment
+
+1. **Metadata Schema Migration**: Automated conversion from legacy **5 top-level sections** to a normalized **12 top-level sections / 57 leaf fields** schema for consistent downstream indexing.
+2. **Depth Conversion & Alignment**: Converted raw \`float32\` depth maps to compact \`uint16\` representations and aligned depth frames to RGB imagery via **SciPy bilinear interpolation**.
+3. **Deterministic Image QC**: Implemented **OpenCV Laplacian** blur detection and exposure quality checks to flag degraded captures automatically before 3D reconstruction.
+
+---
+
+## 3. Pure-NumPy 3D Point-Cloud Export & Lambertian Relighting
+
+Rather than pulling in heavy native 3D mesh dependencies for routine geometry checks, we implemented camera-intrinsics projection directly in **NumPy**:
 
 \`\`\`python
-import cv2
 import numpy as np
 
-def undistort_clinical_frame(frame: np.ndarray, camera_matrix: np.ndarray, dist_coeffs: np.ndarray) -> np.ndarray:
-    h, w = frame.shape[:2]
-    new_camera_matrix, roi = cv2.getOptimalNewCameraMatrix(
-        camera_matrix, dist_coeffs, (w, h), 1, (w, h)
-    )
-    undistorted = cv2.undistort(frame, camera_matrix, dist_coeffs, None, new_camera_matrix)
-    x, y, w_roi, h_roi = roi
-    return undistorted[y:y+h_roi, x:x+w_roi]
+def depth_to_point_cloud(depth_m: np.ndarray, fx: float, fy: float, cx: float, cy: float) -> np.ndarray:
+    h, w = depth_m.shape
+    u, v = np.meshgrid(np.arange(w), np.arange(h))
+    valid = depth_m > 0
+    z = depth_m[valid]
+    x = (u[valid] - cx) * z / fx
+    y = (v[valid] - cy) * z / fy
+    return np.stack([x, y, z], axis=-1)
 \`\`\`
 
----
-
-## 2. MediaPipe Landmark Alignment & Interocular Distance (IOD)
-
-Using the pupils as a physiological anchor:
-- Extract landmark \`#33\` (outer left eye corner), \`#133\` (inner left eye corner), \`#362\` (inner right eye corner), and \`#263\` (outer right eye corner).
-- Compute the 3D optical center vector and normalize scale against known patient IOD.
-
-\`\`\`python
-import mediapipe as mp
-
-mp_face_mesh = mp.solutions.face_mesh
-
-def extract_iod_and_pose(image_rgb: np.ndarray):
-    with mp_face_mesh.FaceMesh(
-        static_image_mode=True,
-        max_num_faces=1,
-        refine_landmarks=True,
-        min_detection_confidence=0.7
-    ) as face_mesh:
-        results = face_mesh.process(image_rgb)
-        if not results.multi_face_landmarks:
-            return None
-        
-        landmarks = results.multi_face_landmarks[0].landmark
-        # Convert normalized coordinates to millimeter 3D vectors
-        left_pupil = np.array([landmarks[468].x, landmarks[468].y, landmarks[468].z])
-        right_pupil = np.array([landmarks[473].x, landmarks[473].y, landmarks[473].z])
-        
-        iod_euclidean = np.linalg.norm(left_pupil - right_pupil)
-        return {"iod_metric": float(iod_euclidean), "landmarks_total": len(landmarks)}
-\`\`\`
-
----
-
-## 3. Merging with 3D LiDAR Depth Meshes
-By raycasting 2D landmark coordinates against the aligned 3D LiDAR point cloud, we reconstruct real millimeter depth profiles of nasolabial folds, periorbital volume, and cheek elevation.
+- Exported calibrated 3D point clouds directly to standard **\`.ply\`** files.
+- Computed **depth-to-normals** surface maps to enable **Lambertian relighting** for consistent clinical surface inspection across lighting conditions.
 `
   },
   {
     slug: 'hardening-mlops-aws-nist-csf',
     filename: 'hardening-mlops-aws-nist-csf.md',
-    title: 'Hardening Production GenAI & SageMaker Workflows for NIST CSF Compliance',
+    title: 'HIPAA-Oriented PHI-Safe AI Design on AWS: KMS, IAM & NIST Alignment',
     date: '2026-05-10',
     readTime: '5 min read',
-    tags: ['AWS', 'SageMaker', 'NIST CSF', 'ISO/IEC 42001', 'CI/CD (GitHub Actions)'],
-    summary: 'Implementing least-privilege IAM, KMS encryption keys, CloudWatch drift telemetry, and automated CI/CD security scanning.',
-    content: `# Hardening Production GenAI & SageMaker Workflows for NIST CSF Compliance
+    tags: ['AWS', 'HIPAA-Oriented AI Design', 'NIST AI RMF', 'NIST CSF', 'OWASP Top 10 for LLMs', 'ISO/IEC 42001'],
+    summary: 'Designing PHI-safe AI workflows on AWS with SSE-KMS/IAM-scoped S3 data lakes, S3 AES-256 orphan cleanup, SHA-256 prompt hashing without PII, and NIST AI RMF / CSF alignment.',
+    content: `# HIPAA-Oriented PHI-Safe AI Design on AWS: KMS, IAM & NIST Alignment
 
-Deploying machine learning models in healthcare environments requires strict alignment with cybersecurity frameworks, specifically the **NIST Cybersecurity Framework (CSF)** and HIPAA security rules.
-
-Here are the key security controls we baked into our production AWS MLOps lifecycle.
+Deploying LLM and computer vision pipelines in clinical aesthetics requires security controls baked into every data contract, storage bucket, and audit log—aligned to **HIPAA-oriented PHI-safe design**, **NIST AI RMF**, **NIST CSF**, and **OWASP Top 10 for LLMs**.
 
 ---
 
-## 1. Identity & Access Management (IAM) Least-Privilege
+## 1. Scoped IAM & Encrypted S3 Storage
 
-- **Zero Wildcard Permissions**: No \`s3:*\` or \`sagemaker:*\` policies in production roles.
-- **Resource-Constrained Policies**: SageMaker training instances are locked to specific S3 prefix ARNs with mandatory KMS encryption context checks.
+- **SSE-KMS & IAM-Scoped Data Lake**: Scoped our clinical imaging sandbox (\`a360-imaging-poc-dev\`) with least-privilege IAM policies and mandatory **SSE-KMS** encryption conditions.
+- **S3 AES-256 & Orphan Cleanup**: Production background-removal artifacts are encrypted at rest with **AES-256** and paired with automated orphan cleanup so transient imagery never lingers unmanaged.
 
 \`\`\`json
 {
@@ -273,11 +202,8 @@ Here are the key security controls we baked into our production AWS MLOps lifecy
   "Statement": [
     {
       "Effect": "Allow",
-      "Action": [
-        "s3:GetObject",
-        "s3:PutObject"
-      ],
-      "Resource": "arn:aws:s3:::clinical-ml-artifacts-prod/models/*",
+      "Action": ["s3:GetObject", "s3:PutObject"],
+      "Resource": "arn:aws:s3:::a360-imaging-poc-dev/*",
       "Condition": {
         "StringEquals": {
           "s3:x-amz-server-side-encryption": "aws:kms"
@@ -290,78 +216,69 @@ Here are the key security controls we baked into our production AWS MLOps lifecy
 
 ---
 
-## 2. Automated OWASP & Vulnerability Scanning in GitHub Actions
-Every pull request building Docker images for Amazon ECR triggers:
-- **Trivy Container Scanning**: Scans base Linux container layers for CVEs.
-- **Bandit & SonarQube**: Static code analysis preventing insecure deserialization (\`pickle.load\`), hardcoded secrets, and SQL injection.
+## 2. PHI-Safe Prompt Fingerprinting & Zero-PHI Synthetic Data
 
-## 3. Real-Time Model Drift & Observability
-- Exported inference latency, input token count, and statistical drift metrics directly into **Amazon CloudWatch**.
-- Configured automated alarms that invoke SNS alerts if Kolmogorov-Smirnov test statistics exceed baseline drift thresholds for >3 consecutive hours.
+- **6-Field SHA-256 \`prompt_hash\`**: In **A360 Reach**, LLM rerun and version lineage fingerprints are computed strictly over 6 non-sensitive metadata fields—explicitly **excluding raw consultation transcripts and PII/PHI**.
+- **Strict Input Contracts**: Enforced Pydantic v2 \`extra="forbid"\` schemas so unexpected or unvalidated payload fields are rejected before reaching model endpoints.
+- **Zero-PHI Synthetic Cohorts**: Built **A360-ADP** purely from synthetic anchors so facial aging R&D never touches real patient photos.
+
+---
+
+## 3. CloudWatch Observability & Governance
+
+- Exported SageMaker endpoint health, latency, and error telemetry to **Amazon CloudWatch** with automated smoke-test verification.
+- Aligned engineering SOPs and risk controls with **NIST AI RMF**, **NIST CSF**, **OWASP Top 10 for LLMs**, and **ISO/IEC 42001**.
 `
   },
   {
-    slug: 'compound-ai-workflows-langgraph-bedrock',
-    filename: 'compound-ai-workflows-langgraph-bedrock.md',
-    title: 'Building Stateful Compound AI Workflows with LangGraph, AWS Bedrock & pgvector',
+    slug: 'a360-reach-llm-backend-audit-lineage',
+    filename: 'a360-reach-llm-backend-audit-lineage.md',
+    title: 'A360 Reach: Production LLM Persistence, Audit Lineage & Consultation-to-Email Pipeline',
     date: '2026-08-28',
-    readTime: '6 min read',
-    tags: ['LangGraph', 'AWS Bedrock', 'pgvector', 'vLLM', 'NIST AI RMF', 'Guardrails AI'],
-    summary: 'Designing stateful agentic workflows with deterministic fallback routing, tool calling, self-correction loops, and Guardrails AI sanitization.',
-    content: `# Building Stateful Compound AI Workflows with LangGraph, AWS Bedrock & pgvector
+    readTime: '7 min read',
+    tags: ['FastAPI', 'SQLAlchemy 2.0', 'PostgreSQL', 'Alembic', 'Pydantic v2', 'AWS Bedrock', 'Bedrock AgentCore', 'Strands Agents'],
+    summary: 'Engineering idempotent LLM persistence, self-referencing rerun lineage, PHI-safe SHA-256 prompt hashing, and a 4-stage Claude 3.5 Sonnet transcript-to-email pipeline with 214 passing tests.',
+    content: `# A360 Reach: Production LLM Persistence, Audit Lineage & Consultation-to-Email Pipeline
 
-> *"Single-turn prompt engineering has hit a ceiling. Production systems demand Compound AI Architectures—stateful graphs of modular models, vector indices, and deterministic tool-calling guardrails."*
+> *"Shipping an LLM feature is easy. Shipping an auditable, idempotent, PHI-safe LLM backend that survives retries, schema drift, and multi-runtime execution is where real systems engineering begins."*
 
-In high-stakes clinical and enterprise workflows, relying on a solitary LLM call leads to non-deterministic failure modes. To achieve deterministic reliability, we architected **Compound AI Workflows** leveraging **LangGraph**, **AWS Bedrock**, **vLLM**, and **pgvector**.
+**Project Detail**: [projects/a360-reach-llm-backend.md](projects/a360-reach-llm-backend.md)
 
 ---
 
-## 1. State Graph Architecture & Self-Correction Loops
+## 1. Persistence, Versioning & Rerun Lineage (\`patient_emails\`)
 
-By structuring inference as a cyclic directed state graph in LangGraph:
-- **Node 1 (Intent Classifier & PII Sanitizer)**: Validate input constraints and scrub sensitive patterns with **Guardrails AI**.
-- **Node 2 (Hybrid Vector Retrieval)**: Query **pgvector** with dense HNSW embeddings and sparse BM25 indices to fetch verified clinical context.
-- **Node 3 (LLM Generation)**: Execute structured tool calls on AWS Bedrock (Claude 3.5 Sonnet / Llama 3.3).
-- **Node 4 (Hallucination Evaluator)**: If the output fails structural JSON schema validation or exceeds confidence bounds, route back to Node 3 with targeted feedback.
+In **A360 Reach**, we engineered the \`patient_emails\` persistence, versioning, and rerun subsystem (DAL + **Alembic** migrations) in **FastAPI**, **SQLAlchemy 2.0**, and **PostgreSQL**:
 
-\`\`\`python
-from langgraph.graph import StateGraph, END
-from typing import TypedDict, List
-import pgvector
+- **Blocking Idempotent Writes**: Guarded concurrent writes with DB \`CHECK\` constraints, partial unique deduplication indexes, and \`IntegrityError\` rollback handling.
+- **Self-Referencing Lineage**: Modeled \`rerun_parent_id\` traversal with \`difflib\` version diffing so every regenerated email draft has an exact parent-child audit trail.
+- **PHI-Safe Fingerprinting**: Computed a 6-field **SHA-256 \`prompt_hash\`** explicitly excluding transcripts and PII.
+- **Unified Agent Contracts**: Enforced strict **Pydantic v2** models (\`extra="forbid"\`) unifying local **Strands Agents** and **AWS Bedrock AgentCore** execution paths (**214 passing backend tests; 107 newly authored**).
 
-class AgentState(TypedDict):
-    query: str
-    context: List[str]
-    generated_report: str
-    retry_count: int
-    is_valid: bool
+---
 
-workflow = StateGraph(AgentState)
-workflow.add_node("sanitize_and_retrieve", retrieve_clinical_context)
-workflow.add_node("generate_with_bedrock", generate_clinical_synthesis)
-workflow.add_node("verify_guardrails", evaluate_output_guardrails)
+## 2. 4-Stage Consultation-to-Email Pipeline (\`A360-Reach-Emails\`)
 
-workflow.set_entry_point("sanitize_and_retrieve")
-workflow.add_edge("sanitize_and_retrieve", "generate_with_bedrock")
-workflow.add_edge("generate_with_bedrock", "verify_guardrails")
-
-workflow.add_conditional_edges(
-    "verify_guardrails",
-    lambda state: "end" if state["is_valid"] or state["retry_count"] >= 3 else "retry",
-    {
-        "end": END,
-        "retry": "generate_with_bedrock"
-    }
-)
+\`\`\`
+[ Consultation Transcript ]
+           │
+           ▼
+ [ 3 Deterministic Rule-Based Extractors ]
+   ├── Visit Classification
+   ├── Opportunity Detection
+   └── Commercial KPI Extraction
+           │
+           ▼
+ [ Pydantic Readiness Gates (Confidence & Completeness) ]
+           │
+           ▼
+ [ AWS Bedrock Claude 3.5 Sonnet ] ◄── [ SHA-256-Hashed Markdown KB ]
+           │
+           ▼
+ [ Versioned patient_emails Record ]
 \`\`\`
 
----
-
-## 2. Low-Latency vLLM Runtimes & Prompt Caching
-For repetitive feature classification queries:
-- Deployed quantized open-weight models (**vLLM** with PagedAttention and FP8 quantization).
-- Reduced end-to-end P95 latency from **1,400ms down to 185ms** while saving over 70% in API inference costs.
-- Enforced strict compliance with **NIST AI RMF** risk management principles throughout the deployment lifecycle.
+Separating deterministic rule-based extraction and readiness gates from **AWS Bedrock Claude 3.5 Sonnet** generation ensures that incomplete or low-confidence transcripts are caught before an email is ever drafted.
 `
   },
   {
@@ -717,59 +634,52 @@ The **Production Agent Patterns** repository provides 15 standalone, production-
 `
   },
   {
-    slug: 'mlops-lifecycle-airflow-mlflow',
-    filename: 'mlops-lifecycle-airflow-mlflow.md',
-    title: 'Automating Model Lifecycle & Retraining DAGs: Production MLOps with MLflow & Apache Airflow',
+    slug: 'imageiq-deterministic-cv-and-hf-spaces',
+    filename: 'imageiq-deterministic-cv-and-hf-spaces.md',
+    title: 'ImageIQ & 6 Hugging Face Gradio Spaces: Deterministic Clinical CV with Locked Eval Baselines',
     date: '2026-11-03',
-    readTime: '5 min read',
-    tags: ['MLflow', 'Apache Airflow', 'Docker', 'CI/CD (GitHub Actions)', 'AWS S3', 'Model Registry', 'Automation'],
-    summary: 'Designing resilient MLOps architectures for automated drift detection, model evaluation gates, and continuous retraining with MLflow and Apache Airflow.',
-    content: `# Automating Model Lifecycle & Retraining DAGs: Production MLOps with MLflow & Apache Airflow
+    readTime: '6 min read',
+    tags: ['OpenCV', 'MediaPipe', 'Florence-2', 'Hugging Face', 'Gradio', 'ONNX Runtime', 'pytest', 'moto'],
+    summary: 'Building a local-first Python clinical CV suite (anatomy-first body cropper, FaceMesh/BlazeFace fallback, Eval V1 baselines, 212 pytest functions with moto[s3]) plus 6 Hugging Face Gradio Spaces.',
+    content: `# ImageIQ & 6 Hugging Face Gradio Spaces: Deterministic Clinical CV with Locked Eval Baselines
 
-> *"ML models in production don't fail loudly with stack traces; they fail silently through distribution drift. Resilient systems automate the entire lifecycle from drift detection to canary deployment."*
+> *"Deterministic computer vision is built on explicit failure contracts, locked evaluation baselines, and thorough test suites—not fragile one-off scripts."*
 
-**Project Detail**: [projects/mlops-lifecycle-airflow-mlflow.md](projects/mlops-lifecycle-airflow-mlflow.md) | **GitHub Repository**: [github.com/cappuccino-san/mlops-airflow-pipeline](https://github.com/cappuccino-san/mlops-airflow-pipeline)  
+**Project Detail**: [projects/a360-imageiq-hf-spaces.md](projects/a360-imageiq-hf-spaces.md)  
 **Status**: Shipped / Production
 
 ---
 
-## 1. The Challenge of Silent Model Degradation
-In multimodal clinical workflows and real-time inference systems, data distributions continuously shift. Relying on manual retraining cycles creates operational lag and risk.
+## 1. Local-First Clinical CV Architecture (ImageIQ)
 
-This architecture standardizes:
-- **Centralized Experiment & Model Registry**: Tracking hyperparameters, metrics, and versioned weights in MLflow.
-- **Automated DAG Scheduling**: Apache Airflow DAGs monitoring data quality and feature drift.
-- **Validation Gates & Transition Hooks**: Blocking model promotion unless automated eval benchmarks exceed the current production champion.
-- **Zero-Downtime Blue/Green Deployments**: Containerized inference services updated dynamically via CI/CD.
+We built **ImageIQ** as a local-first Python computer vision pipeline (\`MediaPipe\`, \`OpenCV\`, \`NumPy\`, \`Pillow\`, \`boto3\`) designed for clinical before/after photography:
 
----
-
-## 2. Airflow DAG Workflow
-
-\`\`\`mermaid
-flowchart TD
-    A["Airflow Sensor: Daily Data Drift Check"] --> B{"Drift > Threshold (15%)?"}
-    B -- No --> C["Log Telemetry & Stand Down"]
-    B -- Yes --> D["Trigger Retraining Task Pod"]
-    D --> E["MLflow Experiment Run & Metrics"]
-    E --> F{"Eval Metric > Production Champion?"}
-    F -- No --> G["Alert MLOps On-Call & Halt"]
-    F -- Yes --> H["Promote to MLflow Staging"]
-    H --> I["Deploy Blue/Green Canary"]
-\`\`\`
+- **Anatomy-First Body Crop Engine**: Frames clinical body photography consistently around anatomical landmarks rather than naive bounding boxes.
+- **Composite Panel Splitting**: Automatically detects and splits multi-panel before/after collages into clean individual frames.
+- **Multi-Scale FaceMesh / BlazeFace Fallback**: Cascades from high-precision FaceMesh landmarks to BlazeFace detection when angles or lighting challenge primary inference.
+- **Before/After Pairing & Explicit JSON Failure Contracts**: Returns structured JSON error codes on unprocessable images instead of silent crashes or malformed crops.
 
 ---
 
-## 3. Systems & Technical Implementation
-- **MLflow Model Registry**: Standardized experiment tracking, metric logging (FID score, loss curves, inference latency), and model artifact lineage.
-- **Deterministic Airflow DAGs**: Implemented idempotent task nodes with automatic retry backoff, Slack alerting webhooks, and S3 artifact checkpoints.
-- **GitHub Actions & Docker**: Multi-stage Docker builds executing pytest suites, verifying AST contracts, and packaging lightweight inference images.
+## 2. Locked Eval V1 Baselines & Storage Abstraction
+
+- **Eval V1 Regression Suite**: Locked evaluation baselines across **16 body** and **9 face** clinical test cases to prevent silent visual regressions across pipeline changes.
+- **Config-Only Local / S3 Storage**: Switched seamlessly between local disk and S3 via configuration alone, verified with **212 \`pytest\` functions (214 collected items)** using **\`moto[s3]\`**.
+
+---
+
+## 3. Six Hugging Face Gradio Spaces
+
+To make clinical CV prototypes and benchmarks interactively testable across teams, we shipped **6 Hugging Face Gradio Spaces** backed by **130 additional \`pytest\` tests**:
+- **Florence-2** matched before/after auto-cropper
+- **MediaPipe** 1:1 batch ZIP cropper
+- **Stable Diffusion x4** clinical upscaler
+- **ONNX Runtime** background-remover benchmark suite
 
 ---
 
 ### Links & Resources
-- **Inspect Project File**: [projects/mlops-lifecycle-airflow-mlflow.md](projects/mlops-lifecycle-airflow-mlflow.md) (\`cat projects/mlops-lifecycle-airflow-mlflow.md\`)
-- **Source Code**: [https://github.com/cappuccino-san/mlops-airflow-pipeline](https://github.com/cappuccino-san/mlops-airflow-pipeline)
+- **Inspect Project File**: [projects/a360-imageiq-hf-spaces.md](projects/a360-imageiq-hf-spaces.md) (\`cat projects/a360-imageiq-hf-spaces.md\`)
 `
   },
 
