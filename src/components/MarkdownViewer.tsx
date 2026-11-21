@@ -185,7 +185,7 @@ export const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
               backgroundColor: 'rgba(255, 255, 255, 0.02)',
             }}
           >
-            {line.slice(2)}
+            {formatInlineTokens(line.slice(2))}
           </div>
         );
         continue;
@@ -232,20 +232,65 @@ export const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
     return elements;
   };
 
-  // Helper to parse `inline code`, **bold**, and links [text](url)
-  const formatInlineTokens = (text: string): React.ReactNode => {
+  // Helper to parse earliest-occurring `inline code`, **bold**, *italic*, and [label](url) links recursively
+  const formatInlineTokens = (text: string, keyPrefix = 't'): React.ReactNode => {
     const parts: React.ReactNode[] = [];
     let remaining = text;
     let key = 0;
 
     while (remaining.length > 0) {
-      // Inline Code: `code`
-      const codeMatch = remaining.match(/^(.*?)`([^`]+)`(.*)$/);
+      const candidates: Array<{
+        type: 'code' | 'bold' | 'italic' | 'link';
+        index: number;
+        match: RegExpExecArray;
+      }> = [];
+
+      const codeMatch = /`([^`]+)`/.exec(remaining);
       if (codeMatch) {
-        if (codeMatch[1]) parts.push(codeMatch[1]);
+        candidates.push({ type: 'code', index: codeMatch.index, match: codeMatch });
+      }
+
+      const boldMatch = /\*\*((?:(?!\*\*).)+)\*\*/.exec(remaining);
+      if (boldMatch) {
+        candidates.push({ type: 'bold', index: boldMatch.index, match: boldMatch });
+      }
+
+      const italicMatch = /(?<!\*)\*([^\s*](?:[^*\n]*?[^\s*])?)\*(?!\*)/.exec(remaining);
+      if (italicMatch) {
+        candidates.push({ type: 'italic', index: italicMatch.index, match: italicMatch });
+      }
+
+      const linkMatch = /\[([^\]]+)\]\(([^)]+)\)/.exec(remaining);
+      if (linkMatch) {
+        candidates.push({ type: 'link', index: linkMatch.index, match: linkMatch });
+      }
+
+      if (candidates.length === 0) {
+        parts.push(remaining);
+        break;
+      }
+
+      // Pick the earliest-occurring token (tie-break: code > bold > link > italic)
+      const priority: Record<'code' | 'bold' | 'link' | 'italic', number> = {
+        code: 0,
+        bold: 1,
+        link: 2,
+        italic: 3,
+      };
+      candidates.sort((a, b) => a.index - b.index || priority[a.type] - priority[b.type]);
+      const earliest = candidates[0];
+
+      if (earliest.index > 0) {
+        parts.push(remaining.slice(0, earliest.index));
+      }
+
+      const tokenKey = `${keyPrefix}-${key++}`;
+      const m = earliest.match;
+
+      if (earliest.type === 'code') {
         parts.push(
           <code
-            key={`code-${key++}`}
+            key={tokenKey}
             className="px-1.5 py-0.5 rounded-xs text-xs font-mono border"
             style={{
               backgroundColor: 'rgba(0, 0, 0, 0.5)',
@@ -253,32 +298,24 @@ export const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
               color: themeConfig.brightText,
             }}
           >
-            {codeMatch[2]}
+            {m[1]}
           </code>
         );
-        remaining = codeMatch[3];
-        continue;
-      }
-
-      // Bold: **text**
-      const boldMatch = remaining.match(/^(.*?)\*\*([^*]+)\*\*(.*)$/);
-      if (boldMatch) {
-        if (boldMatch[1]) parts.push(boldMatch[1]);
+      } else if (earliest.type === 'bold') {
         parts.push(
-          <strong key={`bold-${key++}`} style={{ color: themeConfig.brightText }}>
-            {boldMatch[2]}
+          <strong key={tokenKey} style={{ color: themeConfig.brightText }}>
+            {formatInlineTokens(m[1], `${tokenKey}-b`)}
           </strong>
         );
-        remaining = boldMatch[3];
-        continue;
-      }
-
-      // Link: [label](url)
-      const linkMatch = remaining.match(/^(.*?)\[([^\]]+)\]\(([^)]+)\)(.*)$/);
-      if (linkMatch) {
-        if (linkMatch[1]) parts.push(linkMatch[1]);
-        const href = linkMatch[3];
-        const label = linkMatch[2];
+      } else if (earliest.type === 'italic') {
+        parts.push(
+          <em key={tokenKey} className="italic" style={{ color: themeConfig.dimText }}>
+            {formatInlineTokens(m[1], `${tokenKey}-i`)}
+          </em>
+        );
+      } else if (earliest.type === 'link') {
+        const label = m[1];
+        const href = m[2];
         const isInternalCmd =
           href.startsWith('cat ') ||
           href.startsWith('ls ') ||
@@ -287,14 +324,20 @@ export const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
           href.startsWith('agent') ||
           href.startsWith('/projects/') ||
           href.startsWith('/posts/') ||
+          href.startsWith('/about/') ||
           href.startsWith('projects/') ||
-          href.startsWith('posts/');
-        const cmdToRun = href.startsWith('/') || href.startsWith('projects/') || href.startsWith('posts/')
-          ? `cat ${href}`
-          : href;
+          href.startsWith('posts/') ||
+          href.startsWith('about/');
+        const cmdToRun =
+          href.startsWith('/') ||
+          href.startsWith('projects/') ||
+          href.startsWith('posts/') ||
+          href.startsWith('about/')
+            ? `cat ${href}`
+            : href;
         parts.push(
           <a
-            key={`link-${key++}`}
+            key={tokenKey}
             href={isInternalCmd ? `#${cmdToRun}` : href}
             target={href.startsWith('http') ? '_blank' : undefined}
             rel="noopener noreferrer"
@@ -310,15 +353,12 @@ export const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
               }
             }}
           >
-            {label}
+            {formatInlineTokens(label, `${tokenKey}-a`)}
           </a>
         );
-        remaining = linkMatch[4];
-        continue;
       }
 
-      parts.push(remaining);
-      break;
+      remaining = remaining.slice(earliest.index + m[0].length);
     }
 
     return parts;
@@ -391,13 +431,31 @@ export const MarkdownViewer: React.FC<MarkdownViewerProps> = ({
         className="mt-5 pt-3 border-t flex flex-wrap items-center justify-between gap-2 text-xs select-none"
         style={{ borderColor: themeConfig.border }}
       >
-        <button
-          onClick={() => onCommandClick?.('ls -l posts')}
-          className="flex items-center gap-1 px-2.5 py-1 border cursor-pointer hover:bg-white/5 transition-colors"
-          style={{ borderColor: themeConfig.border, color: themeConfig.brightText }}
-        >
-          <ArrowLeft size={12} /> Back to Posts (ls posts)
-        </button>
+        {path?.startsWith('/posts/') ? (
+          <button
+            onClick={() => onCommandClick?.('ls -l posts')}
+            className="flex items-center gap-1 px-2.5 py-1 border cursor-pointer hover:bg-white/5 transition-colors"
+            style={{ borderColor: themeConfig.border, color: themeConfig.brightText }}
+          >
+            <ArrowLeft size={12} /> Back to Posts (ls posts)
+          </button>
+        ) : path?.startsWith('/projects/') ? (
+          <button
+            onClick={() => onCommandClick?.('ls -l projects')}
+            className="flex items-center gap-1 px-2.5 py-1 border cursor-pointer hover:bg-white/5 transition-colors"
+            style={{ borderColor: themeConfig.border, color: themeConfig.brightText }}
+          >
+            <ArrowLeft size={12} /> Back to Projects (ls projects)
+          </button>
+        ) : (
+          <button
+            onClick={() => onCommandClick?.('ls')}
+            className="flex items-center gap-1 px-2.5 py-1 border cursor-pointer hover:bg-white/5 transition-colors"
+            style={{ borderColor: themeConfig.border, color: themeConfig.brightText }}
+          >
+            <ArrowLeft size={12} /> Back to Home (ls)
+          </button>
+        )}
 
         <button
           onClick={() => onCommandClick?.('mail')}

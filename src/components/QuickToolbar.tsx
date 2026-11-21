@@ -51,20 +51,20 @@ export const QuickToolbar: React.FC<QuickToolbarProps> = ({
 
   return (
     <div
-      className="py-1 px-2 border-t flex items-center gap-1.5 overflow-x-auto text-[11px] font-mono select-none z-20 shrink-0"
+      className="py-1 px-2 border-t flex flex-wrap items-center gap-1 text-[11px] font-mono select-none z-20 shrink-0"
       style={{
         borderColor: themeConfig.border,
         backgroundColor: 'rgba(0, 0, 0, 0.65)',
       }}
     >
-      <span className="opacity-60 text-[10px] uppercase font-semibold shrink-0" style={{ color: themeConfig.brightText }}>
+      <span className="opacity-60 text-[10px] uppercase font-semibold shrink-0 mr-0.5" style={{ color: themeConfig.brightText }}>
         Quick Shortcuts:
       </span>
       {quickActions.map((action, idx) => (
         <button
           key={idx}
           onClick={() => onCommandClick(action.label)}
-          className="flex items-center gap-1 px-2 py-0.5 border rounded-xs whitespace-nowrap cursor-pointer hover:bg-white/10 transition-all text-xs shrink-0"
+          className="flex items-center gap-1 px-1.5 py-0.5 border rounded-xs whitespace-nowrap cursor-pointer hover:bg-white/10 transition-all text-[11px] shrink-0"
           style={{
             borderColor: themeConfig.border,
             color: themeConfig.text,
